@@ -59,7 +59,6 @@ class AppTextFormField extends StatelessWidget {
           fontWeight: FontWeight.w500,
           color: MyColors.gray,
         ),
-        expands: true,
         validator: (value) {
           return validator!(value);
         },
