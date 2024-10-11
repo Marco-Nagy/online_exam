@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/routes/app_routes.dart';
 import 'package:online_exam/core/styles/colors/my_colors.dart';
+import 'package:online_exam/core/utils/extension/navigations.dart';
 import 'package:online_exam/core/utils/widgets/app_text_form_field.dart';
 import 'package:online_exam/core/utils/widgets/buttons/carved_button.dart';
 import 'package:online_exam/core/utils/widgets/custom_app_bar.dart';
@@ -58,8 +60,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           value.isEmpty ) {
                         return 'This Email is not valid';
                       }
-                      // return null;
-                    }
+                        return null;
+                      }
                 ),
                 verticalSpacing(48),
                 CurvedButton(
@@ -68,9 +70,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   onTap: () {
                     setState(() {
                       if (formKye.currentState!.validate()) {
-                        Navigator.pop(context);
-                      }
-                    });
+                        context.pushReplacementNamed(
+                              AppRoutes.emailVerification);
+                        }
+                      });
 
                   },
                 )
@@ -79,6 +82,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           ),
         ),
       ),
-    ));
+      ),
+    );
   }
 }
