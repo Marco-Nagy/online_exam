@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/styles/colors/my_colors.dart';
 import 'package:online_exam/core/styles/fonts/my_fonts.dart';
+import 'package:online_exam/core/utils/widgets/spacing.dart';
 
 
 class AppTextFormField extends StatelessWidget {
@@ -9,9 +11,8 @@ class AppTextFormField extends StatelessWidget {
     required this.controller,
     required this.hintText,
     super.key,
-    this.filled = false,
-    this.obscureText = false,
-    this.readOnly = false,
+    this.filled ,
+    this.readOnly ,
     this.validator,
     this.fillColour,
     this.suffixIcon,
@@ -27,16 +28,17 @@ class AppTextFormField extends StatelessWidget {
     required this.labelText,
     this.autofocus=false,
     this.inputFormatters = const [],
+    this.obscureText,
 
   });
 
   final String? Function(String?)? validator;
   final Function? onChanged;
   final TextEditingController controller;
-  final bool filled;
+  final bool? filled;
   final Color? fillColour;
-  final bool obscureText;
-  final bool readOnly;
+  final bool? obscureText;
+  final bool? readOnly;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final String hintText;
@@ -59,7 +61,7 @@ class AppTextFormField extends StatelessWidget {
       cursorColor: MyColors.gray,
       style:  TextStyle(
         height:height,
-        fontSize: 16,
+        fontSize: 16.sp,
         fontWeight: FontWeight.w500,
         color: MyColors.gray,
       ),
@@ -69,9 +71,9 @@ class AppTextFormField extends StatelessWidget {
       onChanged: onChanged == null ? (value) {} : (value) => onChanged!(value),
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
-      obscureText: obscureText,
-      maxLines: maxLines,
-      readOnly: readOnly,
+      obscureText: obscureText?? false,
+      maxLines: maxLines??1,
+      readOnly: readOnly ?? false,
       maxLength: maxLength,
       decoration: InputDecoration(
         isDense: true,

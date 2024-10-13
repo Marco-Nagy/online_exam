@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/di/di.dart';
-import 'package:online_exam/presentation/screens/forget_password.dart';
+import 'package:online_exam/online_exam.dart';
 
 import 'core/routes/app_routes.dart';
+import 'core/utils/abb_bloc_observer.dart';
 
 void main() {
   configureDependencies();
-  runApp(
-    const MaterialApp(
-      initialRoute: '/',
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: AppRoutes.onGenerateRoute,
-    ),
+  Bloc.observer = MyBlocObserver();
+  runApp(OnlineExam(),
   );
 }
