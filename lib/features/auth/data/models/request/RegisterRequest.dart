@@ -1,10 +1,4 @@
-/// username : "elevate"
-/// firstName : "Elevate"
-/// lastName : "Tech"
-/// email : "admin@elevate.com"
-/// password : "Elevate@123"
-/// rePassword : "Elevate@123"
-/// phone : "01094155711"
+
 
 class RegisterRequest {
   RegisterRequest({
