@@ -46,6 +46,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   shared_preferences: ^2.3.2
   lottie: ^3.1.2
+  flutter_hooks: ^0.20.5
 
 
   # add injectable to your dependencies

@@ -21,11 +21,7 @@ class LoginSuccessState extends LoginScreenState {
   LoginSuccessState(this.authResponse);
 }
 
-class LoginChangePasswordVisibility extends LoginScreenState {
-  bool isVisible;
 
-  LoginChangePasswordVisibility(this.isVisible);
-}
 
 class LoginRememberMeVisibility extends LoginScreenState {
   AuthResponse authResponse;
@@ -37,7 +33,9 @@ sealed class LoginScreenAction {}
 
 class LoginAction extends LoginScreenAction {
   SignInRequest body;
+  bool isRememberMeChecked;
   LoginAction(
     this.body,
+      this.isRememberMeChecked,
   );
 }

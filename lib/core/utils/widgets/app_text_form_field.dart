@@ -24,11 +24,12 @@ class AppTextFormField extends StatelessWidget {
     this.maxLength,
     this.maxLines ,
     this.height ,
-    this.width = double.infinity,
+    this.width ,
     required this.labelText,
     this.autofocus=false,
     this.inputFormatters = const [],
     this.obscureText,
+    this.fontSize,
 
   });
 
@@ -50,6 +51,7 @@ class AppTextFormField extends StatelessWidget {
   final int? maxLines;
   final double? height ;
   final double? width ;
+  final double? fontSize ;
   final bool autofocus ;
   final List<TextInputFormatter> inputFormatters ;
 
@@ -60,14 +62,13 @@ class AppTextFormField extends StatelessWidget {
       controller: controller,
       cursorColor: MyColors.gray,
       style:  TextStyle(
-        height:height,
-        fontSize: 16.sp,
+        // height:height,
+        fontSize: fontSize??16.sp,
         fontWeight: FontWeight.w500,
         color: MyColors.gray,
       ),
-      validator: (value) {
-        return validator!(value);
-      },
+      validator:  validator == null ? null: (value) => validator!(value),
+
       onChanged: onChanged == null ? (value) {} : (value) => onChanged!(value),
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
@@ -79,7 +80,7 @@ class AppTextFormField extends StatelessWidget {
         isDense: true,
         alignLabelWithHint: true,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(4),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
@@ -98,7 +99,7 @@ class AppTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(4),
           borderSide: const BorderSide(color: Colors.red),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 16),
         filled: filled,
         fillColor: fillColour,
         suffixIcon: suffixIcon,

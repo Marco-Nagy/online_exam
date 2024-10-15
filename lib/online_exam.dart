@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/Services/shared_preference/shared_pref_keys.dart';
+import 'core/Services/shared_preference/shared_preference_helper.dart';
 import 'core/routes/app_routes.dart';
 import 'di/di.dart';
 
@@ -14,11 +16,18 @@ class OnlineExam extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => MaterialApp(
-        initialRoute: '/',
+        initialRoute: _getInitialRoute(),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.onGenerateRoute,
         navigatorKey: getIt<GlobalKey<NavigatorState>>(),
       ),
     );
   }
+}
+String _getInitialRoute () {
+  return  SharedPrefHelper()
+      .getString(key: SharedPrefKeys.token) !=
+      null
+      ? AppRoutes.home
+      : AppRoutes.login;
 }
