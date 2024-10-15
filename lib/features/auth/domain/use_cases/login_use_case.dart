@@ -11,7 +11,7 @@ class LoginUseCase {
 
   LoginUseCase(this.authRepository);
 
-  Future<ApiResult<AuthResponse>> invoke(SignInRequest body) {
+  Future<ApiResult<AuthResponse>> call(SignInRequest body) {
     return  authRepository.login(body);
   }
 }

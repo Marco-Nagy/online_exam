@@ -5,7 +5,7 @@ import 'package:online_exam/core/networking/error/error_handler.dart';
 import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart';
 import 'package:online_exam/features/auth/domain/use_cases/login_use_case.dart';
 
-import 'login_contract.dart';
+import '../../login/ViewModel/login_contract.dart';
 @injectable
 class LoginViewModel extends Cubit<LoginScreenState>{
   LoginViewModel(this.loginCase):super(InitialState());
@@ -18,14 +18,17 @@ class LoginViewModel extends Cubit<LoginScreenState>{
   }
 
   Future<void> _login(LoginAction action) async {
-emit(LoginLoadingState());
-var result =await loginCase.invoke(action.body);
-switch (result) {
-  case Success<AuthResponse>():
-emit(LoginSuccessState(result.data));
-  case Fail<AuthResponse>():
-    emit(LoginErrorState(ErrorHandler.handle(result.exception!)));
-}
-
+    emit(LoginLoadingState());
+    var result = await loginCase(action.body);
+    switch (result) {
+      case Success<AuthResponse>():
+        emit(LoginSuccessState(result.data));
+      case Fail<AuthResponse>():
+        emit(
+          LoginErrorState(
+            ErrorHandler.handle(result.exception!),
+          ),
+        );
+    }
   }
 }

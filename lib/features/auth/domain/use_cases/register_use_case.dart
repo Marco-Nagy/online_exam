@@ -5,12 +5,12 @@ import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart
 import 'package:online_exam/features/auth/domain/repositories/auth_repository.dart';
 
 @injectable
-class LoginUseCase {
+class RegisterUseCase {
   AuthRepository authRepository;
 
-  LoginUseCase(this.authRepository);
+  RegisterUseCase(this.authRepository);
 
-  Future<ApiResult<AuthResponse>> register(RegisterRequest body) async {
+  Future<ApiResult<AuthResponse>> call(RegisterRequest body) async {
     return await authRepository.signeUp(body);
   }
 }
