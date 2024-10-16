@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class VisibilityIcon extends StatefulWidget {
    VisibilityIcon({super.key, required this.isVisible });
 
-   ValueNotifier<bool> isVisible ;
+final bool isVisible ;
 
   @override
   _VisibilityIconState createState() => _VisibilityIconState();

@@ -69,6 +69,10 @@ class AppTextFormField extends StatelessWidget {
       ),
       validator:  validator == null ? null: (value) => validator!(value),
 
+      validator:  validator == null ? (value) {
+        return null;
+      } : (value) => validator!(value),
+
       onChanged: onChanged == null ? (value) {} : (value) => onChanged!(value),
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
