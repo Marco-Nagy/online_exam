@@ -16,10 +16,7 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
 import '../features/auth/data/api/api_manager.dart' as _i909;
-import '../features/auth/data/contracts/auth_offline_datasource.dart' as _i940;
 import '../features/auth/data/contracts/auth_online_datasource.dart' as _i637;
-import '../features/auth/data/data_sources/auth_offline_datasource_impl.dart'
-    as _i992;
 import '../features/auth/data/data_sources/auth_online_datasource_impl.dart'
     as _i757;
 import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
@@ -57,15 +54,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
-    gh.factory<_i940.AuthOfflineDatasource>(
-        () => _i992.AuthOfflineDatasourceImpl());
     gh.singleton<_i909.ApiManager>(() => _i909.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i637.AuthOnlineDatasource>(
         () => _i757.AuthOnlineDatasourceImpl(gh<_i909.ApiManager>()));
-    gh.factory<_i869.AuthRepository>(() => _i990.AuthRepoImpl(
-          gh<_i637.AuthOnlineDatasource>(),
-          gh<_i940.AuthOfflineDatasource>(),
-        ));
+    gh.factory<_i869.AuthRepository>(
+        () => _i990.AuthRepoImpl(gh<_i637.AuthOnlineDatasource>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i496.LoginUseCase>(

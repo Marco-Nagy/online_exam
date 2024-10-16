@@ -10,11 +10,6 @@ class AuthResponse {
   String? message;
   String? token;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['message'] = message;
-    map['token'] = token;
-    return map;
-  }
+
 
 }
