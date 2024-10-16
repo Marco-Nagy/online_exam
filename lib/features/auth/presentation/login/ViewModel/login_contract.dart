@@ -33,7 +33,9 @@ sealed class LoginScreenAction {}
 
 class LoginAction extends LoginScreenAction {
   SignInRequest body;
+  bool isRememberMeChecked;
   LoginAction(
     this.body,
+      this.isRememberMeChecked,
   );
 }

@@ -66,10 +66,9 @@ class ResetPassword extends HookWidget {
                     verticalSpacing(16),
                     AppTextFormField(
                       controller: passwordController,
-                      hintText: 'Enter you email',
+                      hintText: 'Enter your New Password',
                       labelText: 'New password',
-                      validator: (value) => Validators.validateNotEmpty(
-                          title: 'Email', value: value),
+                      validator: (value) => Validators.validatePassword(value),
                     ),
                     verticalSpacing(48),
                     CurvedButton(

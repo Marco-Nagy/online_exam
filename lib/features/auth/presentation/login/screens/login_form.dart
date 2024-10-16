@@ -8,6 +8,7 @@ import 'package:online_exam/core/utils/extension/navigations.dart';
 import 'package:online_exam/core/utils/validators.dart';
 import 'package:online_exam/core/utils/widgets/app_text_form_field.dart';
 import 'package:online_exam/core/utils/widgets/buttons/carved_button.dart';
+import 'package:online_exam/core/utils/widgets/buttons/visibility_icon.dart';
 import 'package:online_exam/core/utils/widgets/spacing.dart';
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/presentation/login/ViewModel/login_contract.dart';
@@ -23,8 +24,11 @@ class LoginForm extends HookWidget {
   @override
   Widget build(BuildContext context) {
     // Using Flutter Hooks to manage the TextEditingControllers
-    final passwordController = useTextEditingController(text: 'Elevate@12');
 
+    final isRememberMe = useValueNotifier(false);
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    ValueNotifier<bool> passwordVisibility =ValueNotifier(false);
     return Form(
       key: formKey,
       child: Column(
@@ -38,13 +42,17 @@ class LoginForm extends HookWidget {
                 Validators.validateNotEmpty(title: "Email", value: value),
           ),
           verticalSpacing(24),
-          AppTextFormField(
-            controller: passwordController,
-            hintText: 'Enter your password',
-            labelText: 'Password',
-            obscureText: true,
+          ValueListenableBuilder(
+            valueListenable: passwordVisibility,
+          builder: (context, value, child) => AppTextFormField(
+              controller: passwordController,
+              hintText: 'Enter your password',
+              labelText: 'Password',
+              obscureText: passwordVisibility.value,
+            suffixIcon: VisibilityIcon(isVisible: passwordVisibility.value,),
             validator: (value) =>
-                Validators.validateNotEmpty(title: "Password", value: value),
+                  Validators.validateNotEmpty(title: "Password", value: value),
+            ),
           ),
           Row(
             children: [
@@ -97,7 +105,8 @@ class LoginForm extends HookWidget {
             color: MyColors.blue,
             title: 'Login',
             onTap: () {
-              _onSubmit(context, emailController.text, passwordController.text);
+              _onSubmit(context, emailController.text, passwordController.text,
+                  isRememberMe.value);
             },
           ),
         ],
@@ -106,14 +115,19 @@ class LoginForm extends HookWidget {
   }
 
   // Moved the submit logic into a separate function
-  void _onSubmit(BuildContext context, String email, String password) {
+  void _onSubmit(
+    BuildContext context,
+    String email,
+    String password,
+    bool isRememberMeChecked,
+  ) {
     if (formKey.currentState!.validate()) {
       final SignInRequest signInRequest = SignInRequest(
         email: email,
         password: password,
       );
       BlocProvider.of<LoginViewModel>(context)
-          .doAction(LoginAction(signInRequest));
+          .doAction(LoginAction(signInRequest, isRememberMeChecked));
     }
   }
 }

@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
-import 'package:online_exam/features/auth/data/contracts/auth_offline_datasource.dart';
 import 'package:online_exam/features/auth/data/contracts/auth_online_datasource.dart';
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart';
@@ -15,9 +14,8 @@ import 'package:online_exam/features/auth/domain/repositories/auth_repository.da
 @Injectable(as: AuthRepository)
 class AuthRepoImpl implements AuthRepository{
   AuthOnlineDatasource onlineDatasource; // DIP -> DI
-  AuthOfflineDatasource offlineDatasource;
 
-  AuthRepoImpl(this.onlineDatasource, this.offlineDatasource);
+  AuthRepoImpl(this.onlineDatasource, );
 
   @override
   Future<ApiResult<ForgotPasswordResponse>> forgotPassword(ForgetPasswordRequest body) {
