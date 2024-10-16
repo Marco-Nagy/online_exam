@@ -13,7 +13,7 @@ part 'register_state.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.registerUseCase) : super(RegisterInitial());
   final RegisterUseCase registerUseCase;
-  void doAction(RegisterAction action){
+  void doAction(RegisterScreenAction action){
     switch(action) {
       case RegisterAction():_register(action);
     }

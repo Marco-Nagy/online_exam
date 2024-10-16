@@ -20,12 +20,9 @@ class LoginForm extends HookWidget {
   LoginForm({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     // Using Flutter Hooks to manage the TextEditingControllers
-    final emailController =
-        useTextEditingController(text: 'marconlb@gmail.com');
     final passwordController = useTextEditingController(text: 'Elevate@12');
 
     return Form(
@@ -51,17 +48,15 @@ class LoginForm extends HookWidget {
           ),
           Row(
             children: [
-              BlocBuilder<LoginViewModel, LoginScreenState>(
-                builder: (context, state) {
-                  return Checkbox(
-                    value:
-                        context.watch<LoginViewModel>().isRememberMe ?? false,
-                    onChanged: (value) {
-                      context.read<LoginViewModel>().isRememberMe =
-                          value ?? false;
-                    },
-                  );
-                },
+              ValueListenableBuilder(
+                valueListenable: isRememberMe,
+                builder: (BuildContext context, bool value, Widget? child)=> Checkbox(
+                  value:
+                  isRememberMe.value ,
+                  onChanged: (bool? value) {
+                    isRememberMe.value = value! ;
+                  },
+                ),
               ),
               const Text('Remember me'),
               const Spacer(),

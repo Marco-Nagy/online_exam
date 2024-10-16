@@ -10,7 +10,7 @@ import '../../login/ViewModel/login_contract.dart';
 class LoginViewModel extends Cubit<LoginScreenState>{
   LoginViewModel(this.loginCase):super(InitialState());
   final LoginUseCase loginCase;
-   bool? isRememberMe;
+
   void doAction(LoginScreenAction action){
     switch(action) {
       case LoginAction():_login(action);
