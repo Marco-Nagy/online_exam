@@ -49,7 +49,7 @@ class LoginForm extends HookWidget {
               hintText: 'Enter your password',
               labelText: 'Password',
               obscureText: passwordVisibility.value,
-            suffixIcon: VisibilityIcon(isVisible: passwordVisibility,),
+            suffixIcon: VisibilityIcon(isVisible: passwordVisibility.value,),
             validator: (value) =>
                   Validators.validateNotEmpty(title: "Password", value: value),
             ),
