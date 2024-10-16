@@ -24,7 +24,6 @@ class LoginForm extends HookWidget {
   @override
   Widget build(BuildContext context) {
     // Using Flutter Hooks to manage the TextEditingControllers
-    // Hooks initialization must be inside the build method
 
     final isRememberMe = useValueNotifier(false);
     final emailController = useTextEditingController();
