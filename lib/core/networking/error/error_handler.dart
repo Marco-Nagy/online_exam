@@ -13,50 +13,50 @@ class ErrorHandler {
   // Handle the exception and return an ErrorModel
   static ErrorModel handle(Exception error) {
     if (error is DioException) {
-      switch (error.type) {
-        case DioExceptionType.connectionError:
-          return ErrorModel(message: "Connection to server failed");
-        case DioExceptionType.cancel:
-          return ErrorModel(message: "Request to the server was cancelled");
-        case DioExceptionType.connectionTimeout:
-          return ErrorModel(message: "Connection timeout with the server");
-        case DioExceptionType.receiveTimeout:
-          return ErrorModel(
-              message: "Receive timeout in connection with the server");
-        case DioExceptionType.sendTimeout:
-          return ErrorModel(
-              message: "Send timeout in connection with the server");
-        case DioExceptionType.unknown:
-          return ErrorModel(
-              message:
-              "Connection to the server failed due to internet connection");
-        case DioExceptionType.badResponse:
-        // Ensure we convert response data to ErrorModel
-          final errorModel = ErrorModel.fromMap(error.response?.data as Map<String, dynamic>);
-          return ErrorHandler.fromResponse(error.response?.statusCode, errorModel);
-        default:
-          return ErrorModel(message: "Something went wrong");
-      }
+      return ErrorHandler.networkError(error, error.response?.statusCode);
     } else if (error is IOException) {
-      return ErrorModel(message: "No internet connection");
+      return ErrorModel(message: "No internet connection. Please check your settings.");
     } else {
-      return ErrorModel(message: "Unknown error occurred");
+      return ErrorModel(message: "An unknown error occurred. Please try again.");
     }
   }
 
   // This method should return ErrorModel, not ErrorHandler
-  static ErrorModel fromResponse(int? statusCode, ErrorModel response) {
+  static ErrorModel serverError(int? statusCode, ErrorModel response) {
     switch (statusCode) {
+      case 400:
+        return ErrorModel(message: "Bad request. Please verify your input and try again.");
       case 401:
       case 402:
       case 403:
         return ErrorModel(message: response.message ?? 'Unauthorized access');
       case 404:
-        return ErrorModel(message: 'Your request was not found, please try later!');
-      case 500:
-        return ErrorModel(message: 'Internal server error, please try later!');
+        return ErrorModel(message: "Resource not found. Please check the URL and try again.");
+      case 408:
+        return ErrorModel(message: "Connection timed out. Please check your internet connection.");
       default:
-        return ErrorModel(message: 'Oops! There was an error, please try again');
+        return ErrorModel(message: "An unexpected error occurred. Please try again.");
+    }
+  }
+
+  static ErrorModel networkError(DioException error, int? statusCode) {
+    switch (statusCode) {
+      case 500:
+        return ErrorModel(message: "Internal server error. Please try again later.");
+      case 502:
+        return ErrorModel(message: "Bad Gateway. The server received an invalid response.");
+      case 503:
+        return ErrorModel(message: "Service Unavailable. The server is currently unable to handle the request.");
+      case 504:
+        return ErrorModel(message: "Gateway Timeout. The server took too long to respond.");
+      default:
+      // Ensure we convert response data to ErrorModel
+        if (error.response?.data is Map<String, dynamic>) {
+          final errorModel = ErrorModel.fromMap(error.response!.data as Map<String, dynamic>);
+          return ErrorHandler.serverError(error.response?.statusCode, errorModel);
+        }
+          return ErrorModel(message: "An unexpected error occurred. Please try again.");
+
     }
   }
 }
