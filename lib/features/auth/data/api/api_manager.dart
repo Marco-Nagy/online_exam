@@ -10,6 +10,7 @@ import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeReq
 import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
+import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 part 'api_manager.g.dart';
@@ -30,5 +31,7 @@ factory  ApiManager(Dio dio)= _ApiManager;
 Future<AuthResponse> signIn(@Body() SignInRequest user);
 @POST(ApiConstants.registerApi)
 Future<AuthResponse> signUp(@Body() RegisterRequest user);
+@GET(ApiConstants.examApi)
+  Future<ExamResponseModel>  getExamsBySubjectId(@Query("subject") String subjectId);
 
 }

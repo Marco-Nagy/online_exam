@@ -35,6 +35,13 @@ import '../features/auth/presentation/login/ViewModel/login_view_model.dart'
     as _i1070;
 import '../features/auth/presentation/register/ViewModel/register_cubit.dart'
     as _i541;
+import '../features/exam/data/data_sources/exam_online_datasource.dart'
+    as _i1006;
+import '../features/exam/data/data_sources/exam_online_datasource_impl.dart'
+    as _i167;
+import '../features/exam/data/repositories/exam_repo_impl.dart' as _i66;
+import '../features/exam/domain/repositories/exam_repo.dart' as _i87;
+import '../features/exam/domain/use_cases/get_all_exams_use_case.dart' as _i984;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -57,6 +64,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i909.ApiManager>(() => _i909.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i637.AuthOnlineDatasource>(
         () => _i757.AuthOnlineDatasourceImpl(gh<_i909.ApiManager>()));
+    gh.factory<_i1006.ExamOnlineDatasource>(
+        () => _i167.ExamOnlineDatasourceImpl(gh<_i909.ApiManager>()));
+    gh.factory<_i87.ExamRepo>(
+        () => _i66.ExamRepoImpl(gh<_i1006.ExamOnlineDatasource>()));
+    gh.factory<_i984.GetAllExamsUseCase>(
+        () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
     gh.factory<_i869.AuthRepository>(
         () => _i990.AuthRepoImpl(gh<_i637.AuthOnlineDatasource>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
