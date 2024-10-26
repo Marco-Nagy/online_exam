@@ -12,6 +12,7 @@ import 'package:online_exam/features/auth/presentation/login/screens/login_scree
 import 'package:online_exam/features/auth/presentation/register/ViewModel/register_cubit.dart';
 import 'package:online_exam/features/auth/presentation/register/screens/register_screen.dart';
 import 'package:online_exam/features/exam/presentation/screens/exam_screen.dart';
+import 'package:online_exam/features/exam/presentation/start_exam_screen.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_base_actions.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_cubit.dart';
 
@@ -22,6 +23,7 @@ class AppRoutes {
   static const String emailVerification = 'emailVerification';
   static const String resetPassWord = 'resetPassWord';
   static const String exams = 'exams';
+  static const String startExam = 'startExam';
   static const String home = 'home';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
@@ -61,9 +63,12 @@ class AppRoutes {
         return BaseRoute(
             page: BlocProvider(
           create: (context) => getIt.get<ExamCubit>()
-            ..doAction(GetExamListBySubjectId(subjectId: '670037f6728c92b7fdf434fc')),
-          child: ExamScreen(subjectId: '670037f6728c92b7fdf434fc'),
+            ..doAction(GetExamListBySubjectId(subjectId: args as String)),
+          child: ExamScreen(subjectId: args! as String),
         ));
+        case AppRoutes.startExam:
+          return BaseRoute(
+              page: StartExamScreen(examId: args as String,));
       case AppRoutes.home:
       default:
         return BaseRoute(page: const PageUnderBuildScreen());

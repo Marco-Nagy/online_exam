@@ -13,8 +13,6 @@ class ExamMapper {
             subject: exam.subject!,
             numberOfQuestions: exam.numberOfQuestions!,
             active: exam.active!,
-          ),
-        )
-        .toList();
+          ),).toList();
   }
 }
