@@ -42,6 +42,7 @@ import '../features/exam/data/data_sources/exam_online_datasource_impl.dart'
 import '../features/exam/data/repositories/exam_repo_impl.dart' as _i66;
 import '../features/exam/domain/repositories/exam_repo.dart' as _i87;
 import '../features/exam/domain/use_cases/get_all_exams_use_case.dart' as _i984;
+import '../features/exam/presentation/viewModel/exam_cubit.dart' as _i1060;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -72,6 +73,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
     gh.factory<_i869.AuthRepository>(
         () => _i990.AuthRepoImpl(gh<_i637.AuthOnlineDatasource>()));
+    gh.factory<_i1060.ExamCubit>(
+        () => _i1060.ExamCubit(gh<_i984.GetAllExamsUseCase>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i496.LoginUseCase>(

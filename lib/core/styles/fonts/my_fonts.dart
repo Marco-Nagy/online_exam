@@ -7,6 +7,9 @@ class MyFonts {
   static TextStyle styleRegular400_12 = const TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 12,
+  );  static TextStyle styleRegular400_13 = const TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 13,
   );
 
   static TextStyle styleRegular400_14 = const TextStyle(

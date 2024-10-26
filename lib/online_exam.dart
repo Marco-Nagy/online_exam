@@ -7,7 +7,7 @@ import 'core/routes/app_routes.dart';
 import 'di/di.dart';
 
 class OnlineExam extends StatelessWidget {
-   OnlineExam({super.key});
+    OnlineExam({super.key});
    final GlobalKey<NavigatorState> navigatorKey = getIt<GlobalKey<NavigatorState>>();
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class OnlineExam extends StatelessWidget {
         initialRoute: _getInitialRoute(),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        navigatorKey: getIt<GlobalKey<NavigatorState>>(),
+        navigatorKey:  GlobalKey<NavigatorState>(),
       ),
     );
   }
@@ -28,6 +28,6 @@ String _getInitialRoute () {
   return  SharedPrefHelper()
       .getString(key: SharedPrefKeys.token) !=
       null
-      ? AppRoutes.home
+      ? AppRoutes.exams
       : AppRoutes.login;
 }
