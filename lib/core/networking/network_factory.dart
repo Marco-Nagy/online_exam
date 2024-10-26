@@ -1,6 +1,8 @@
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:online_exam/core/Services/shared_preference/shared_pref_keys.dart';
+import 'package:online_exam/core/Services/shared_preference/shared_pref_keys.dart';
+import 'package:online_exam/core/Services/shared_preference/shared_preference_helper.dart';
 import 'package:online_exam/di/di.dart';
 import '../Services/shared_preference/shared_preference_helper.dart';
 import 'api_constants.dart';
@@ -34,11 +36,9 @@ abstract class NetworkFactory {
         },
       ),
     );
-
     return dio;
   }
   LogInterceptor providerInterceptor(){
-
     return LogInterceptor(
         error: true,
         request: true,

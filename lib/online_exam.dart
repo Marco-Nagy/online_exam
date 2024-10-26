@@ -9,11 +9,8 @@ import 'core/routes/app_routes.dart';
 import 'di/di.dart';
 
 class OnlineExam extends StatelessWidget {
-  OnlineExam({super.key});
-
-  final GlobalKey<NavigatorState> navigatorKey =
-      getIt<GlobalKey<NavigatorState>>();
-
+   OnlineExam({super.key});
+   final GlobalKey<NavigatorState> navigatorKey = getIt<GlobalKey<NavigatorState>>();
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -21,22 +18,18 @@ class OnlineExam extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => MaterialApp(
-        // initialRoute: HomeScreen.routeName,
-        // routes: {
-        //   HomeScreen.routeName: (context) => HomeScreen(),
-        //   SurveyTab.routeName: (context) => SurveyTab(),
-        // },
         initialRoute: _getInitialRoute(),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        navigatorKey: getIt<GlobalKey<NavigatorState>>(),
+        navigatorKey:  GlobalKey<NavigatorState>(),
       ),
     );
   }
 }
-
-String _getInitialRoute() {
-  return SharedPrefHelper().getString(key: SharedPrefKeys.token) != null
+String _getInitialRoute () {
+  return  SharedPrefHelper()
+      .getString(key: SharedPrefKeys.token) !=
+      null
       ? AppRoutes.home
       : AppRoutes.login;
 }
