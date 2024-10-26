@@ -11,6 +11,9 @@ import 'package:online_exam/features/auth/presentation/login/ViewModel/login_vie
 import 'package:online_exam/features/auth/presentation/login/screens/login_screen.dart';
 import 'package:online_exam/features/auth/presentation/register/ViewModel/register_cubit.dart';
 import 'package:online_exam/features/auth/presentation/register/screens/register_screen.dart';
+import 'package:online_exam/features/survey/presentation/cubit/survey_cubit.dart';
+import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
+import 'package:online_exam/features/survey/presentation/screens/survey_explore_tab_.dart';
 
 class AppRoutes {
   static const String login = '/';
@@ -19,6 +22,7 @@ class AppRoutes {
   static const String emailVerification = 'emailVerification';
   static const String resetPassWord = 'resetPassWord';
   static const String home = '/home';
+  static const String exams = 'exams';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -54,6 +58,9 @@ class AppRoutes {
               child: ResetPassword()),
         );
       case AppRoutes.home:
+        return BaseRoute(
+          page: HomeScreen(),
+        );
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
     }

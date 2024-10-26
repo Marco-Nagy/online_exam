@@ -105,7 +105,8 @@ class LoginForm extends HookWidget {
             color: MyColors.blue,
             title: 'Login',
             onTap: () {
-              _onSubmit(context, emailController.text, passwordController.text,
+              _onSubmit(
+                  context, emailController.text, passwordController.text,
                   isRememberMe.value);
             },
           ),
