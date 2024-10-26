@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
+import 'package:online_exam/features/survey/presentation/screens/survey_explore_tab_.dart';
 
 import 'core/Services/shared_preference/shared_pref_keys.dart';
 import 'core/Services/shared_preference/shared_preference_helper.dart';
@@ -7,7 +9,7 @@ import 'core/routes/app_routes.dart';
 import 'di/di.dart';
 
 class OnlineExam extends StatelessWidget {
-    OnlineExam({super.key});
+   OnlineExam({super.key});
    final GlobalKey<NavigatorState> navigatorKey = getIt<GlobalKey<NavigatorState>>();
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,6 @@ String _getInitialRoute () {
   return  SharedPrefHelper()
       .getString(key: SharedPrefKeys.token) !=
       null
-      ? AppRoutes.exams
+      ? AppRoutes.home
       : AppRoutes.login;
 }

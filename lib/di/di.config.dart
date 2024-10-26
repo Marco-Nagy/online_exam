@@ -43,6 +43,16 @@ import '../features/exam/data/repositories/exam_repo_impl.dart' as _i66;
 import '../features/exam/domain/repositories/exam_repo.dart' as _i87;
 import '../features/exam/domain/use_cases/get_all_exams_use_case.dart' as _i984;
 import '../features/exam/presentation/viewModel/exam_cubit.dart' as _i1060;
+import '../features/survey/data/data_sources/remote_data_source/survey_api_remote_data_source.dart'
+    as _i252;
+import '../features/survey/data/data_sources/remote_data_source/survey_remote_data_source.dart'
+    as _i609;
+import '../features/survey/data/repositories/survey_repository_impl.dart'
+    as _i900;
+import '../features/survey/domain/repositories/survey_repositories.dart'
+    as _i18;
+import '../features/survey/domain/use_cases/get_subjects.dart' as _i730;
+import '../features/survey/presentation/cubit/survey_cubit.dart' as _i579;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -63,6 +73,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.singleton<_i909.ApiManager>(() => _i909.ApiManager(gh<_i361.Dio>()));
+    gh.lazySingleton<_i609.SurveyRemoteDataSource>(
+        () => _i252.SurveyApiRemoteDataSource(gh<_i909.ApiManager>()));
     gh.factory<_i637.AuthOnlineDatasource>(
         () => _i757.AuthOnlineDatasourceImpl(gh<_i909.ApiManager>()));
     gh.factory<_i1006.ExamOnlineDatasource>(
@@ -71,10 +83,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i66.ExamRepoImpl(gh<_i1006.ExamOnlineDatasource>()));
     gh.factory<_i984.GetAllExamsUseCase>(
         () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
+    gh.lazySingleton<_i18.SurveyRepository>(
+        () => _i900.SurveyRepositoryIml(gh<_i609.SurveyRemoteDataSource>()));
     gh.factory<_i869.AuthRepository>(
         () => _i990.AuthRepoImpl(gh<_i637.AuthOnlineDatasource>()));
     gh.factory<_i1060.ExamCubit>(
         () => _i1060.ExamCubit(gh<_i984.GetAllExamsUseCase>()));
+    gh.factory<_i730.GetSubjectsUseCase>(
+        () => _i730.GetSubjectsUseCase(gh<_i18.SurveyRepository>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i496.LoginUseCase>(
@@ -94,6 +110,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.LoginViewModel(gh<_i496.LoginUseCase>()));
     gh.factory<_i541.RegisterCubit>(
         () => _i541.RegisterCubit(gh<_i318.RegisterUseCase>()));
+    gh.factory<_i579.SubjectCubit>(
+        () => _i579.SubjectCubit(gh<_i730.GetSubjectsUseCase>()));
     return this;
   }
 }
