@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
+import 'package:online_exam/features/survey/presentation/screens/survey_explore_tab_.dart';
 
 import 'core/Services/shared_preference/shared_pref_keys.dart';
 import 'core/Services/shared_preference/shared_preference_helper.dart';
@@ -7,8 +9,11 @@ import 'core/routes/app_routes.dart';
 import 'di/di.dart';
 
 class OnlineExam extends StatelessWidget {
-   OnlineExam({super.key});
-   final GlobalKey<NavigatorState> navigatorKey = getIt<GlobalKey<NavigatorState>>();
+  OnlineExam({super.key});
+
+  final GlobalKey<NavigatorState> navigatorKey =
+      getIt<GlobalKey<NavigatorState>>();
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -16,6 +21,11 @@ class OnlineExam extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) => MaterialApp(
+        // initialRoute: HomeScreen.routeName,
+        // routes: {
+        //   HomeScreen.routeName: (context) => HomeScreen(),
+        //   SurveyTab.routeName: (context) => SurveyTab(),
+        // },
         initialRoute: _getInitialRoute(),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.onGenerateRoute,
@@ -24,10 +34,9 @@ class OnlineExam extends StatelessWidget {
     );
   }
 }
-String _getInitialRoute () {
-  return  SharedPrefHelper()
-      .getString(key: SharedPrefKeys.token) !=
-      null
+
+String _getInitialRoute() {
+  return SharedPrefHelper().getString(key: SharedPrefKeys.token) != null
       ? AppRoutes.home
       : AppRoutes.login;
 }
