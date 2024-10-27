@@ -19,7 +19,7 @@ class ExamCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed(AppRoutes.startExam,arguments: item.id);
+        context.pushNamed(AppRoutes.startExam,arguments: item);
       },
       child: Card(
         color: MyColors.white,
