@@ -13,9 +13,9 @@ import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
-import '../features/auth/data/api/api_manager.dart' as _i909;
 import '../features/auth/data/contracts/auth_online_datasource.dart' as _i637;
 import '../features/auth/data/data_sources/auth_online_datasource_impl.dart'
     as _i757;
@@ -72,23 +72,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i409.GlobalKey<_i409.NavigatorState>>(
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
-    gh.singleton<_i909.ApiManager>(() => _i909.ApiManager(gh<_i361.Dio>()));
-    gh.lazySingleton<_i609.SurveyRemoteDataSource>(
-        () => _i252.SurveyApiRemoteDataSource(gh<_i909.ApiManager>()));
+    gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i637.AuthOnlineDatasource>(
-        () => _i757.AuthOnlineDatasourceImpl(gh<_i909.ApiManager>()));
+        () => _i757.AuthOnlineDatasourceImpl(gh<_i282.ApiManager>()));
+    gh.lazySingleton<_i609.SurveyRemoteDataSource>(
+        () => _i252.SurveyApiRemoteDataSource(gh<_i282.ApiManager>()));
     gh.factory<_i1006.ExamOnlineDatasource>(
-        () => _i167.ExamOnlineDatasourceImpl(gh<_i909.ApiManager>()));
-    gh.factory<_i87.ExamRepo>(
-        () => _i66.ExamRepoImpl(gh<_i1006.ExamOnlineDatasource>()));
-    gh.factory<_i984.GetAllExamsUseCase>(
-        () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
+        () => _i167.ExamOnlineDatasourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i18.SurveyRepository>(
         () => _i900.SurveyRepositoryIml(gh<_i609.SurveyRemoteDataSource>()));
     gh.factory<_i869.AuthRepository>(
         () => _i990.AuthRepoImpl(gh<_i637.AuthOnlineDatasource>()));
-    gh.factory<_i1060.ExamCubit>(
-        () => _i1060.ExamCubit(gh<_i984.GetAllExamsUseCase>()));
+    gh.factory<_i87.ExamRepo>(
+        () => _i66.ExamRepoImpl(gh<_i1006.ExamOnlineDatasource>()));
     gh.factory<_i730.GetSubjectsUseCase>(
         () => _i730.GetSubjectsUseCase(gh<_i18.SurveyRepository>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
@@ -101,6 +97,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i906.ResetPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i984.GetAllExamsUseCase>(
+        () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
     gh.factory<_i25.ForgetPasswordCubit>(() => _i25.ForgetPasswordCubit(
           gh<_i301.ForgotPasswordUseCase>(),
           gh<_i642.VerifyResetCodeUseCase>(),
@@ -112,6 +110,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i541.RegisterCubit(gh<_i318.RegisterUseCase>()));
     gh.factory<_i579.SubjectCubit>(
         () => _i579.SubjectCubit(gh<_i730.GetSubjectsUseCase>()));
+    gh.factory<_i1060.ExamCubit>(
+        () => _i1060.ExamCubit(gh<_i984.GetAllExamsUseCase>()));
     return this;
   }
 }

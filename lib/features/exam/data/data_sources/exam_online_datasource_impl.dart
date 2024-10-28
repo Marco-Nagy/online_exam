@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/networking/api_execute.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
-import 'package:online_exam/features/auth/data/api/api_manager.dart';
+import 'package:online_exam/core/networking/api/api_manager.dart';
 import 'package:online_exam/features/exam/data/data_sources/exam_online_datasource.dart';
 import 'package:online_exam/features/exam/data/mappers/exam_mapper.dart';
 import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart';
