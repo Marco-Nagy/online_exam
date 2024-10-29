@@ -77,11 +77,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
-    gh.singleton<_i909.ApiManager>(() => _i909.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i819.QuestionsOlineDataSource>(
-        () => _i290.QuestionsOlineDataSourceImpl(gh<_i909.ApiManager>()));
+        () => _i290.QuestionsOlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i609.SurveyRemoteDataSource>(
-        () => _i252.SurveyApiRemoteDataSource(gh<_i909.ApiManager>()));
+        () => _i252.SurveyApiRemoteDataSource(gh<_i282.ApiManager>()));
     gh.factory<_i637.AuthOnlineDatasource>(
         () => _i757.AuthOnlineDatasourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i609.SurveyRemoteDataSource>(
