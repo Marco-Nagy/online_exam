@@ -11,8 +11,9 @@ import 'package:online_exam/features/auth/presentation/login/ViewModel/login_vie
 import 'package:online_exam/features/auth/presentation/login/screens/login_screen.dart';
 import 'package:online_exam/features/auth/presentation/register/ViewModel/register_cubit.dart';
 import 'package:online_exam/features/auth/presentation/register/screens/register_screen.dart';
+import 'package:online_exam/features/exam/domain/entities/exam.dart';
 import 'package:online_exam/features/exam/presentation/screens/exam_screen.dart';
-import 'package:online_exam/features/exam/presentation/start_exam_screen.dart';
+import 'package:online_exam/features/exam/presentation/screens/start_exam_screen.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_base_actions.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_cubit.dart';
 import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
@@ -69,7 +70,7 @@ class AppRoutes {
         ));
         case AppRoutes.startExam:
           return BaseRoute(
-              page: StartExamScreen(examId: args as String,));
+              page: StartExamScreen(item: args as Exam ,));
       case AppRoutes.home:
         return BaseRoute(
           page: HomeScreen(),
