@@ -6,6 +6,6 @@ class ApiConstants {
   static const String verifyResetCodeApi = "v1/auth/verifyResetCode";
   static const String resetPasswordApi = "v1/auth/resetPassword";
   static const String subjectsEndPoint = "v1/subjects";
-
   static const String examApi = "v1/exams";
+  static const String questionsApi = "v1/questions";
 }

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam/core/networking/api_constants.dart';
+import 'package:online_exam/core/networking/api/api_constants.dart';
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart';
@@ -10,9 +10,11 @@ import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart';
+import 'package:online_exam/features/questions/data/models/questions_response_model.dart';
 import 'package:online_exam/features/survey/data/models/subject_response_model.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
+
 part 'api_manager.g.dart';
 
 @singleton
@@ -32,8 +34,12 @@ Future<AuthResponse> signIn(@Body() SignInRequest user);
 @POST(ApiConstants.registerApi)
 Future<AuthResponse> signUp(@Body() RegisterRequest user);
 @GET(ApiConstants.examApi)
-  Future<ExamResponseModel>  getExamsBySubjectId(@Query("subject") String subjectId);
-
+Future<ExamResponseModel> getExamsBySubjectId(
+      @Query("subject") String subjectId);
   @GET(ApiConstants.subjectsEndPoint)
   Future<SubjectResponseModel> getSubjectList();
+
+  @GET(ApiConstants.questionsApi)
+  Future<QuestionsSubjectModel> getQuestionsByExamId(
+      @Query("exam") String examId);
 }

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam/core/networking/api_constants.dart';
+import 'package:online_exam/core/networking/api/api_constants.dart';
 import 'package:online_exam/core/networking/api_execute.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
-import 'package:online_exam/features/auth/data/api/api_manager.dart';
+import 'package:online_exam/core/networking/api/api_manager.dart';
 import 'package:online_exam/features/survey/data/data_sources/remote_data_source/survey_remote_data_source.dart';
 import 'package:online_exam/features/survey/data/mapper/subject_mapper.dart';
 import 'package:online_exam/features/survey/data/models/subject_response_model.dart';

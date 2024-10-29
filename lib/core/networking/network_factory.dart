@@ -5,7 +5,7 @@ import 'package:online_exam/core/Services/shared_preference/shared_pref_keys.dar
 import 'package:online_exam/core/Services/shared_preference/shared_preference_helper.dart';
 import 'package:online_exam/di/di.dart';
 import '../Services/shared_preference/shared_preference_helper.dart';
-import 'api_constants.dart';
+import 'api/api_constants.dart';
 
 @module
 abstract class NetworkFactory {

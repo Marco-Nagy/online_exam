@@ -1,7 +1,8 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/networking/api/api_manager.dart';
 import 'package:online_exam/core/networking/api_execute.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
-import 'package:online_exam/features/auth/data/api/api_manager.dart';
+import 'package:online_exam/core/networking/api/api_manager.dart';
 import 'package:online_exam/features/auth/data/contracts/auth_online_datasource.dart';
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart';
