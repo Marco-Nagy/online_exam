@@ -10,6 +10,7 @@ import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart';
+import 'package:online_exam/features/questions/data/models/question_response_model.dart';
 import 'package:online_exam/features/survey/data/models/subject_response_model.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -36,4 +37,6 @@ Future<AuthResponse> signUp(@Body() RegisterRequest user);
 
   @GET(ApiConstants.subjectsEndPoint)
   Future<SubjectResponseModel> getSubjectList();
+@GET(ApiConstants.questionsApi)
+Future<QuestionResponseModel>  getQuestionsByExamId(@Query("exam") String examId);
 }

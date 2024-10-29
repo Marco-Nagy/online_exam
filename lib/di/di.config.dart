@@ -43,6 +43,10 @@ import '../features/exam/data/repositories/exam_repo_impl.dart' as _i66;
 import '../features/exam/domain/repositories/exam_repo.dart' as _i87;
 import '../features/exam/domain/use_cases/get_all_exams_use_case.dart' as _i984;
 import '../features/exam/presentation/viewModel/exam_cubit.dart' as _i1060;
+import '../features/questions/data/data_sources/questions_oline_data_source.dart'
+    as _i819;
+import '../features/questions/data/data_sources/questions_oline_data_source_impl.dart'
+    as _i290;
 import '../features/survey/data/data_sources/remote_data_source/survey_api_remote_data_source.dart'
     as _i252;
 import '../features/survey/data/data_sources/remote_data_source/survey_remote_data_source.dart'
@@ -73,6 +77,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.singleton<_i909.ApiManager>(() => _i909.ApiManager(gh<_i361.Dio>()));
+    gh.factory<_i819.QuestionsOlineDataSource>(
+        () => _i290.QuestionsOlineDataSourceImpl(gh<_i909.ApiManager>()));
     gh.lazySingleton<_i609.SurveyRemoteDataSource>(
         () => _i252.SurveyApiRemoteDataSource(gh<_i909.ApiManager>()));
     gh.factory<_i637.AuthOnlineDatasource>(
