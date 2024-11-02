@@ -4,7 +4,7 @@ import 'package:online_exam/core/Services/shared_preference/shared_pref_keys.dar
 import 'package:online_exam/core/Services/shared_preference/shared_preference_helper.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/core/networking/error/error_handler.dart';
-import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart';
+import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/domain/use_cases/login_use_case.dart';
 
 import 'login_contract.dart';
@@ -23,13 +23,13 @@ class LoginViewModel extends Cubit<LoginScreenState>{
     emit(LoginLoadingState());
     var result = await loginCase(action.body);
     switch (result) {
-      case Success<AuthResponse>():
+      case Success<User>():
         if(action.isRememberMeChecked){
           SharedPrefHelper().setString(key: SharedPrefKeys.token, stringValue: result.data.token!);
         }
         emit(LoginSuccessState(result.data));
 
-      case Fail<AuthResponse>():
+      case Fail<User>():
         emit(
           LoginErrorState(
             ErrorHandler.handle(result.exception!),

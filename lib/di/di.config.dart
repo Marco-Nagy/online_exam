@@ -16,7 +16,8 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../core/networking/api/api_manager.dart' as _i282;
 import '../core/networking/common/regestet_context_module.dart' as _i125;
 import '../core/networking/network_factory.dart' as _i377;
-import '../features/auth/data/contracts/auth_online_datasource.dart' as _i637;
+import '../features/auth/data/data_sources/auth_online_datasource.dart'
+    as _i901;
 import '../features/auth/data/data_sources/auth_online_datasource_impl.dart'
     as _i757;
 import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
@@ -82,16 +83,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => registerModule.navigatorKey);
     gh.lazySingleton<_i361.Dio>(() => networkFactory.provideDio());
     gh.singleton<_i282.ApiManager>(() => _i282.ApiManager(gh<_i361.Dio>()));
-    gh.factory<_i637.AuthOnlineDatasource>(
-        () => _i757.AuthOnlineDatasourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i609.SurveyRemoteDataSource>(
         () => _i252.SurveyApiRemoteDataSource(gh<_i282.ApiManager>()));
     gh.factory<_i1006.ExamOnlineDatasource>(
         () => _i167.ExamOnlineDatasourceImpl(gh<_i282.ApiManager>()));
+    gh.factory<_i901.AuthOnlineDatasource>(
+        () => _i757.AuthOnlineDatasourceImpl(gh<_i282.ApiManager>()));
     gh.lazySingleton<_i18.SurveyRepository>(
         () => _i900.SurveyRepositoryIml(gh<_i609.SurveyRemoteDataSource>()));
     gh.factory<_i869.AuthRepository>(
-        () => _i990.AuthRepoImpl(gh<_i637.AuthOnlineDatasource>()));
+        () => _i990.AuthRepoImpl(gh<_i901.AuthOnlineDatasource>()));
     gh.factory<_i819.QuestionsOlineDataSource>(
         () => _i290.QuestionsOlineDataSourceImpl(gh<_i282.ApiManager>()));
     gh.factory<_i87.ExamRepo>(

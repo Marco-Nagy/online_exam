@@ -6,9 +6,9 @@ import 'package:online_exam/features/auth/data/models/request/RegisterRequest.da
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
-import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
+import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
 import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart';
 import 'package:online_exam/features/questions/data/models/question_response_model.dart';
 import 'package:online_exam/features/survey/data/models/subject_response_model.dart';
