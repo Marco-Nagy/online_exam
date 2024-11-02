@@ -18,12 +18,7 @@ ExamResponseModel _$ExamResponseModelFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$ExamResponseModelToJson(ExamResponseModel instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'metadata': instance.metadata,
-      'exams': instance.exams,
-    };
+
 
 ExamsMetadata _$ExamsMetadataFromJson(Map<String, dynamic> json) =>
     ExamsMetadata(
@@ -32,12 +27,7 @@ ExamsMetadata _$ExamsMetadataFromJson(Map<String, dynamic> json) =>
       (json['limit'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$ExamsMetadataToJson(ExamsMetadata instance) =>
-    <String, dynamic>{
-      'currentPage': instance.currentPage,
-      'numberOfPages': instance.numberOfPages,
-      'limit': instance.limit,
-    };
+
 
 Exams _$ExamsFromJson(Map<String, dynamic> json) => Exams(
       json['_id'] as String?,
@@ -49,12 +39,4 @@ Exams _$ExamsFromJson(Map<String, dynamic> json) => Exams(
       json['createdAt'] as String?,
     );
 
-Map<String, dynamic> _$ExamsToJson(Exams instance) => <String, dynamic>{
-      '_id': instance.id,
-      'title': instance.title,
-      'duration': instance.duration,
-      'subject': instance.subject,
-      'numberOfQuestions': instance.numberOfQuestions,
-      'active': instance.active,
-      'createdAt': instance.createdAt,
-    };
+
