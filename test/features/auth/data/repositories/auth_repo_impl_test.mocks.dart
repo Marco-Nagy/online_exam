@@ -8,24 +8,25 @@ import 'dart:async' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
 import 'package:online_exam/core/networking/common/api_result.dart' as _i4;
-import 'package:online_exam/features/auth/data/contracts/auth_online_datasource.dart'
+import 'package:online_exam/features/auth/data/data_sources/auth_online_datasource.dart'
     as _i2;
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart'
     as _i6;
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart'
-    as _i13;
+    as _i14;
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart'
     as _i11;
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart'
-    as _i12;
+    as _i13;
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart'
     as _i9;
-import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart'
+import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart'
     as _i10;
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart'
     as _i5;
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart'
     as _i8;
+import 'package:online_exam/features/auth/domain/entities/user.dart' as _i12;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -106,38 +107,36 @@ class MockAuthOnlineDatasource extends _i1.Mock
       ) as _i3.Future<_i4.ApiResult<_i10.AuthResponse>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i10.AuthResponse>> login(
-          _i12.SignInRequest? body) =>
+  _i3.Future<_i4.ApiResult<_i12.User>> login(_i13.SignInRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [body],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i10.AuthResponse>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i10.AuthResponse>>(
+        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
           this,
           Invocation.method(
             #login,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i10.AuthResponse>>);
+      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i10.AuthResponse>> signeUp(
-          _i13.RegisterRequest? body) =>
+  _i3.Future<_i4.ApiResult<_i12.User>> signeUp(_i14.RegisterRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #signeUp,
           [body],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i10.AuthResponse>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i10.AuthResponse>>(
+        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
           this,
           Invocation.method(
             #signeUp,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i10.AuthResponse>>);
+      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
 }

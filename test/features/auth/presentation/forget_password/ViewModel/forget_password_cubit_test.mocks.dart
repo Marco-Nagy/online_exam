@@ -14,7 +14,7 @@ import 'package:online_exam/features/auth/data/models/request/ResetPasswordReque
     as _i14;
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart'
     as _i11;
-import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart'
+import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart'
     as _i13;
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart'
     as _i6;

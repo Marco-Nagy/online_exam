@@ -1,7 +1,6 @@
 import 'package:online_exam/core/networking/error/ErrorModel.dart';
-import 'package:online_exam/core/networking/error/error_handler.dart';
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
-import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart';
+import 'package:online_exam/features/auth/domain/entities/user.dart';
 
 sealed class LoginScreenState {}
 
@@ -16,17 +15,17 @@ class LoginErrorState extends LoginScreenState {
 }
 
 class LoginSuccessState extends LoginScreenState {
-  AuthResponse? authResponse;
+  User? user;
 
-  LoginSuccessState(this.authResponse);
+  LoginSuccessState(this.user);
 }
 
 
 
 class LoginRememberMeVisibility extends LoginScreenState {
-  AuthResponse authResponse;
+  User? user;
 
-  LoginRememberMeVisibility(this.authResponse);
+  LoginRememberMeVisibility(this.user);
 }
 
 sealed class LoginScreenAction {}

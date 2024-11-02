@@ -5,7 +5,7 @@ import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/core/networking/error/ErrorModel.dart';
 import 'package:online_exam/core/networking/error/error_handler.dart';
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart';
-import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart';
+import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/domain/use_cases/register_use_case.dart';
 
 part 'register_state.dart';
@@ -22,9 +22,9 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(RegisterLoading());
     var result = await registerUseCase(action.body);
     switch (result) {
-      case Success<AuthResponse>():
+      case Success<User>():
         emit(RegisterSuccess(result.data));
-      case Fail<AuthResponse>():
+      case Fail<User>():
         emit(RegisterError(ErrorHandler.handle(result.exception!)));
     }
   }

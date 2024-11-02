@@ -2,16 +2,17 @@ import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/networking/api/api_manager.dart';
 import 'package:online_exam/core/networking/api_execute.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
-import 'package:online_exam/core/networking/api/api_manager.dart';
-import 'package:online_exam/features/auth/data/contracts/auth_online_datasource.dart';
+import 'package:online_exam/features/auth/data/data_sources/auth_online_datasource.dart';
+import 'package:online_exam/features/auth/data/mappers/auth_mappers.dart';
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
-import 'package:online_exam/features/auth/data/models/response/AuthResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
+import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
+import 'package:online_exam/features/auth/domain/entities/user.dart';
 
 @Injectable(as:AuthOnlineDatasource )
 class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
@@ -41,16 +42,18 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
   }
 
   @override
-  Future<ApiResult<AuthResponse>> login(SignInRequest body) {
+  Future<ApiResult<User>> login(SignInRequest body) {
    return executeApi(() async {
-     return await apiManager.signIn(body);
+     var response = await apiManager.signIn(body);
+     return AuthMappers.toUserEntity(response);
    },);
   }
 
   @override
-  Future<ApiResult<AuthResponse>> signeUp(RegisterRequest body) {
+  Future<ApiResult<User>> signeUp(RegisterRequest body) {
   return executeApi(() async {
-    return await apiManager.signUp(body);
+    var response = await apiManager.signUp(body);
+    return   AuthMappers.toUserEntity(response);
   });
   }
 }
