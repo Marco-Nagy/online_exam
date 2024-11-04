@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/routes/app_routes.dart';
+import 'package:online_exam/core/utils/extension/navigations.dart';
 
 class StartExamScreen extends StatelessWidget {
   const StartExamScreen({super.key, required this.examId});
@@ -101,7 +103,7 @@ class StartExamScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Add navigation or function here
+                  context.pushNamed(AppRoutes.questions, arguments: examId);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,

@@ -15,6 +15,8 @@ import 'package:online_exam/features/exam/presentation/screens/exam_screen.dart'
 import 'package:online_exam/features/exam/presentation/start_exam_screen.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_base_actions.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_cubit.dart';
+import 'package:online_exam/features/questions/presentation/screens/question_screen.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
 import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
 
 class AppRoutes {
@@ -26,6 +28,7 @@ class AppRoutes {
   static const String exams = 'exams';
   static const String startExam = 'startExam';
   static const String home = 'home';
+  static const String questions = 'questions';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -48,7 +51,7 @@ class AppRoutes {
               create: (context) => getIt.get<ForgetPasswordCubit>(),
               child: ForgetPassword()),
         );
-        case AppRoutes.emailVerification:
+      case AppRoutes.emailVerification:
         return BaseRoute(
           page: BlocProvider(
               create: (context) => getIt.get<ForgetPasswordCubit>(),
@@ -67,12 +70,20 @@ class AppRoutes {
             ..doAction(GetExamListBySubjectId(subjectId: args as String)),
           child: ExamScreen(subjectId: args! as String),
         ));
-        case AppRoutes.startExam:
-          return BaseRoute(
-              page: StartExamScreen(examId: args as String,));
+      case AppRoutes.startExam:
+        return BaseRoute(
+            page: StartExamScreen(
+          examId: args as String,
+        ));
       case AppRoutes.home:
         return BaseRoute(
           page: HomeScreen(),
+        );
+      case AppRoutes.questions:
+        return BaseRoute(
+          page: BlocProvider(
+              create: (context) => getIt.get<QuestionCubit>()..getQuestions(args as String),
+              child: QuestionScreen()),
         );
       default:
         return BaseRoute(page: const PageUnderBuildScreen());
