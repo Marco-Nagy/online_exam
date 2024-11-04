@@ -10,6 +10,8 @@ import 'package:mockito/src/dummies.dart' as _i7;
 import 'package:online_exam/core/networking/common/api_result.dart' as _i4;
 import 'package:online_exam/features/auth/data/data_sources/auth_online_datasource.dart'
     as _i2;
+import 'package:online_exam/features/auth/data/models/request/change_password_request.dart'
+    as _i15;
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart'
     as _i6;
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart'
@@ -135,6 +137,57 @@ class MockAuthOnlineDatasource extends _i1.Mock
           this,
           Invocation.method(
             #signeUp,
+            [body],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i12.User>> getProfileData() => (super.noSuchMethod(
+        Invocation.method(
+          #getProfileData,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+          this,
+          Invocation.method(
+            #getProfileData,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i12.User>> editProfile(_i12.User? user) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #editProfile,
+          [user],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+          this,
+          Invocation.method(
+            #editProfile,
+            [user],
+          ),
+        )),
+      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+
+  @override
+  _i3.Future<_i4.ApiResult<_i12.User>> changePassword(
+          _i15.ChangePasswordRequest? body) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changePassword,
+          [body],
+        ),
+        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+          this,
+          Invocation.method(
+            #changePassword,
             [body],
           ),
         )),

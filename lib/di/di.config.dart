@@ -22,8 +22,13 @@ import '../features/auth/data/data_sources/auth_online_datasource_impl.dart'
     as _i757;
 import '../features/auth/data/repositories/auth_repo_impl.dart' as _i990;
 import '../features/auth/domain/repositories/auth_repository.dart' as _i869;
+import '../features/auth/domain/use_cases/change_password_use_case.dart'
+    as _i544;
+import '../features/auth/domain/use_cases/edit_prifile_use_case.dart' as _i211;
 import '../features/auth/domain/use_cases/forgot_password_use_case.dart'
     as _i301;
+import '../features/auth/domain/use_cases/get_prifile_data_use_case.dart'
+    as _i650;
 import '../features/auth/domain/use_cases/login_use_case.dart' as _i496;
 import '../features/auth/domain/use_cases/register_use_case.dart' as _i318;
 import '../features/auth/domain/use_cases/reset_password_use_case.dart'
@@ -109,6 +114,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i906.ResetPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i544.ChangePasswordUseCase>(
+        () => _i544.ChangePasswordUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i211.EditProfileUseCase>(
+        () => _i211.EditProfileUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i650.GetProfileDataUseCase>(
+        () => _i650.GetProfileDataUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i984.GetAllExamsUseCase>(
         () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
     gh.factory<_i25.ForgetPasswordCubit>(() => _i25.ForgetPasswordCubit(

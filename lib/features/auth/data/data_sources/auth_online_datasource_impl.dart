@@ -9,6 +9,7 @@ import 'package:online_exam/features/auth/data/models/request/RegisterRequest.da
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
+import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
@@ -55,5 +56,29 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
     var response = await apiManager.signUp(body);
     return   AuthMappers.toUserEntity(response);
   });
+  }
+
+  @override
+  Future<ApiResult<User>> getProfileData() async {
+    return executeApi(() async {
+      var response = await apiManager.getProfileData();
+      return AuthMappers.toUserEntity(response);
+    });
+  }
+
+  @override
+  Future<ApiResult<User>> editProfile(User user) {
+    return executeApi(() async {
+      var response = await apiManager.editProfile(user);
+      return AuthMappers.toUserEntity(response);
+    });
+  }
+
+  @override
+  Future<ApiResult<User>> changePassword(ChangePasswordRequest body) {
+    return executeApi(() async {
+      var response = await apiManager.changePassword(body);
+      return AuthMappers.toUserEntity(response);
+    });
   }
 }

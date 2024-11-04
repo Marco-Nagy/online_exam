@@ -6,6 +6,7 @@ import 'package:online_exam/features/auth/data/models/request/RegisterRequest.da
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
+import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
@@ -41,6 +42,21 @@ class AuthRepoImpl implements AuthRepository{
   @override
   Future<ApiResult<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest body) {
 return onlineDatasource.verifyResetCode(body);
+  }
+
+  @override
+  Future<ApiResult<User>> changePassword(ChangePasswordRequest body) {
+   return onlineDatasource.changePassword(body);
+  }
+
+  @override
+  Future<ApiResult<User>> editProfile(User user) {
+    return onlineDatasource.editProfile(user);
+  }
+
+  @override
+  Future<ApiResult<User>> getProfileData() {
+   return onlineDatasource.getProfileData();
   }
 
   // }
