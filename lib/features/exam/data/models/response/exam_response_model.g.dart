@@ -19,14 +19,12 @@ ExamResponseModel _$ExamResponseModelFromJson(Map<String, dynamic> json) =>
     );
 
 
-
 ExamsMetadata _$ExamsMetadataFromJson(Map<String, dynamic> json) =>
     ExamsMetadata(
       (json['currentPage'] as num?)?.toInt(),
       (json['numberOfPages'] as num?)?.toInt(),
       (json['limit'] as num?)?.toInt(),
     );
-
 
 
 Exams _$ExamsFromJson(Map<String, dynamic> json) => Exams(
