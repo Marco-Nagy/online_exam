@@ -6,25 +6,40 @@ import 'package:online_exam/features/auth/data/data_sources/auth_online_datasour
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
+import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
 import 'package:online_exam/features/auth/data/repositories/auth_repo_impl.dart';
+import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'auth_repo_impl_test.mocks.dart';
 @GenerateMocks([AuthOnlineDatasource])
 void main() {
-  var message = '';
-  var token  = '';
-  var id = '';
-  var username = '';
-  var firstName = '';
-  var lastName = '';
-  var email = '';
-  var phone = '';
-  var role = '';
-  var isVerified = true;
-  var createdAt = '';
-  var user = UserModel(id, username, firstName, lastName, email, phone, role, isVerified, createdAt);
+  var authResponse = AuthResponse(
+    'Hello',
+    'dummyToken',
+    UserModel(
+      '1',
+      'test@example.com',
+      'testUser',
+      'Test',
+      'User',
+      '1234567890',
+      'student',
+      true,
+      '10:10',
+    ),
+  );
+  var user = User(
+      email: 'test@example.com',
+      username: 'testUser',
+      firstName: 'Test',
+      lastName: 'User',
+      phone: '1234567890',
+      role: 'student',
+      token: 'testToken',
+      isVerified: true,
+      id: '1');
   group('test auth online data source when call authRepo.forgetPassword or authRepo.resetPassword or authRepo.verifyResetCode ', ()
     {
       test('when call authRepo.forget password it should call forget password function from auth online data source', () async{
@@ -42,7 +57,7 @@ void main() {
       var onlineDatasource = MockAuthOnlineDatasource();
       var authRepoImpl = AuthRepoImpl(onlineDatasource);
       var body = ResetPasswordRequest();
-      var mockedResult = Success<AuthResponse>(AuthResponse(message,token,user));
+      var mockedResult = Success<AuthResponse>(authResponse);
       provideDummy<ApiResult<AuthResponse>>(mockedResult);
       when(onlineDatasource.resetPassword(body)).thenAnswer((_) async => mockedResult ,);
       var result = await authRepoImpl.resetPassword(body);
@@ -59,6 +74,42 @@ void main() {
       var result = await authRepoImpl.verifyResetCode(body);
       expect(result, mockedResult);
       verify(onlineDatasource.verifyResetCode(body)).called(1);
+    });
+    test('when call authRepo.getProfileData it should call getProfileData function from auth online data source', () async{
+      var onlineDatasource = MockAuthOnlineDatasource();
+      var authRepoImpl = AuthRepoImpl(onlineDatasource);
+      var mockedResult = Success<User>(user);
+      provideDummy<ApiResult<User>>(mockedResult);
+      when(onlineDatasource.getProfileData()).thenAnswer((_) async => mockedResult ,);
+      var result = await authRepoImpl.getProfileData();
+      expect(result, mockedResult);
+      verify(onlineDatasource.getProfileData()).called(1);
+    });
+    test('when call authRepo.editProfile it should call editProfileData function from auth online data source', () async{
+      var onlineDatasource = MockAuthOnlineDatasource();
+      var authRepoImpl = AuthRepoImpl(onlineDatasource);
+      var mockedResult = Success<User>(user);
+      provideDummy<ApiResult<User>>(mockedResult);
+      when(onlineDatasource.editProfile(user)).thenAnswer((_) async => mockedResult ,);
+      var result = await authRepoImpl.editProfile(user);
+      expect(result, mockedResult);
+      verify(onlineDatasource.editProfile(user)).called(1);
+    });
+    test('when call authRepo.changePassword it should call changePassword function from auth online data source', () async{
+      var onlineDatasource = MockAuthOnlineDatasource();
+      var authRepoImpl = AuthRepoImpl(onlineDatasource);
+      var mockedResult = Success<User>(user);
+      var body = ChangePasswordRequest(
+        'test@example.com',
+        'testUser',
+        'testUser',
+      );
+
+      provideDummy<ApiResult<User>>(mockedResult);
+      when(onlineDatasource.changePassword(body)).thenAnswer((_) async => mockedResult ,);
+      var result = await authRepoImpl.changePassword(body);
+      expect(result, mockedResult);
+      verify(onlineDatasource.changePassword(body)).called(1);
     });
     }
   );
