@@ -35,12 +35,6 @@ SubjectMetadata _$SubjectMetadataFromJson(Map<String, dynamic> json) =>
       (json['limit'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$SubjectMetadataToJson(SubjectMetadata instance) =>
-    <String, dynamic>{
-      'currentPage': instance.currentPage,
-      'numberOfPages': instance.numberOfPages,
-      'limit': instance.limit,
-    };
 
 SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) => SubjectModel(
       json['_id'] as String?,
@@ -49,10 +43,3 @@ SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) => SubjectModel(
       json['createdAt'] as String?,
     );
 
-Map<String, dynamic> _$SubjectModelToJson(SubjectModel instance) =>
-    <String, dynamic>{
-      '_id': instance.id,
-      'name': instance.name,
-      'icon': instance.icon,
-      'createdAt': instance.createdAt,
-    };
