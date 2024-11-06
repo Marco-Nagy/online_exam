@@ -20,6 +20,22 @@ import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart
     as _i14;
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart'
     as _i12;
+import 'dart:async' as _i9;
+
+import 'package:mockito/mockito.dart' as _i1;
+import 'package:online_exam/core/networking/api/api_manager.dart' as _i8;
+import 'package:online_exam/features/auth/data/models/request/change_password_request.dart'
+    as _i16;
+import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart'
+    as _i10;
+import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart'
+    as _i14;
+import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart'
+    as _i12;
+import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart'
+    as _i13;
+import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart'
+    as _i11;
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart'
     as _i4;
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart'
@@ -27,6 +43,7 @@ import 'package:online_exam/features/auth/data/models/response/ForgotPasswordRes
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart'
     as _i3;
 import 'package:online_exam/features/auth/domain/entities/user.dart' as _i16;
+import 'package:online_exam/features/auth/domain/entities/user.dart' as _i15;
 import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart'
     as _i5;
 import 'package:online_exam/features/questions/data/models/question_response_model.dart'
@@ -167,6 +184,10 @@ class _FakeResponse_10<T1> extends _i1.SmartFake implements _i8.Response<T1> {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockApiManager extends _i1.Mock implements _i9.ApiManager {
+/// A class which mocks [ApiManager].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockApiManager extends _i1.Mock implements _i8.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
@@ -174,12 +195,15 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
   @override
   _i10.Future<_i2.ForgotPasswordResponse> forgotPassword(
           _i11.ForgetPasswordRequest? body) =>
+  _i9.Future<_i2.ForgotPasswordResponse> forgotPassword(
+          _i10.ForgetPasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #forgotPassword,
           [body],
         ),
         returnValue: _i10.Future<_i2.ForgotPasswordResponse>.value(
+        returnValue: _i9.Future<_i2.ForgotPasswordResponse>.value(
             _FakeForgotPasswordResponse_0(
           this,
           Invocation.method(
@@ -192,12 +216,18 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
   @override
   _i10.Future<_i3.VerifyResetCodeResponse> verifyResetCode(
           _i12.VerifyResetCodeRequest? body) =>
+      ) as _i9.Future<_i2.ForgotPasswordResponse>);
+
+  @override
+  _i9.Future<_i3.VerifyResetCodeResponse> verifyResetCode(
+          _i11.VerifyResetCodeRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #verifyResetCode,
           [body],
         ),
         returnValue: _i10.Future<_i3.VerifyResetCodeResponse>.value(
+        returnValue: _i9.Future<_i3.VerifyResetCodeResponse>.value(
             _FakeVerifyResetCodeResponse_1(
           this,
           Invocation.method(
@@ -210,12 +240,17 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
   @override
   _i10.Future<_i4.AuthResponse> resetPassword(
           _i13.ResetPasswordRequest? body) =>
+      ) as _i9.Future<_i3.VerifyResetCodeResponse>);
+
+  @override
+  _i9.Future<_i4.AuthResponse> resetPassword(_i12.ResetPasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #resetPassword,
           [body],
         ),
         returnValue: _i10.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
+        returnValue: _i9.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
           this,
           Invocation.method(
             #resetPassword,
@@ -226,12 +261,17 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
 
   @override
   _i10.Future<_i4.AuthResponse> signIn(_i14.SignInRequest? user) =>
+      ) as _i9.Future<_i4.AuthResponse>);
+
+  @override
+  _i9.Future<_i4.AuthResponse> signIn(_i13.SignInRequest? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #signIn,
           [user],
         ),
         returnValue: _i10.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
+        returnValue: _i9.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
           this,
           Invocation.method(
             #signIn,
@@ -242,12 +282,17 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
 
   @override
   _i10.Future<_i4.AuthResponse> signUp(_i15.RegisterRequest? user) =>
+      ) as _i9.Future<_i4.AuthResponse>);
+
+  @override
+  _i9.Future<_i4.AuthResponse> signUp(_i14.RegisterRequest? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #signUp,
           [user],
         ),
         returnValue: _i10.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
+        returnValue: _i9.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
           this,
           Invocation.method(
             #signUp,
@@ -258,6 +303,10 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
 
   @override
   _i10.Future<_i5.ExamResponseModel> getExamsBySubjectId(String? subjectId) =>
+      ) as _i9.Future<_i4.AuthResponse>);
+
+  @override
+  _i9.Future<_i5.ExamResponseModel> getExamsBySubjectId(String? subjectId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getExamsBySubjectId,
@@ -265,6 +314,7 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
         ),
         returnValue:
             _i10.Future<_i5.ExamResponseModel>.value(_FakeExamResponseModel_3(
+            _i9.Future<_i5.ExamResponseModel>.value(_FakeExamResponseModel_3(
           this,
           Invocation.method(
             #getExamsBySubjectId,
@@ -275,11 +325,16 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
 
   @override
   _i10.Future<_i6.SubjectResponseModel> getSubjectList() => (super.noSuchMethod(
+      ) as _i9.Future<_i5.ExamResponseModel>);
+
+  @override
+  _i9.Future<_i6.SubjectResponseModel> getSubjectList() => (super.noSuchMethod(
         Invocation.method(
           #getSubjectList,
           [],
         ),
         returnValue: _i10.Future<_i6.SubjectResponseModel>.value(
+        returnValue: _i9.Future<_i6.SubjectResponseModel>.value(
             _FakeSubjectResponseModel_4(
           this,
           Invocation.method(
@@ -291,12 +346,17 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
 
   @override
   _i10.Future<_i7.QuestionResponseModel> getQuestionsByExamId(String? examId) =>
+      ) as _i9.Future<_i6.SubjectResponseModel>);
+
+  @override
+  _i9.Future<_i7.QuestionResponseModel> getQuestionsByExamId(String? examId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getQuestionsByExamId,
           [examId],
         ),
         returnValue: _i10.Future<_i7.QuestionResponseModel>.value(
+        returnValue: _i9.Future<_i7.QuestionResponseModel>.value(
             _FakeQuestionResponseModel_5(
           this,
           Invocation.method(
@@ -308,11 +368,16 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
 
   @override
   _i10.Future<_i4.AuthResponse> getProfileData() => (super.noSuchMethod(
+      ) as _i9.Future<_i7.QuestionResponseModel>);
+
+  @override
+  _i9.Future<_i4.AuthResponse> getProfileData() => (super.noSuchMethod(
         Invocation.method(
           #getProfileData,
           [],
         ),
         returnValue: _i10.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
+        returnValue: _i9.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
           this,
           Invocation.method(
             #getProfileData,
@@ -323,12 +388,17 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
 
   @override
   _i10.Future<_i4.AuthResponse> editProfile(_i16.User? body) =>
+      ) as _i9.Future<_i4.AuthResponse>);
+
+  @override
+  _i9.Future<_i4.AuthResponse> editProfile(_i15.User? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [body],
         ),
         returnValue: _i10.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
+        returnValue: _i9.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
           this,
           Invocation.method(
             #editProfile,
@@ -340,12 +410,18 @@ class MockApiManager extends _i1.Mock implements _i9.ApiManager {
   @override
   _i10.Future<_i4.AuthResponse> changePassword(
           _i17.ChangePasswordRequest? body) =>
+      ) as _i9.Future<_i4.AuthResponse>);
+
+  @override
+  _i9.Future<_i4.AuthResponse> changePassword(
+          _i16.ChangePasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #changePassword,
           [body],
         ),
         returnValue: _i10.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
+        returnValue: _i9.Future<_i4.AuthResponse>.value(_FakeAuthResponse_2(
           this,
           Invocation.method(
             #changePassword,
@@ -1060,4 +1136,5 @@ class MockDio extends _i1.Mock implements _i8.Dio {
           ),
         )),
       ) as _i10.Future<_i8.Response<T>>);
+      ) as _i9.Future<_i4.AuthResponse>);
 }
