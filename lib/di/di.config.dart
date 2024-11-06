@@ -58,6 +58,8 @@ import '../features/questions/data/repositories/questions_repo_impl.dart'
 import '../features/questions/domain/repositories/questions_repo.dart' as _i828;
 import '../features/questions/domain/use_cases/get_questions_for_exam_use_case.dart'
     as _i696;
+import '../features/questions/presentation/ViewModel/question_cubit.dart'
+    as _i856;
 import '../features/survey/data/data_sources/remote_data_source/survey_api_remote_data_source.dart'
     as _i252;
 import '../features/survey/data/data_sources/remote_data_source/survey_remote_data_source.dart'
@@ -104,8 +106,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i66.ExamRepoImpl(gh<_i1006.ExamOnlineDatasource>()));
     gh.factory<_i730.GetSubjectsUseCase>(
         () => _i730.GetSubjectsUseCase(gh<_i18.SurveyRepository>()));
+    gh.factory<_i544.ChangePasswordUseCase>(
+        () => _i544.ChangePasswordUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i542.EditProfileUseCase>(
+        () => _i542.EditProfileUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i949.GetProfileDataUseCase>(
+        () => _i949.GetProfileDataUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i318.RegisterUseCase>(
@@ -114,12 +122,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i906.ResetPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i544.ChangePasswordUseCase>(
-        () => _i544.ChangePasswordUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i949.GetProfileDataUseCase>(
-        () => _i949.GetProfileDataUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i542.EditProfileUseCase>(
-        () => _i542.EditProfileUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i984.GetAllExamsUseCase>(
         () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
     gh.factory<_i25.ForgetPasswordCubit>(() => _i25.ForgetPasswordCubit(
@@ -139,6 +141,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1060.ExamCubit(gh<_i984.GetAllExamsUseCase>()));
     gh.factory<_i696.GetQuestionsForExamUseCase>(
         () => _i696.GetQuestionsForExamUseCase(gh<_i828.QuestionsRepo>()));
+    gh.factory<_i856.QuestionCubit>(
+        () => _i856.QuestionCubit(gh<_i696.GetQuestionsForExamUseCase>()));
     return this;
   }
 }
