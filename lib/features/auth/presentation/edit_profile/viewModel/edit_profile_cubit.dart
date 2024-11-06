@@ -6,8 +6,8 @@ import 'package:online_exam/core/networking/error/error_handler.dart';
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/domain/use_cases/change_password_use_case.dart';
-import 'package:online_exam/features/auth/domain/use_cases/edit_prifile_use_case.dart';
-import 'package:online_exam/features/auth/domain/use_cases/get_prifile_data_use_case.dart';
+import 'package:online_exam/features/auth/domain/use_cases/edit_profile_use_case.dart';
+import 'package:online_exam/features/auth/domain/use_cases/get_profile_data_use_case.dart';
 import 'package:online_exam/features/auth/presentation/edit_profile/viewModel/edit_profile_screen_actions.dart';
 
 part 'edit_profile_state.dart';
