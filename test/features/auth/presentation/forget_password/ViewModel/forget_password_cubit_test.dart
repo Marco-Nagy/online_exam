@@ -27,16 +27,7 @@ void main() {
   late var bodyVerifyResetCode;
   var message = '';
   var token  = '';
-  var id = '';
-  var username = '';
-  var firstName = '';
-  var lastName = '';
-  var email = '';
-  var phone = '';
-  var role = '';
-  var isVerified = true;
-  var createdAt = '';
-  var user = UserModel(id, username, firstName, lastName, email, phone, role, isVerified, createdAt);
+  var user = UserModel('1', 'Somaya', 'mahmoud', "last", 'somaya@gmail.com', "01060256698", 'user', true, '6/11/2024');
 
   group('test forget password cubit with all functions inside as ( forget password, reset password'
       'and verify reset code', (){

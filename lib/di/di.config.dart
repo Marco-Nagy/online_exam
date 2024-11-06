@@ -104,8 +104,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i66.ExamRepoImpl(gh<_i1006.ExamOnlineDatasource>()));
     gh.factory<_i730.GetSubjectsUseCase>(
         () => _i730.GetSubjectsUseCase(gh<_i18.SurveyRepository>()));
+    gh.factory<_i544.ChangePasswordUseCase>(
+        () => _i544.ChangePasswordUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i542.EditProfileUseCase>(
+        () => _i542.EditProfileUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i949.GetProfileDataUseCase>(
+        () => _i949.GetProfileDataUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i318.RegisterUseCase>(
@@ -114,12 +120,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i906.ResetPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i544.ChangePasswordUseCase>(
-        () => _i544.ChangePasswordUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i949.GetProfileDataUseCase>(
-        () => _i949.GetProfileDataUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i542.EditProfileUseCase>(
-        () => _i542.EditProfileUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i984.GetAllExamsUseCase>(
         () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
     gh.factory<_i25.ForgetPasswordCubit>(() => _i25.ForgetPasswordCubit(

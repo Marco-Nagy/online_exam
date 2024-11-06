@@ -17,6 +17,12 @@ QuestionResponseModel _$QuestionResponseModelFromJson(
           .toList(),
     );
 
+Map<String, dynamic> _$QuestionResponseModelToJson(
+        QuestionResponseModel instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'questions': instance.questions,
+    };
 
 QuestionsModel _$QuestionsModelFromJson(Map<String, dynamic> json) =>
     QuestionsModel(
@@ -38,12 +44,28 @@ QuestionsModel _$QuestionsModelFromJson(Map<String, dynamic> json) =>
       json['createdAt'] as String?,
     );
 
+Map<String, dynamic> _$QuestionsModelToJson(QuestionsModel instance) =>
+    <String, dynamic>{
+      'answers': instance.answers,
+      'type': instance.type,
+      '_id': instance.id,
+      'question': instance.question,
+      'correct': instance.correct,
+      'subject': instance.subject,
+      'exam': instance.exam,
+      'createdAt': instance.createdAt,
+    };
 
 AnswersModel _$AnswersModelFromJson(Map<String, dynamic> json) => AnswersModel(
       json['answer'] as String?,
       json['key'] as String?,
     );
 
+Map<String, dynamic> _$AnswersModelToJson(AnswersModel instance) =>
+    <String, dynamic>{
+      'answer': instance.answer,
+      'key': instance.key,
+    };
 
 SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) => SubjectModel(
       json['_id'] as String?,
@@ -52,6 +74,13 @@ SubjectModel _$SubjectModelFromJson(Map<String, dynamic> json) => SubjectModel(
       json['createdAt'] as String?,
     );
 
+Map<String, dynamic> _$SubjectModelToJson(SubjectModel instance) =>
+    <String, dynamic>{
+      '_id': instance.id,
+      'name': instance.name,
+      'icon': instance.icon,
+      'createdAt': instance.createdAt,
+    };
 
 ExamModel _$ExamModelFromJson(Map<String, dynamic> json) => ExamModel(
       json['_id'] as String?,
@@ -63,3 +92,12 @@ ExamModel _$ExamModelFromJson(Map<String, dynamic> json) => ExamModel(
       json['createdAt'] as String?,
     );
 
+Map<String, dynamic> _$ExamModelToJson(ExamModel instance) => <String, dynamic>{
+      '_id': instance.id,
+      'title': instance.title,
+      'duration': instance.duration,
+      'subject': instance.subject,
+      'numberOfQuestions': instance.numberOfQuestions,
+      'active': instance.active,
+      'createdAt': instance.createdAt,
+    };

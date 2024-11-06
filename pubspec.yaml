@@ -58,6 +58,8 @@ dev_dependencies:
   dartz: ^0.10.1
   test: ^1.25.7
 
+ # flutter pub run build_runner build
+ #dart run build_runner build --delete-conflicting-outputs
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
