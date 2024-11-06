@@ -1,13 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:online_exam/core/networking/api/api_manager.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
-import 'package:online_exam/features/auth/data/api/api_manager.dart';
 import 'package:online_exam/features/survey/data/data_sources/remote_data_source/survey_api_remote_data_source.dart';
 import 'package:online_exam/features/survey/data/models/subject_response_model.dart';
 import 'package:online_exam/features/survey/domain/entities/subject.dart';
 
-import 'survey_api_remote_data_source_test.mocks.dart';
+import '../../../../auth/data/data_sources/auth_online_datasource_impl_test.mocks.dart';
+
 
 @GenerateMocks([ApiManager])
 void main() {
