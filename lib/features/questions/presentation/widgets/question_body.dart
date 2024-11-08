@@ -6,6 +6,7 @@ import 'package:online_exam/features/questions/data/models/question_check_reques
 import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_state.dart';
+import 'package:online_exam/features/questions/presentation/widgets/question_body_loading.dart';
 import 'package:online_exam/features/questions/presentation/widgets/question_card.dart';
 
 class QuestionBody extends StatefulWidget {
@@ -40,7 +41,7 @@ class _QuestionBodyState extends State<QuestionBody> {
     return BlocBuilder<QuestionCubit, QuestionState>(
       builder: (context, state) {
         if (state is GetQuestionLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const QuestionBodyLoading();
         } else if (state is GetQuestionError) {
           return Center(child: Text(state.errorMessage));
         } else if (state is GetQuestionSuccess) {
