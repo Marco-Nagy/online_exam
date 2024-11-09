@@ -15,7 +15,6 @@ void main() {
   late LoginUseCase loginUseCase;
   late var loginBody;
   late LoginViewModel loginViewModel;
-  bool isRememberMeChecked;
   setUp(() {
     loginUseCase = MockLoginUseCase();
     loginBody = SignInRequest();

@@ -21,8 +21,8 @@ Map<String, dynamic> _$QuestionCheckRequestToJson(
     };
 
 CheckAnswers _$CheckAnswersFromJson(Map<String, dynamic> json) => CheckAnswers(
-      questionId: json['questionId'] as String,
-      correct: json['correct'] as String,
+      questionId: json['questionId'] as String?,
+      correct: json['correct'] as String?,
     );
 
 Map<String, dynamic> _$CheckAnswersToJson(CheckAnswers instance) =>
