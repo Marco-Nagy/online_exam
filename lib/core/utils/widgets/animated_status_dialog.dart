@@ -15,8 +15,12 @@ class AnimatedStatusDialog {
     required Status status,
     required String message,
   }) {
+    final navigatorContext =
+        getIt<GlobalKey<NavigatorState>>().currentState?.context;
+
+    if (navigatorContext != null) {
     showGeneralDialog(
-      context: getIt<GlobalKey<NavigatorState>>().currentContext!,
+      context: getIt<GlobalKey<NavigatorState>>().currentState!.context,
       pageBuilder: (ctx, a1, a2) => const SizedBox.shrink(),
       transitionBuilder: (ctx, a1, a2, child) {
         final curveValue = Curves.easeInOut.transform(a1.value);
@@ -27,6 +31,7 @@ class AnimatedStatusDialog {
       },
       transitionDuration: const Duration(milliseconds: 300),
     );
+  }
   }
 
   static Widget _dialog(BuildContext context, Status status, String message) {

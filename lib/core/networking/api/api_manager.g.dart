@@ -328,11 +328,12 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<AuthResponse> editProfile(User body) async {
+  Future<AuthResponse> editProfile(UserRequest body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<AuthResponse>(Options(
       method: 'PUT',
       headers: _headers,

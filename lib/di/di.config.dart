@@ -35,6 +35,8 @@ import '../features/auth/domain/use_cases/reset_password_use_case.dart'
     as _i906;
 import '../features/auth/domain/use_cases/verify_reset_code_use_case.dart'
     as _i642;
+import '../features/auth/presentation/edit_profile/viewModel/edit_profile_cubit.dart'
+    as _i409;
 import '../features/auth/presentation/forget_password/ViewModel/forget_password_cubit.dart'
     as _i25;
 import '../features/auth/presentation/login/ViewModel/login_view_model.dart'
@@ -104,8 +106,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i66.ExamRepoImpl(gh<_i1006.ExamOnlineDatasource>()));
     gh.factory<_i730.GetSubjectsUseCase>(
         () => _i730.GetSubjectsUseCase(gh<_i18.SurveyRepository>()));
+    gh.factory<_i544.ChangePasswordUseCase>(
+        () => _i544.ChangePasswordUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i542.EditProfileUseCase>(
+        () => _i542.EditProfileUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i301.ForgotPasswordUseCase>(
         () => _i301.ForgotPasswordUseCase(gh<_i869.AuthRepository>()));
+    gh.factory<_i949.GetProfileDataUseCase>(
+        () => _i949.GetProfileDataUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i496.LoginUseCase>(
         () => _i496.LoginUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i318.RegisterUseCase>(
@@ -114,18 +122,17 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i906.ResetPasswordUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i642.VerifyResetCodeUseCase>(
         () => _i642.VerifyResetCodeUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i544.ChangePasswordUseCase>(
-        () => _i544.ChangePasswordUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i949.GetProfileDataUseCase>(
-        () => _i949.GetProfileDataUseCase(gh<_i869.AuthRepository>()));
-    gh.factory<_i542.EditProfileUseCase>(
-        () => _i542.EditProfileUseCase(gh<_i869.AuthRepository>()));
     gh.factory<_i984.GetAllExamsUseCase>(
         () => _i984.GetAllExamsUseCase(gh<_i87.ExamRepo>()));
     gh.factory<_i25.ForgetPasswordCubit>(() => _i25.ForgetPasswordCubit(
           gh<_i301.ForgotPasswordUseCase>(),
           gh<_i642.VerifyResetCodeUseCase>(),
           gh<_i906.ResetPasswordUseCase>(),
+        ));
+    gh.factory<_i409.EditProfileCubit>(() => _i409.EditProfileCubit(
+          gh<_i949.GetProfileDataUseCase>(),
+          gh<_i542.EditProfileUseCase>(),
+          gh<_i544.ChangePasswordUseCase>(),
         ));
     gh.factory<_i828.QuestionsRepo>(
         () => _i852.QuestionsRepoImpl(gh<_i819.QuestionsOlineDataSource>()));
