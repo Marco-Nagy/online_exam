@@ -11,7 +11,7 @@ import 'package:online_exam/core/networking/common/api_result.dart' as _i4;
 import 'package:online_exam/features/auth/data/data_sources/auth_online_datasource.dart'
     as _i2;
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart'
-    as _i15;
+    as _i16;
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart'
     as _i6;
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart'
@@ -20,6 +20,8 @@ import 'package:online_exam/features/auth/data/models/request/ResetPasswordReque
     as _i11;
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart'
     as _i13;
+import 'package:online_exam/features/auth/data/models/request/user_request.dart'
+    as _i15;
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart'
     as _i9;
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart'
@@ -159,7 +161,7 @@ class MockAuthOnlineDatasource extends _i1.Mock
       ) as _i3.Future<_i4.ApiResult<_i12.User>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i12.User>> editProfile(_i12.User? user) =>
+  _i3.Future<_i4.ApiResult<_i12.User>> editProfile(_i15.UserRequest? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
@@ -177,7 +179,7 @@ class MockAuthOnlineDatasource extends _i1.Mock
 
   @override
   _i3.Future<_i4.ApiResult<_i12.User>> changePassword(
-          _i15.ChangePasswordRequest? body) =>
+          _i16.ChangePasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #changePassword,

@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/core/routes/base_routes.dart';
 import 'package:online_exam/core/utils/screens/under_build_screen.dart';
 import 'package:online_exam/di/di.dart';
+import 'package:online_exam/features/auth/presentation/edit_profile/screens/change_password.dart';
+import 'package:online_exam/features/auth/presentation/edit_profile/viewModel/edit_profile_cubit.dart';
 import 'package:online_exam/features/auth/presentation/forget_password/ViewModel/forget_password_cubit.dart';
 import 'package:online_exam/features/auth/presentation/forget_password/screens/email_verification.dart';
 import 'package:online_exam/features/auth/presentation/forget_password/screens/forget_password.dart';
@@ -27,6 +29,7 @@ class AppRoutes {
   static const String forgetPassword = 'forgetPassword';
   static const String emailVerification = 'emailVerification';
   static const String resetPassWord = 'resetPassWord';
+  static const String changePassWord = 'changePassWord';
   static const String exams = 'exams';
   static const String startExam = 'startExam';
   static const String home = 'home';
@@ -64,6 +67,12 @@ class AppRoutes {
           page: BlocProvider(
               create: (context) => getIt.get<ForgetPasswordCubit>(),
               child: ResetPassword()),
+        );
+        case AppRoutes.changePassWord:
+        return BaseRoute(
+          page: BlocProvider(
+              create: (context) => getIt.get<EditProfileCubit>(),
+              child: ChangePasswordScreen()),
         );
       case AppRoutes.exams:
         return BaseRoute(

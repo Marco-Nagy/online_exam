@@ -8,6 +8,7 @@ import 'package:online_exam/features/auth/data/models/request/ResetPasswordReque
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
+import 'package:online_exam/features/auth/data/models/request/user_request.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
@@ -46,7 +47,7 @@ Future<QuestionResponseModel>  getQuestionsByExamId(@Query("exam") String examId
 @GET(ApiConstants.profileDataApi)
 Future<AuthResponse> getProfileData();
 @PUT(ApiConstants.editProfileApi)
-Future<AuthResponse> editProfile(@Body() User body);
+Future<AuthResponse> editProfile(@Body() UserRequest body);
 @PATCH(ApiConstants.changePasswordApi)
 Future<AuthResponse> changePassword(@Body() ChangePasswordRequest  body);
 

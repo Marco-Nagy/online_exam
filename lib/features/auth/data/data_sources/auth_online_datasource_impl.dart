@@ -10,6 +10,7 @@ import 'package:online_exam/features/auth/data/models/request/ResetPasswordReque
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
+import 'package:online_exam/features/auth/data/models/request/user_request.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
@@ -67,7 +68,7 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
   }
 
   @override
-  Future<ApiResult<User>> editProfile(User user) {
+  Future<ApiResult<User>> editProfile(UserRequest user) {
     return executeApi(() async {
       var response = await apiManager.editProfile(user);
       return AuthMappers.toUserEntity(response);

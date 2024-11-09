@@ -35,6 +35,8 @@ import '../features/auth/domain/use_cases/reset_password_use_case.dart'
     as _i906;
 import '../features/auth/domain/use_cases/verify_reset_code_use_case.dart'
     as _i642;
+import '../features/auth/presentation/edit_profile/viewModel/edit_profile_cubit.dart'
+    as _i409;
 import '../features/auth/presentation/forget_password/ViewModel/forget_password_cubit.dart'
     as _i25;
 import '../features/auth/presentation/login/ViewModel/login_view_model.dart'
@@ -128,6 +130,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i301.ForgotPasswordUseCase>(),
           gh<_i642.VerifyResetCodeUseCase>(),
           gh<_i906.ResetPasswordUseCase>(),
+        ));
+    gh.factory<_i409.EditProfileCubit>(() => _i409.EditProfileCubit(
+          gh<_i949.GetProfileDataUseCase>(),
+          gh<_i542.EditProfileUseCase>(),
+          gh<_i544.ChangePasswordUseCase>(),
         ));
     gh.factory<_i828.QuestionsRepo>(
         () => _i852.QuestionsRepoImpl(gh<_i819.QuestionsOlineDataSource>()));

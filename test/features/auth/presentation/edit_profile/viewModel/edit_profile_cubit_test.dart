@@ -4,6 +4,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
+import 'package:online_exam/features/auth/data/models/request/user_request.dart';
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/domain/use_cases/change_password_use_case.dart';
 import 'package:online_exam/features/auth/domain/use_cases/edit_profile_use_case.dart';
@@ -62,14 +63,14 @@ void main() {
     setUp: () {
       var result = Success(User());
       provideDummy<ApiResult<User>>(result);
-      when(editProfileCase.call(User())).thenAnswer((_) async=> result,);
+      when(editProfileCase.call(UserRequest())).thenAnswer((_) async=> result,);
     },
     build: () {
       return editProfileCubit;
     },
-    act: (cubit) => cubit.doAction(UpdateProfileDataAction(user: User())),
+    act: (cubit) => cubit.doAction(UpdateProfileDataAction(userBody: UserRequest())),
     expect: () {
-      verify(editProfileCase.call(User())).called(1);
+      verify(editProfileCase.call(UserRequest())).called(1);
       return [
         isA<ProfileLoading>(),
         isA<EditProfileSuccess>()
