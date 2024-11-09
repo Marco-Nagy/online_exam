@@ -8,7 +8,7 @@ class GetQuestionsForExamUseCase {
 final  QuestionsRepo questionsRepo;
   GetQuestionsForExamUseCase(this.questionsRepo);
 
-  Future<ApiResult<List<Question>>> getQuestionsForExam(String examId)  {
+  Future<ApiResult<List<Question>>> call(String examId)  {
     return  questionsRepo.getQuestionsByExamId(examId);
   }
 }

@@ -17,6 +17,7 @@ import 'package:online_exam/features/exam/presentation/screens/start_exam_screen
 import 'package:online_exam/features/exam/presentation/viewModel/exam_base_actions.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_cubit.dart';
 import 'package:online_exam/features/questions/presentation/screens/question_screen.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
 import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
 
@@ -82,8 +83,11 @@ class AppRoutes {
       case AppRoutes.questions:
         return BaseRoute(
           page: BlocProvider(
-              create: (context) => getIt.get<QuestionCubit>()..getQuestions(args as String),
-              child: QuestionScreen()),
+              create: (context) => getIt.get<QuestionCubit>()
+                ..doActions(GetQuestionsListByExamId(exam: args)),
+              child: QuestionScreen(
+                exam: args as Exam,
+              )),
         );
       default:
         return BaseRoute(page: const PageUnderBuildScreen());

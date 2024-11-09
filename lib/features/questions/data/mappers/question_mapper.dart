@@ -23,4 +23,7 @@ class QuestionMapper {
         )
         .toList();
   }
+  static  toQuestionResponseModel() {
+
+  }
 }

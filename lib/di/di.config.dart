@@ -58,8 +58,8 @@ import '../features/questions/data/repositories/questions_repo_impl.dart'
 import '../features/questions/domain/repositories/questions_repo.dart' as _i828;
 import '../features/questions/domain/use_cases/get_questions_for_exam_use_case.dart'
     as _i696;
-import '../features/questions/presentation/ViewModel/question_cubit.dart'
-    as _i856;
+import '../features/questions/presentation/viewModel/question_cubit.dart'
+    as _i392;
 import '../features/survey/data/data_sources/remote_data_source/survey_api_remote_data_source.dart'
     as _i252;
 import '../features/survey/data/data_sources/remote_data_source/survey_remote_data_source.dart'
@@ -141,8 +141,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1060.ExamCubit(gh<_i984.GetAllExamsUseCase>()));
     gh.factory<_i696.GetQuestionsForExamUseCase>(
         () => _i696.GetQuestionsForExamUseCase(gh<_i828.QuestionsRepo>()));
-    gh.factory<_i856.QuestionCubit>(
-        () => _i856.QuestionCubit(gh<_i696.GetQuestionsForExamUseCase>()));
+    gh.factory<_i392.QuestionCubit>(
+        () => _i392.QuestionCubit(gh<_i696.GetQuestionsForExamUseCase>()));
     return this;
   }
 }
