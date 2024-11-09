@@ -9,12 +9,14 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
 import 'package:online_exam/core/networking/common/api_result.dart' as _i5;
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart'
-    as _i10;
+    as _i11;
+import 'package:online_exam/features/auth/data/models/request/user_request.dart'
+    as _i9;
 import 'package:online_exam/features/auth/domain/entities/user.dart' as _i6;
 import 'package:online_exam/features/auth/domain/repositories/auth_repository.dart'
     as _i2;
 import 'package:online_exam/features/auth/domain/use_cases/change_password_use_case.dart'
-    as _i9;
+    as _i10;
 import 'package:online_exam/features/auth/domain/use_cases/edit_profile_use_case.dart'
     as _i8;
 import 'package:online_exam/features/auth/domain/use_cases/get_profile_data_use_case.dart'
@@ -116,7 +118,7 @@ class MockEditProfileUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.User>> call(_i6.User? user) =>
+  _i4.Future<_i5.ApiResult<_i6.User>> call(_i9.UserRequest? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
@@ -137,7 +139,7 @@ class MockEditProfileUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockChangePasswordUseCase extends _i1.Mock
-    implements _i9.ChangePasswordUseCase {
+    implements _i10.ChangePasswordUseCase {
   MockChangePasswordUseCase() {
     _i1.throwOnMissingStub(this);
   }
@@ -161,7 +163,7 @@ class MockChangePasswordUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.User>> call(_i10.ChangePasswordRequest? body) =>
+  _i4.Future<_i5.ApiResult<_i6.User>> call(_i11.ChangePasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,

@@ -1,17 +1,23 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
+import 'package:online_exam/core/Services/shared_preference/shared_pref_keys.dart';
+import 'package:online_exam/core/Services/shared_preference/shared_preference_helper.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/core/networking/error/ErrorModel.dart';
 import 'package:online_exam/core/networking/error/error_handler.dart';
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
+import 'package:online_exam/features/auth/data/models/request/user_request.dart';
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/domain/use_cases/change_password_use_case.dart';
 import 'package:online_exam/features/auth/domain/use_cases/edit_profile_use_case.dart';
 import 'package:online_exam/features/auth/domain/use_cases/get_profile_data_use_case.dart';
 import 'package:online_exam/features/auth/presentation/edit_profile/viewModel/edit_profile_screen_actions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'edit_profile_state.dart';
 
+@injectable
 class EditProfileCubit extends Cubit<EditProfileState> {
   EditProfileCubit(
     this.getProfileDataCase,
@@ -27,7 +33,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       case GetProfileDataAction():
         _getProfileData();
       case UpdateProfileDataAction():
-        _editProfile(action.user);
+        _editProfile(action.userBody);
       case ChangePasswordAction():
         _changePassword(action.body);
     }
@@ -44,7 +50,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     }
   }
 
-  Future<void> _editProfile(User user) async {
+  Future<void> _editProfile(UserRequest user) async {
     emit(ProfileLoading());
     var result = await editProfileCase(user);
     switch (result) {
@@ -60,6 +66,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     var result = await changePasswordCase(body);
     switch (result) {
       case Success<User>():
+        SharedPrefHelper().setString(
+            key: SharedPrefKeys.token, stringValue: result.data.token!);
         emit(ChangePasswordSuccess(result.data));
       case Fail<User>():
         emit(ProfileError(errorModel: ErrorHandler.handle(result.exception!)));

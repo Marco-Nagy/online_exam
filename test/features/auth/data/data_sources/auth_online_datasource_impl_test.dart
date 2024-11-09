@@ -14,6 +14,7 @@ import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeRe
 import 'auth_online_datasource_impl_test.mocks.dart';
 import 'package:online_exam/features/auth/data/mappers/auth_mappers.dart';
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
+import 'package:online_exam/features/auth/data/models/request/user_request.dart';
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart';
@@ -214,20 +215,27 @@ void main() {
             token: 'testToken',
             isVerified: true,
             id: '1');
+        var updatedUser = UserRequest(
+          email: 'test@example.com',
+          username: 'testUser',
+          firstName: 'Test',
+          lastName: 'User',
+          phone: '1234567890',
+        );
 
         User expectedUser = AuthMappers.toUserEntity(authResponse);
         Success<User> mockResult = Success<User>(expectedUser);
         provideDummy<ApiResult<User>>(mockResult);
-        when(mockApiManager.editProfile(body))
+        when(mockApiManager.editProfile(updatedUser))
             .thenAnswer((_) async => authResponse);
 
         // Act
-        ApiResult<User> result = await authOnlineDatasource.editProfile(body);
+        ApiResult<User> result = await authOnlineDatasource.editProfile(updatedUser);
         // Assert
         expect(result, isA<Success<User>>());
         // expect(result is Success<User>, true);
         // expect(result, mockResult);
-        verify(mockApiManager.editProfile(body)).called(1);
+        verify(mockApiManager.editProfile(updatedUser)).called(1);
       });
       // test changePassword **
       test(
