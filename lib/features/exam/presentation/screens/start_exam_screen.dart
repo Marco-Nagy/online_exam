@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/routes/app_routes.dart';
 import 'package:online_exam/core/styles/app_images.dart';
 import 'package:online_exam/core/styles/colors/my_colors.dart';
 import 'package:online_exam/core/styles/fonts/my_fonts.dart';
+import 'package:online_exam/core/utils/extension/navigations.dart';
 import 'package:online_exam/core/utils/widgets/buttons/carved_button.dart';
 import 'package:online_exam/core/utils/widgets/custom_app_bar.dart';
 import 'package:online_exam/core/utils/widgets/spacing.dart';
@@ -91,6 +93,8 @@ class StartExamScreen extends StatelessWidget {
           color: MyColors.blue,
           title: 'Start',
           onTap: () {
+            context.pushNamed(AppRoutes.questions, arguments: item);
+
           },
         ),
 

@@ -25,7 +25,7 @@ class OnlineExam extends StatelessWidget {
         initialRoute: _getInitialRoute(),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.onGenerateRoute,
-        navigatorKey: GlobalKey<NavigatorState>(),
+        navigatorKey: getIt<GlobalKey<NavigatorState>>(),
       ),
     );
   }

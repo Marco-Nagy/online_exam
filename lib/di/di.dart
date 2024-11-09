@@ -13,7 +13,4 @@ final getIt = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: true, // default
 )
-void configureDependencies() {
-  getIt.registerSingleton<String>(SharedPrefKeys.token);
-  getIt.init();
-}
+void configureDependencies() => getIt.init();
