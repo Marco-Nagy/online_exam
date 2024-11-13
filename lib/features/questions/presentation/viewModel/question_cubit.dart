@@ -5,20 +5,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/core/networking/error/error_handler.dart';
+import 'package:online_exam/features/exam/domain/entities/exam.dart';
 import 'package:online_exam/features/questions/data/models/question_check_request.dart';
 import 'package:online_exam/features/questions/domain/entities/question.dart';
 import 'package:online_exam/features/questions/domain/use_cases/get_questions_for_exam_use_case.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_state.dart';
+
 @injectable
 class QuestionCubit extends Cubit<QuestionState> {
   QuestionCubit(this.getQuestionsForExam) : super(QuestionInitial());
 
   final GetQuestionsForExamUseCase getQuestionsForExam;
-  final List<CheckAnswers> _answers = [];
-  List<String?> selectedAnswers = [];
-  int questionIndex = 0;
+  late Exam exam;
 
+  final List<CheckAnswers> _answers = [];
+  List<Question> questions = [];
+  ValueNotifier<int> questionIndex = ValueNotifier(1);
+  late ValueNotifier<String> timeMessage = ValueNotifier<String>("00:00");
+  int questionCount = 0;
+  int time = 0;
   Timer? _timer;
 
 
@@ -31,8 +37,7 @@ class QuestionCubit extends Cubit<QuestionState> {
       case GetQuestionsListByExamId():
         _getQuestions(action);
       case SubmitQuestionAction():
-        _submitQuestion(action);
-
+        _selectQuestionAnswer(action);
     }
   }
 
@@ -43,8 +48,22 @@ class QuestionCubit extends Cubit<QuestionState> {
 
     switch (response) {
       case Success<List<Question>>():
+        {
+          questions = response.data;
+          questionCount = questions.length;
+          for (var i = 0; i < questions.length; i++) {
+            _answers
+                .add(CheckAnswers(questionId: questions[i].id, correct: ''));
+          }
+          time = exam.duration * 60;
 
-        emit(GetQuestionSuccess(response.data));
+          _timer = Timer.periodic(
+            const Duration(seconds: 1),
+            startCountdown,
+          );
+
+          emit(GetQuestionSuccess());
+        }
 
       case Fail():
         final errorMessage = ErrorHandler.handle(response.exception!).message;
@@ -52,7 +71,7 @@ class QuestionCubit extends Cubit<QuestionState> {
     }
   }
 
-  Future<void> _submitQuestion(SubmitQuestionAction action) async {
+  Future<void> _selectQuestionAnswer(SubmitQuestionAction action) async {
     if (action.body.correct!.isEmpty) {
       // Add the answer if it's correct and not empty
       _answers.add(action.body);
@@ -68,10 +87,16 @@ class QuestionCubit extends Cubit<QuestionState> {
         // If the questionId doesn't exist, add the new answer
         _answers.add(action.body);
       }
+      isAnswerSelected;
+      emit(RefreshState());
     }
 
     questionCheckRequest = QuestionCheckRequest(
-      answers: _answers,
+      answers: _answers
+          .where(
+            (element) => element.correct != null,
+          )
+          .toList(),
     );
     debugPrint('_answers  ${_answers.map(
       (e) => '${e.questionId} - ${e.correct}',
@@ -80,6 +105,43 @@ class QuestionCubit extends Cubit<QuestionState> {
     emit(SubmitQuestionState(questionCheckRequest!));
   }
 
+  void startCountdown(Timer timer) {
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (time > 0) {
+        time--;
+        _updateTime();
+      } else {
+        _timer?.cancel();
+        emit(ExamTimeoutState());
+        // TimeOutDialog.show();
+      }
+    });
+  }
 
+  void _updateTime() {
+    String minutes = (time ~/ 60).toString().padLeft(2, '0');
+    String seconds = (time % 60).toString().padLeft(2, '0');
+    timeMessage.value = '$minutes:$seconds';
+  }
 
+  bool isWarning() {
+    return time >= (exam.duration * .22);
+  }
+
+  void goToNextQuestion(int totalQuestions) {
+    if (questionIndex.value < totalQuestions - 1) {
+      questionIndex.value++;
+    }
+  }
+
+  void goToPreviousQuestion() {
+    if (questionIndex.value - 1 > 0) {
+      questionIndex.value--;
+    }
+  }
+
+  isAnswerSelected(String key) {
+    return (_answers[questionIndex.value - 1].correct == key);
+  }
 }

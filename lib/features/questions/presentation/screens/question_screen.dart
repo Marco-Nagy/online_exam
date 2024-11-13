@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online_exam/core/styles/app_images.dart';
-import 'package:online_exam/core/styles/colors/my_colors.dart';
-import 'package:online_exam/di/di.dart';
 import 'package:online_exam/features/exam/domain/entities/exam.dart';
-import 'package:online_exam/features/questions/data/models/question_check_request.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_state.dart';
 import 'package:online_exam/features/questions/presentation/widgets/question_body.dart';
-import 'package:online_exam/features/questions/presentation/widgets/question_card.dart';
+import 'package:online_exam/features/questions/presentation/widgets/question_body_loading.dart';
 import 'package:online_exam/features/questions/presentation/widgets/timer_widget.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -44,12 +38,30 @@ class _QuestionScreenState extends State<QuestionScreen> {
         elevation: 0,
         actions: [
           TimerWidget(
-            totalTime: widget.exam.duration*60,
-            duration: ValueNotifier(widget.exam.duration*60),
+            exam: widget.exam,
           )
         ],
       ),
-      body: const QuestionBody(),
+      body: BlocBuilder<QuestionCubit, QuestionState>(
+        builder: (context, state) {
+          QuestionCubit cubit = context.read<QuestionCubit>();
+          if (state is GetQuestionLoading) {
+            return const QuestionBodyLoading();
+          } else if (state is GetQuestionError) {
+            return Center(child: Text(state.errorMessage));
+          } else if (state is GetQuestionSuccess||state is RefreshState||state is SubmitQuestionState) {
+
+
+            return ValueListenableBuilder(valueListenable: cubit.questionIndex,
+            builder: (BuildContext context, value, Widget? child) {
+              return  QuestionBody(cubit.questionIndex.value-1, cubit);
+            },
+    );
+          } else {
+            return const Center(child: Text("No questions available."));
+          }
+        },
+      ),
     );
   }
 }
