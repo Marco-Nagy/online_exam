@@ -11,7 +11,7 @@ class Question extends Equatable {
   final String correct;
   final QuestionExam exam;
 
-   Question({
+   const Question({
     required this.answers,
     required this.type,
     required this.id,

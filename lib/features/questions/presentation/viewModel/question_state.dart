@@ -1,7 +1,6 @@
 // question_states.dart
 import 'package:equatable/equatable.dart';
 import 'package:online_exam/features/questions/data/models/question_check_request.dart';
-import 'package:online_exam/features/questions/domain/entities/question.dart';
 
 abstract class QuestionState extends Equatable {
   @override
@@ -13,12 +12,12 @@ class QuestionInitial extends QuestionState {}
 class GetQuestionLoading extends QuestionState {}
 
 class GetQuestionSuccess extends QuestionState {
-  final List<Question> questions;
 
-  GetQuestionSuccess(this.questions);
+
+  GetQuestionSuccess();
 
   @override
-  List<Object?> get props => [questions];
+  List<Object?> get props => [];
 }
 
 class GetQuestionError extends QuestionState {
@@ -48,4 +47,7 @@ class TimerState extends QuestionState {
 
 
 }
+class ExamTimeoutState extends QuestionState {}
+
+class RefreshState extends QuestionState {}
 
