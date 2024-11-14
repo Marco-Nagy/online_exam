@@ -1,10 +1,18 @@
 // question_states.dart
 import 'package:equatable/equatable.dart';
-import 'package:online_exam/features/questions/data/models/question_check_request.dart';
 
 abstract class QuestionState extends Equatable {
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        RefreshState,
+        GetQuestionLoading,
+        GetQuestionSuccess,
+        GetQuestionError,
+        SelectQuestionAnswerState,
+        CheckExamsLoadingState,
+        CheckExamsSuccessState,
+        CheckExamsErrorState,
+      ];
 }
 
 class QuestionInitial extends QuestionState {}
@@ -29,25 +37,23 @@ class GetQuestionError extends QuestionState {
   List<Object?> get props => [errorMessage];
 }
 
-class SubmitQuestionState extends QuestionState {
-  final QuestionCheckRequest checkRequest;
-  SubmitQuestionState(this.checkRequest, );
+class SelectQuestionAnswerState extends QuestionState {
+  SelectQuestionAnswerState();
 
   @override
-  List<Object?> get props => [checkRequest];
-
-
+  List<Object?> get props => [];
 }
-class TimerState extends QuestionState {
-  final int timeRemaining;
-  TimerState(this.timeRemaining);
 
-  @override
-  List<Object?> get props => [timeRemaining];
-
-
-}
 class ExamTimeoutState extends QuestionState {}
 
 class RefreshState extends QuestionState {}
+
+class CheckExamsLoadingState extends QuestionState {}
+
+class CheckExamsSuccessState extends QuestionState {}
+
+class CheckExamsErrorState extends QuestionState {
+  final Exception exception;
+  CheckExamsErrorState(this.exception);
+}
 

@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/styles/colors/my_colors.dart';
-import 'package:online_exam/core/utils/widgets/animated_status_dialog.dart';
 import 'package:online_exam/core/utils/widgets/loading_shimmer.dart';
-import 'package:online_exam/di/di.dart';
-import 'package:online_exam/features/questions/data/models/question_check_request.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_state.dart';
-import 'package:online_exam/features/questions/presentation/widgets/question_card.dart';
 
 class QuestionBodyLoading extends StatefulWidget {
   const QuestionBodyLoading({Key? key}) : super(key: key);

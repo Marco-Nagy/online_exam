@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/styles/app_images.dart';
+import 'package:online_exam/features/exam/data/mappers/exam_mapper.dart';
 import 'package:online_exam/features/exam/domain/entities/exam.dart';
+import 'package:online_exam/features/questions/data/mappers/question_mapper.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
 
 
@@ -24,7 +26,7 @@ class _TimerWidgetState extends State<TimerWidget> {
     super.initState();
     QuestionCubit cubit = context.read<QuestionCubit>();
 
-    cubit.exam = widget.exam;
+    cubit.exam = QuestionMapper.toQuestionResponseModel(widget.exam);
   }
 
 

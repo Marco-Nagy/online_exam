@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam/core/styles/colors/my_colors.dart';
-import 'package:online_exam/features/questions/data/models/question_check_request.dart';
+import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
 import 'package:online_exam/features/questions/presentation/widgets/question_card.dart';
@@ -19,7 +19,7 @@ class QuestionBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           LinearProgressIndicator(
-            value: (currentQuestionIndex+1) / (cubit.questions.length-1),
+            value: (currentQuestionIndex+1) / (cubit.questions.length),
             backgroundColor: Colors.grey[300],
             color: Colors.blue,
           ),
@@ -44,8 +44,7 @@ class QuestionBody extends StatelessWidget {
                   cubit.questions[currentQuestionIndex].answers[index],
                   isSelected:  cubit.isAnswerSelected(cubit.questions[currentQuestionIndex].answers[index].key),
                   onTap: () {
-
-                    cubit.doActions(SubmitQuestionAction(
+                    cubit.doActions(SelectQuestionAction(
                         body: CheckAnswers(
                             questionId:
                             cubit.questions[currentQuestionIndex].id,
@@ -87,7 +86,14 @@ class QuestionBody extends StatelessWidget {
                 child: SizedBox(
                   height: 48,
                   child: ElevatedButton(
-                    onPressed: () => cubit.goToNextQuestion(cubit.questionCount+1),
+                    onPressed: () {
+                      if((currentQuestionIndex + 1) == cubit.questions.length)  {
+                        cubit.doActions(SubmitFinishExamAction());
+                      }else {
+                        cubit
+                          .goToNextQuestion(cubit.questionCount + 1);
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),

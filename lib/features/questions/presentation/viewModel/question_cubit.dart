@@ -5,8 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/core/networking/error/error_handler.dart';
-import 'package:online_exam/features/exam/domain/entities/exam.dart';
-import 'package:online_exam/features/questions/data/models/question_check_request.dart';
+import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 import 'package:online_exam/features/questions/domain/entities/question.dart';
 import 'package:online_exam/features/questions/domain/use_cases/get_questions_for_exam_use_case.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
@@ -17,18 +16,20 @@ class QuestionCubit extends Cubit<QuestionState> {
   QuestionCubit(this.getQuestionsForExam) : super(QuestionInitial());
 
   final GetQuestionsForExamUseCase getQuestionsForExam;
-  late Exam exam;
+  late CheckedExam exam;
 
   final List<CheckAnswers> _answers = [];
   List<Question> questions = [];
   ValueNotifier<int> questionIndex = ValueNotifier(1);
   late ValueNotifier<String> timeMessage = ValueNotifier<String>("00:00");
   int questionCount = 0;
+  int totalCorrectAnswers=0;
+  int totalWrongAnswers = 0;
+  double gradePercent = 0.0;
   int time = 0;
   Timer? _timer;
 
 
-  QuestionCheckRequest? questionCheckRequest;
   ValueNotifier<bool> selected = ValueNotifier(false);
 
 
@@ -36,8 +37,12 @@ class QuestionCubit extends Cubit<QuestionState> {
     switch (action) {
       case GetQuestionsListByExamId():
         _getQuestions(action);
-      case SubmitQuestionAction():
+      case SelectQuestionAction():
         _selectQuestionAnswer(action);
+      case SubmitFinishExamAction():
+        _submitFinishExam();
+      case StartExamActionAgain():
+        _startAgain();
     }
   }
 
@@ -71,7 +76,7 @@ class QuestionCubit extends Cubit<QuestionState> {
     }
   }
 
-  Future<void> _selectQuestionAnswer(SubmitQuestionAction action) async {
+  Future<void> _selectQuestionAnswer(SelectQuestionAction action) async {
     if (action.body.correct!.isEmpty) {
       // Add the answer if it's correct and not empty
       _answers.add(action.body);
@@ -90,19 +95,29 @@ class QuestionCubit extends Cubit<QuestionState> {
       isAnswerSelected;
       emit(RefreshState());
     }
+    exam.checkAnswers = _answers;
+    exam.checkedQuestions =questions;
 
-    questionCheckRequest = QuestionCheckRequest(
-      answers: _answers
-          .where(
-            (element) => element.correct != null,
-          )
-          .toList(),
-    );
+    // questionCheckRequest
+    // = QuestionCheckRequest(
+    //   answers: _answers
+    //       .where(
+    //         (element) => element.correct != null,
+    //       )
+    //       .toList(),
+    // );
     debugPrint('_answers  ${_answers.map(
       (e) => '${e.questionId} - ${e.correct}',
     )}');
 
-    emit(SubmitQuestionState(questionCheckRequest!));
+    emit(SelectQuestionAnswerState());
+  }
+
+
+  _submitFinishExam(){
+    emit(CheckExamsLoadingState());
+    _calculateExamScore();
+    emit(CheckExamsSuccessState());
   }
 
   void startCountdown(Timer timer) {
@@ -143,5 +158,39 @@ class QuestionCubit extends Cubit<QuestionState> {
 
   isAnswerSelected(String key) {
     return (_answers[questionIndex.value - 1].correct == key);
+  }
+  _calculateExamScore(){
+    int correctAnswers = 0;
+    for(int i=0; i<questions.length; i++){
+      if(_answers[i].correct == questions[i].correct){
+        correctAnswers++;
+
+    }
+
+      totalCorrectAnswers = correctAnswers;
+      totalWrongAnswers = questionCount - totalCorrectAnswers;
+      gradePercent = (totalCorrectAnswers / questionCount) ;
+
+    }
+
+
+  }
+  void _startAgain() {
+    for (var i = 0; i < questions.length; i++) {
+      _answers.clear();
+      questionCount = questions.length;
+      for (var i = 0; i < questions.length; i++) {
+        _answers
+            .add(CheckAnswers(questionId: questions[i].id, correct: ''));
+      }
+    }
+    questionIndex.value = 1;
+    time = exam.duration * 60;
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+      startCountdown,
+    );
+
+     emit(GetQuestionSuccess());
   }
 }

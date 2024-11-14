@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:online_exam/features/exam/domain/entities/exam.dart';
-import 'package:online_exam/features/questions/data/models/question_check_request.dart';
-import 'package:online_exam/features/questions/domain/entities/question.dart';
+import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 
 sealed class QuestionBaseActions {
 }
@@ -10,12 +8,13 @@ class GetQuestionsListByExamId implements QuestionBaseActions{
   GetQuestionsListByExamId({required this.exam});
 
 }
-class SubmitQuestionAction implements QuestionBaseActions{
+
+class SelectQuestionAction implements QuestionBaseActions {
   final CheckAnswers body;
 
-
-  SubmitQuestionAction({  required this.body});
+  SelectQuestionAction({required this.body});
 }
 
+class SubmitFinishExamAction implements QuestionBaseActions {}
 
-
+class StartExamActionAgain implements QuestionBaseActions{}
