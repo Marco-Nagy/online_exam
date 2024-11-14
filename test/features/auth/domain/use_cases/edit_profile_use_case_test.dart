@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
+import 'package:online_exam/features/auth/data/models/request/user_request.dart';
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/domain/repositories/auth_repository.dart';
 import 'package:online_exam/features/auth/domain/use_cases/edit_profile_use_case.dart';
@@ -15,6 +16,14 @@ void main() {
       () async {
         var mockAuthRepository =  MockAuthRepository();
         var useCase = EditProfileUseCase( mockAuthRepository);
+        var updatedUser = UserRequest(
+              email: 'test@example.com',
+              username: 'testUser',
+              firstName: 'Test',
+              lastName: 'User',
+              phone: '1234567890',
+        );
+
         var user = User(
             email: 'test@example.com',
             username: 'testUser',
@@ -25,12 +34,13 @@ void main() {
             token: 'testToken',
             isVerified: true,
             id: '1');
+
         var mockedResult = Success<User>(user);
         provideDummy<ApiResult<User>>(mockedResult);
-        when(mockAuthRepository.editProfile(user)).thenAnswer((_) async=> mockedResult,);
-        var actual =await useCase.call(user);
+        when(mockAuthRepository.editProfile(updatedUser)).thenAnswer((_) async=> mockedResult,);
+        var actual =await useCase.call(updatedUser);
         expect(actual, mockedResult);
-        verify(mockAuthRepository.editProfile(user)).called(1);
+        verify(mockAuthRepository.editProfile(updatedUser)).called(1);
 
       });
 }

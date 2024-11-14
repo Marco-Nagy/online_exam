@@ -4,9 +4,12 @@ import 'package:mockito/mockito.dart';
 import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/features/auth/data/data_sources/auth_online_datasource.dart';
 import 'package:online_exam/features/auth/data/models/request/ForgetPasswordRequest.dart';
+import 'package:online_exam/features/auth/data/models/request/RegisterRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/ResetPasswordRequest.dart';
+import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart';
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
+import 'package:online_exam/features/auth/data/models/request/user_request.dart';
 import 'package:online_exam/features/auth/data/models/response/ForgotPasswordResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart';
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
@@ -40,8 +43,37 @@ void main() {
       token: 'testToken',
       isVerified: true,
       id: '1');
+  var updatedUser = UserRequest(
+      email: 'test@example.com',
+      username: 'testUser',
+      firstName: 'Test',
+      lastName: 'User',
+      phone: '1234567890',
+     );
   group('test auth online data source when call authRepo.forgetPassword or authRepo.resetPassword or authRepo.verifyResetCode ', ()
     {
+      test('when call authRepo.signUp it should call signUp function from auth online data source', () async{
+        var onlineDatasource = MockAuthOnlineDatasource();
+        var authOnlineDatasource = AuthRepoImpl(onlineDatasource);
+        var body = RegisterRequest();
+        var mockedResult = Success<User>(User());
+        provideDummy<ApiResult<User>>(mockedResult);
+        when(onlineDatasource.signeUp(body)).thenAnswer((_) async => mockedResult ,);
+        var result = await authOnlineDatasource.signeUp(body);
+        expect(result, mockedResult);
+        verify(onlineDatasource.signeUp(body)).called(1);
+      });
+      test('when call authRepo.login it should call login function from auth online data source', () async{
+        var onlineDatasource = MockAuthOnlineDatasource();
+        var authOnlineDatasource = AuthRepoImpl(onlineDatasource);
+        var body = SignInRequest();
+        var mockedResult = Success<User>(User());
+        provideDummy<ApiResult<User>>(mockedResult);
+        when(onlineDatasource.login(body)).thenAnswer((_) async => mockedResult ,);
+        var result = await authOnlineDatasource.login(body);
+        expect(result, mockedResult);
+        verify(onlineDatasource.login(body)).called(1);
+      });
       test('when call authRepo.forget password it should call forget password function from auth online data source', () async{
         var onlineDatasource = MockAuthOnlineDatasource();
         var authOnlineDatasource = AuthRepoImpl(onlineDatasource);
@@ -90,10 +122,10 @@ void main() {
       var authRepoImpl = AuthRepoImpl(onlineDatasource);
       var mockedResult = Success<User>(user);
       provideDummy<ApiResult<User>>(mockedResult);
-      when(onlineDatasource.editProfile(user)).thenAnswer((_) async => mockedResult ,);
-      var result = await authRepoImpl.editProfile(user);
+      when(onlineDatasource.editProfile(updatedUser)).thenAnswer((_) async => mockedResult ,);
+      var result = await authRepoImpl.editProfile(updatedUser);
       expect(result, mockedResult);
-      verify(onlineDatasource.editProfile(user)).called(1);
+      verify(onlineDatasource.editProfile(updatedUser)).called(1);
     });
     test('when call authRepo.changePassword it should call changePassword function from auth online data source', () async{
       var onlineDatasource = MockAuthOnlineDatasource();

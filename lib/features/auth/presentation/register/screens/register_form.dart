@@ -24,13 +24,13 @@ class RegisterForm extends HookWidget {
   @override
   Widget build(BuildContext context) {
     // Using Flutter Hooks to manage TextEditingControllers
-    final userNameController = useTextEditingController(text: 'marco Nagy');
-    final firstNameController = useTextEditingController(text: 'marco');
-    final lastNameController = useTextEditingController(text: 'Nagy');
-    final emailController = useTextEditingController(text: 'marconagy7000@gmail.com');
-    final passwordController = useTextEditingController(text: 'Elevate@12');
-    final confirmPasswordController = useTextEditingController(text: 'Elevate@12');
-    final phoneNumberController = useTextEditingController(text: '01220407005');
+    final userNameController = useTextEditingController();
+    final firstNameController = useTextEditingController();
+    final lastNameController = useTextEditingController();
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final confirmPasswordController = useTextEditingController();
+    final phoneNumberController = useTextEditingController();
     ValueNotifier<bool> passwordVisibility =ValueNotifier(false);
 
     return Form(

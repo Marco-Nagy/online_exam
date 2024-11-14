@@ -17,6 +17,8 @@ import 'package:online_exam/features/auth/data/models/request/ResetPasswordReque
     as _i12;
 import 'package:online_exam/features/auth/data/models/request/SignInRequest.dart'
     as _i13;
+import 'package:online_exam/features/auth/data/models/request/user_request.dart'
+    as _i15;
 import 'package:online_exam/features/auth/data/models/request/VerifyResetCodeRequest.dart'
     as _i11;
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart'
@@ -25,7 +27,6 @@ import 'package:online_exam/features/auth/data/models/response/ForgotPasswordRes
     as _i2;
 import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeResponse.dart'
     as _i3;
-import 'package:online_exam/features/auth/domain/entities/user.dart' as _i15;
 import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart'
     as _i5;
 import 'package:online_exam/features/questions/data/models/question_response_model.dart'
@@ -269,7 +270,7 @@ class MockApiManager extends _i1.Mock implements _i8.ApiManager {
       ) as _i9.Future<_i4.AuthResponse>);
 
   @override
-  _i9.Future<_i4.AuthResponse> editProfile(_i15.User? body) =>
+  _i9.Future<_i4.AuthResponse> editProfile(_i15.UserRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
