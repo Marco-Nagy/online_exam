@@ -1,4 +1,6 @@
+import 'package:online_exam/features/exam/domain/entities/exam.dart';
 import 'package:online_exam/features/questions/data/models/question_response_model.dart';
+import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 import 'package:online_exam/features/questions/domain/entities/question.dart';
 
 class QuestionMapper {
@@ -23,7 +25,15 @@ class QuestionMapper {
         )
         .toList();
   }
-  static  toQuestionResponseModel() {
 
+  static CheckedExam toQuestionResponseModel(Exam exam) {
+    return CheckedExam(
+        id: exam.id,
+        title: exam.title,
+        duration: exam.duration,
+        subject: exam.subject,
+        numberOfQuestions: exam.numberOfQuestions,
+        active: exam.active,
+        checkedQuestions: [], checkAnswers: []);
   }
 }

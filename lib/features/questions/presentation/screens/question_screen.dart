@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/features/exam/domain/entities/exam.dart';
+import 'package:online_exam/features/questions/presentation/screens/score_screen.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
 import 'package:online_exam/features/questions/presentation/viewModel/question_state.dart';
 import 'package:online_exam/features/questions/presentation/widgets/question_body.dart';
@@ -49,7 +50,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             return const QuestionBodyLoading();
           } else if (state is GetQuestionError) {
             return Center(child: Text(state.errorMessage));
-          } else if (state is GetQuestionSuccess||state is RefreshState||state is SubmitQuestionState) {
+          } else if (state is GetQuestionSuccess||state is RefreshState||state is SelectQuestionAnswerState||state is ExamTimeoutState) {
 
 
             return ValueListenableBuilder(valueListenable: cubit.questionIndex,
@@ -57,7 +58,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
               return  QuestionBody(cubit.questionIndex.value-1, cubit);
             },
     );
-          } else {
+          } else if (state is CheckExamsLoadingState||state is CheckExamsSuccessState||state is ExamTimeoutState){
+            return ScoreScreen(cubit: cubit,);
+          }else {
             return const Center(child: Text("No questions available."));
           }
         },
