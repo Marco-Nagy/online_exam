@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_exam/features/questions/domain/entities/question.dart';
-@JsonSerializable()
-class CheckedExam extends Equatable {
+
+class CheckedExam  {
   final String id;
   final String title;
   final int duration;
@@ -12,9 +12,6 @@ class CheckedExam extends Equatable {
    late  List<Question> checkedQuestions;
    late  List<CheckAnswers> checkAnswers;
 
-  @override
-  // TODO: implement props
-  List<Object?> get props => [id, title, duration, subject, numberOfQuestions, active, ];
 
    CheckedExam( {
     required this.id,
@@ -27,7 +24,7 @@ class CheckedExam extends Equatable {
     required this.checkedQuestions,
   });
 }
-@JsonSerializable()
+
 class CheckAnswers {
   final String? questionId;
    final String? correct;

@@ -10,7 +10,7 @@ class GetProfileDataUseCase {
 
   GetProfileDataUseCase(this.authRepository);
 
-  Future<ApiResult<User>> call() {
+  Future<DataResult<User>> call() {
     return  authRepository.getProfileData();
   }
 }

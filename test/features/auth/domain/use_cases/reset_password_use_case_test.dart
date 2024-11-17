@@ -21,7 +21,7 @@ void main() {
     var token  = '';
     var user = UserModel('1', 'Somaya', 'mahmoud', "last", 'somaya@gmail.com', "01060256698", 'user', true, '6/11/2024');
     var mockedResult = Success<AuthResponse>(AuthResponse(message,token,user));
-    provideDummy<ApiResult<AuthResponse>>(mockedResult);
+    provideDummy<DataResult<AuthResponse>>(mockedResult);
     when(authRepo.resetPassword(body)).thenAnswer((_) async =>mockedResult ,);
     var result = await resetPasswordUseCase.call(body);
     expect(result, mockedResult);

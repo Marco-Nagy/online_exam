@@ -12,7 +12,7 @@ class SurveyRepositoryIml implements SurveyRepository {
   SurveyRepositoryIml(this._remoteDataSource);
 
   @override
-  Future<ApiResult<List<Subject>>> getSubjects() {
+  Future<DataResult<List<Subject>>> getSubjects() {
     return _remoteDataSource.getSubjects();
   }
 }

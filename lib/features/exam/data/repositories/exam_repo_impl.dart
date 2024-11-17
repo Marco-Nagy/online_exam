@@ -12,7 +12,7 @@ class ExamRepoImpl implements ExamRepo {
   ExamRepoImpl(this.dataSource);
 
   @override
-  Future<ApiResult<List<Exam>>> getExamsBySubjectId(String subjectId)
+  Future<DataResult<List<Exam>>> getExamsBySubjectId(String subjectId)
  {
     return dataSource.getExamsBySubjectId(subjectId);
   }

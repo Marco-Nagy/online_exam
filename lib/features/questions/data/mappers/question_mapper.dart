@@ -1,5 +1,5 @@
 import 'package:online_exam/features/exam/domain/entities/exam.dart';
-import 'package:online_exam/features/questions/data/models/question_response_model.dart';
+import 'package:online_exam/features/questions/data/models/online/question_response_model.dart';
 import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 import 'package:online_exam/features/questions/domain/entities/question.dart';
 

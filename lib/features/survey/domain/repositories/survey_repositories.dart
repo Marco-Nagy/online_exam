@@ -4,5 +4,5 @@ import 'package:dartz/dartz.dart';
 
 
 abstract class SurveyRepository {
-  Future<ApiResult<List<Subject>>> getSubjects();
+  Future<DataResult<List<Subject>>> getSubjects();
 }

@@ -11,7 +11,7 @@ class EditProfileUseCase {
 
   EditProfileUseCase(this.authRepository);
 
-  Future<ApiResult<User>> call(UserRequest user) {
+  Future<DataResult<User>> call(UserRequest user) {
     return  authRepository.editProfile(user);
   }
 }

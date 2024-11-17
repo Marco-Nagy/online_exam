@@ -16,7 +16,7 @@ void main() {
   var forgetPasswordUseCase = ForgotPasswordUseCase(authRepo);
   var body = ForgetPasswordRequest() ;
   var mockedResult = Success<ForgotPasswordResponse>(ForgotPasswordResponse());
-  provideDummy<ApiResult<ForgotPasswordResponse>>(mockedResult);
+  provideDummy<DataResult<ForgotPasswordResponse>>(mockedResult);
    when(authRepo.forgotPassword(body)).thenAnswer((_) async => mockedResult  ,);
    var result = await forgetPasswordUseCase.call(body);
     expect(result, mockedResult);

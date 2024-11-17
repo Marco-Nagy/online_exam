@@ -5,7 +5,7 @@ import 'package:online_exam/core/styles/app_images.dart';
 import 'package:online_exam/features/exam/data/mappers/exam_mapper.dart';
 import 'package:online_exam/features/exam/domain/entities/exam.dart';
 import 'package:online_exam/features/questions/data/mappers/question_mapper.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_cubit.dart';
 
 
 class TimerWidget extends StatefulWidget {

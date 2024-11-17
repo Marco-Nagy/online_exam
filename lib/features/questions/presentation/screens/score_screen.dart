@@ -4,8 +4,8 @@ import 'package:online_exam/core/styles/fonts/my_fonts.dart';
 import 'package:online_exam/core/utils/widgets/buttons/carved_button.dart';
 import 'package:online_exam/core/utils/widgets/buttons/curved_border_button.dart';
 import 'package:online_exam/core/utils/widgets/spacing.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_base-actions.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_cubit.dart';
 import 'package:radial_progress/radial_progress.dart';
 
 class ScoreScreen extends StatelessWidget {

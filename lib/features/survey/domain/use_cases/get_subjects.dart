@@ -9,5 +9,5 @@ class GetSubjectsUseCase {
 
   GetSubjectsUseCase(this._repository);
 
-  Future<ApiResult<List<Subject>>> call() => _repository.getSubjects();
+  Future<DataResult<List<Subject>>> call() => _repository.getSubjects();
 }

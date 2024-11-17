@@ -8,14 +8,19 @@ import 'package:online_exam/core/networking/error/error_handler.dart';
 import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 import 'package:online_exam/features/questions/domain/entities/question.dart';
 import 'package:online_exam/features/questions/domain/use_cases/get_questions_for_exam_use_case.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_state.dart';
+import 'package:online_exam/features/questions/domain/use_cases/submit_exam_use_case.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_base-actions.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_state.dart';
 
 @injectable
 class QuestionCubit extends Cubit<QuestionState> {
-  QuestionCubit(this.getQuestionsForExam) : super(QuestionInitial());
+  QuestionCubit(
+    this.getQuestionsForExam,
+    this.submitExamCase,
+  ) : super(QuestionInitial());
 
   final GetQuestionsForExamUseCase getQuestionsForExam;
+  final SubmitExamUseCase submitExamCase;
   late CheckedExam exam;
 
   final List<CheckAnswers> _answers = [];
@@ -114,9 +119,19 @@ class QuestionCubit extends Cubit<QuestionState> {
   }
 
 
-  _submitFinishExam(){
+  _submitFinishExam() async {
     emit(CheckExamsLoadingState());
-    _calculateExamScore();
+var response = await submitExamCase.submitExam(exam);
+
+    switch (response) {
+      case Success<void>():
+        _timer!.cancel();
+        _calculateExamScore();
+        emit(CheckExamsSuccessState());
+      case Fail<void>():
+      emit(CheckExamsErrorState(ErrorHandler.handle(response.exception!)));
+    }
+
     emit(CheckExamsSuccessState());
   }
 

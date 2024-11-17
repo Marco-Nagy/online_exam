@@ -19,8 +19,8 @@ import 'package:online_exam/features/exam/presentation/screens/start_exam_screen
 import 'package:online_exam/features/exam/presentation/viewModel/exam_base_actions.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_cubit.dart';
 import 'package:online_exam/features/questions/presentation/screens/question_screen.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_base-actions.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_cubit.dart';
 import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
 
 class AppRoutes {

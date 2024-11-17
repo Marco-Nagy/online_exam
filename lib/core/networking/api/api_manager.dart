@@ -14,7 +14,7 @@ import 'package:online_exam/features/auth/data/models/response/VerifyResetCodeRe
 import 'package:online_exam/features/auth/data/models/response/auth_response_model.dart';
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/exam/data/models/response/exam_response_model.dart';
-import 'package:online_exam/features/questions/data/models/question_response_model.dart';
+import 'package:online_exam/features/questions/data/models/online/question_response_model.dart';
 import 'package:online_exam/features/survey/data/models/subject_response_model.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';

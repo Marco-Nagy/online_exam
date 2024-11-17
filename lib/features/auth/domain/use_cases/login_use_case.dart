@@ -10,7 +10,7 @@ class LoginUseCase {
 
   LoginUseCase(this.authRepository);
 
-  Future<ApiResult<User>> call(SignInRequest body) {
+  Future<DataResult<User>> call(SignInRequest body) {
     return  authRepository.login(body);
   }
 }

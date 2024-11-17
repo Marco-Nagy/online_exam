@@ -11,7 +11,7 @@ class ForgotPasswordUseCase {
 
   ForgotPasswordUseCase(this.authRepository);
 
-  Future<ApiResult<ForgotPasswordResponse>> call(ForgetPasswordRequest body) {
+  Future<DataResult<ForgotPasswordResponse>> call(ForgetPasswordRequest body) {
     return authRepository.forgotPassword(body);
   }
 }

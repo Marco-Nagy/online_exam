@@ -9,7 +9,7 @@ class GetAllExamsUseCase {
 
   GetAllExamsUseCase(this.examRepo);
 
-  Future<ApiResult<List<Exam>>> call(String subjectId)  {
+  Future<DataResult<List<Exam>>> call(String subjectId)  {
     return  examRepo.getExamsBySubjectId(subjectId);
   }
 }

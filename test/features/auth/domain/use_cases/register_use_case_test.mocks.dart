@@ -54,7 +54,7 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
   }
 
   @override
-  _i3.Future<_i4.ApiResult<_i5.ForgotPasswordResponse>> forgotPassword(
+  _i3.Future<_i4.DataResult<_i5.ForgotPasswordResponse>> forgotPassword(
           _i6.ForgetPasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -62,18 +62,18 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
           [body],
         ),
         returnValue:
-            _i3.Future<_i4.ApiResult<_i5.ForgotPasswordResponse>>.value(
-                _i7.dummyValue<_i4.ApiResult<_i5.ForgotPasswordResponse>>(
+            _i3.Future<_i4.DataResult<_i5.ForgotPasswordResponse>>.value(
+                _i7.dummyValue<_i4.DataResult<_i5.ForgotPasswordResponse>>(
           this,
           Invocation.method(
             #forgotPassword,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i5.ForgotPasswordResponse>>);
+      ) as _i3.Future<_i4.DataResult<_i5.ForgotPasswordResponse>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i8.VerifyResetCodeResponse>> verifyResetCode(
+  _i3.Future<_i4.DataResult<_i8.VerifyResetCodeResponse>> verifyResetCode(
           _i9.VerifyResetCodeRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -81,116 +81,116 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
           [body],
         ),
         returnValue:
-            _i3.Future<_i4.ApiResult<_i8.VerifyResetCodeResponse>>.value(
-                _i7.dummyValue<_i4.ApiResult<_i8.VerifyResetCodeResponse>>(
+            _i3.Future<_i4.DataResult<_i8.VerifyResetCodeResponse>>.value(
+                _i7.dummyValue<_i4.DataResult<_i8.VerifyResetCodeResponse>>(
           this,
           Invocation.method(
             #verifyResetCode,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i8.VerifyResetCodeResponse>>);
+      ) as _i3.Future<_i4.DataResult<_i8.VerifyResetCodeResponse>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i10.AuthResponse>> resetPassword(
+  _i3.Future<_i4.DataResult<_i10.AuthResponse>> resetPassword(
           _i11.ResetPasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #resetPassword,
           [body],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i10.AuthResponse>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i10.AuthResponse>>(
+        returnValue: _i3.Future<_i4.DataResult<_i10.AuthResponse>>.value(
+            _i7.dummyValue<_i4.DataResult<_i10.AuthResponse>>(
           this,
           Invocation.method(
             #resetPassword,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i10.AuthResponse>>);
+      ) as _i3.Future<_i4.DataResult<_i10.AuthResponse>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i12.User>> login(_i13.SignInRequest? body) =>
+  _i3.Future<_i4.DataResult<_i12.User>> login(_i13.SignInRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [body],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+        returnValue: _i3.Future<_i4.DataResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.DataResult<_i12.User>>(
           this,
           Invocation.method(
             #login,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+      ) as _i3.Future<_i4.DataResult<_i12.User>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i12.User>> signeUp(_i14.RegisterRequest? body) =>
+  _i3.Future<_i4.DataResult<_i12.User>> signeUp(_i14.RegisterRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #signeUp,
           [body],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+        returnValue: _i3.Future<_i4.DataResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.DataResult<_i12.User>>(
           this,
           Invocation.method(
             #signeUp,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+      ) as _i3.Future<_i4.DataResult<_i12.User>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i12.User>> getProfileData() => (super.noSuchMethod(
+  _i3.Future<_i4.DataResult<_i12.User>> getProfileData() => (super.noSuchMethod(
         Invocation.method(
           #getProfileData,
           [],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+        returnValue: _i3.Future<_i4.DataResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.DataResult<_i12.User>>(
           this,
           Invocation.method(
             #getProfileData,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+      ) as _i3.Future<_i4.DataResult<_i12.User>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i12.User>> editProfile(_i15.UserRequest? user) =>
+  _i3.Future<_i4.DataResult<_i12.User>> editProfile(_i15.UserRequest? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
           [user],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+        returnValue: _i3.Future<_i4.DataResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.DataResult<_i12.User>>(
           this,
           Invocation.method(
             #editProfile,
             [user],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+      ) as _i3.Future<_i4.DataResult<_i12.User>>);
 
   @override
-  _i3.Future<_i4.ApiResult<_i12.User>> changePassword(
+  _i3.Future<_i4.DataResult<_i12.User>> changePassword(
           _i16.ChangePasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #changePassword,
           [body],
         ),
-        returnValue: _i3.Future<_i4.ApiResult<_i12.User>>.value(
-            _i7.dummyValue<_i4.ApiResult<_i12.User>>(
+        returnValue: _i3.Future<_i4.DataResult<_i12.User>>.value(
+            _i7.dummyValue<_i4.DataResult<_i12.User>>(
           this,
           Invocation.method(
             #changePassword,
             [body],
           ),
         )),
-      ) as _i3.Future<_i4.ApiResult<_i12.User>>);
+      ) as _i3.Future<_i4.DataResult<_i12.User>>);
 }

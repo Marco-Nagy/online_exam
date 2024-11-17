@@ -21,42 +21,42 @@ class AuthRepoImpl implements AuthRepository{
   AuthRepoImpl(this.onlineDatasource, );
 
   @override
-  Future<ApiResult<ForgotPasswordResponse>> forgotPassword(ForgetPasswordRequest body) {
+  Future<DataResult<ForgotPasswordResponse>> forgotPassword(ForgetPasswordRequest body) {
     return onlineDatasource.forgotPassword(body);
   }
 
   @override
-  Future<ApiResult<User>> login(SignInRequest body) {
+  Future<DataResult<User>> login(SignInRequest body) {
    return onlineDatasource.login(body);
   }
 
   @override
-  Future<ApiResult<AuthResponse>> resetPassword(ResetPasswordRequest body) {
+  Future<DataResult<AuthResponse>> resetPassword(ResetPasswordRequest body) {
    return onlineDatasource.resetPassword(body);
   }
 
   @override
-  Future<ApiResult<User>> signeUp(RegisterRequest body) {
+  Future<DataResult<User>> signeUp(RegisterRequest body) {
  return onlineDatasource.signeUp(body);
   }
 
   @override
-  Future<ApiResult<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest body) {
+  Future<DataResult<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest body) {
 return onlineDatasource.verifyResetCode(body);
   }
 
   @override
-  Future<ApiResult<User>> changePassword(ChangePasswordRequest body) {
+  Future<DataResult<User>> changePassword(ChangePasswordRequest body) {
    return onlineDatasource.changePassword(body);
   }
 
   @override
-  Future<ApiResult<User>> editProfile(UserRequest user) {
+  Future<DataResult<User>> editProfile(UserRequest user) {
     return onlineDatasource.editProfile(user);
   }
 
   @override
-  Future<ApiResult<User>> getProfileData() {
+  Future<DataResult<User>> getProfileData() {
    return onlineDatasource.getProfileData();
   }
 

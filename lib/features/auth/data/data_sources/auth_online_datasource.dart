@@ -12,13 +12,13 @@ import 'package:online_exam/features/auth/data/models/response/auth_response_mod
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 
 abstract class AuthOnlineDatasource {
-Future<ApiResult<ForgotPasswordResponse>> forgotPassword(ForgetPasswordRequest body);
-Future<ApiResult<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest body);
-Future<ApiResult<AuthResponse>> resetPassword(ResetPasswordRequest body);
-Future<ApiResult<User>> login(SignInRequest body);
-Future<ApiResult<User>> signeUp(RegisterRequest body);
-Future<ApiResult<User>> getProfileData();
-Future<ApiResult<User>> editProfile(UserRequest user);
-Future<ApiResult<User>> changePassword(ChangePasswordRequest body);
+Future<DataResult<ForgotPasswordResponse>> forgotPassword(ForgetPasswordRequest body);
+Future<DataResult<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest body);
+Future<DataResult<AuthResponse>> resetPassword(ResetPasswordRequest body);
+Future<DataResult<User>> login(SignInRequest body);
+Future<DataResult<User>> signeUp(RegisterRequest body);
+Future<DataResult<User>> getProfileData();
+Future<DataResult<User>> editProfile(UserRequest user);
+Future<DataResult<User>> changePassword(ChangePasswordRequest body);
 
 }
