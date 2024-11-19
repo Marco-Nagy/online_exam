@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam/core/styles/colors/my_colors.dart';
 import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/question_cubit.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_base-actions.dart';
+import 'package:online_exam/features/questions/presentation/viewModel/questions/question_cubit.dart';
 import 'package:online_exam/features/questions/presentation/widgets/question_card.dart';
 
 class QuestionBody extends StatelessWidget {

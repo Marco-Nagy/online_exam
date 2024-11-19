@@ -23,28 +23,28 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
   AuthOnlineDatasourceImpl(this.apiManager);
 
   @override
-  Future<ApiResult<ForgotPasswordResponse>> forgotPassword(ForgetPasswordRequest body) {
+  Future<DataResult<ForgotPasswordResponse>> forgotPassword(ForgetPasswordRequest body) {
     return executeApi<ForgotPasswordResponse>(() async {
       return await apiManager.forgotPassword(body);
     });
   }
 
   @override
-  Future<ApiResult<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest body) {
+  Future<DataResult<VerifyResetCodeResponse>> verifyResetCode(VerifyResetCodeRequest body) {
     return executeApi<VerifyResetCodeResponse>(() async {
       return await apiManager.verifyResetCode(body);
     });
   }
 
   @override
-  Future<ApiResult<AuthResponse>> resetPassword(ResetPasswordRequest body) {
+  Future<DataResult<AuthResponse>> resetPassword(ResetPasswordRequest body) {
     return executeApi<AuthResponse>(() async {
       return await apiManager.resetPassword(body);
     });
   }
 
   @override
-  Future<ApiResult<User>> login(SignInRequest body) {
+  Future<DataResult<User>> login(SignInRequest body) {
    return executeApi(() async {
      var response = await apiManager.signIn(body);
      return AuthMappers.toUserEntity(response);
@@ -52,7 +52,7 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
   }
 
   @override
-  Future<ApiResult<User>> signeUp(RegisterRequest body) {
+  Future<DataResult<User>> signeUp(RegisterRequest body) {
   return executeApi(() async {
     var response = await apiManager.signUp(body);
     return   AuthMappers.toUserEntity(response);
@@ -60,7 +60,7 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
   }
 
   @override
-  Future<ApiResult<User>> getProfileData() async {
+  Future<DataResult<User>> getProfileData() async {
     return executeApi(() async {
       var response = await apiManager.getProfileData();
       return AuthMappers.toUserEntity(response);
@@ -68,7 +68,7 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
   }
 
   @override
-  Future<ApiResult<User>> editProfile(UserRequest user) {
+  Future<DataResult<User>> editProfile(UserRequest user) {
     return executeApi(() async {
       var response = await apiManager.editProfile(user);
       return AuthMappers.toUserEntity(response);
@@ -76,7 +76,7 @@ class AuthOnlineDatasourceImpl implements AuthOnlineDatasource{
   }
 
   @override
-  Future<ApiResult<User>> changePassword(ChangePasswordRequest body) {
+  Future<DataResult<User>> changePassword(ChangePasswordRequest body) {
     return executeApi(() async {
       var response = await apiManager.changePassword(body);
       return AuthMappers.toUserEntity(response);

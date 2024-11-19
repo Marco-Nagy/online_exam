@@ -36,7 +36,7 @@ void main() {
             id: '1');
 
         var mockedResult = Success<User>(user);
-        provideDummy<ApiResult<User>>(mockedResult);
+        provideDummy<DataResult<User>>(mockedResult);
         when(mockAuthRepository.editProfile(updatedUser)).thenAnswer((_) async=> mockedResult,);
         var actual =await useCase.call(updatedUser);
         expect(actual, mockedResult);

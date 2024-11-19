@@ -15,7 +15,7 @@ void main() {
     var loginUseCase = LoginUseCase(authRepo);
     var body = SignInRequest();
     var mockedResult = Success<User>(User());
-    provideDummy<ApiResult<User>>(mockedResult);
+    provideDummy<DataResult<User>>(mockedResult);
     when(authRepo.login(body)).thenAnswer((_) async => mockedResult,);
     var result = await loginUseCase.call(body);
     expect(result, mockedResult);

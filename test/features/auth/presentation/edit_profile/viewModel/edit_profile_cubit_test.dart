@@ -41,7 +41,7 @@ void main() {
     'getProfileDataUseCase and change state to success ',
     setUp: () {
       var result = Success(User());
-      provideDummy<ApiResult<User>>(result);
+      provideDummy<DataResult<User>>(result);
       when(getProfileDataCase.call()).thenAnswer((_) async=> result,);
 
     },
@@ -62,7 +62,7 @@ void main() {
     'editProfileDataUseCase and change state to success ',
     setUp: () {
       var result = Success(User());
-      provideDummy<ApiResult<User>>(result);
+      provideDummy<DataResult<User>>(result);
       when(editProfileCase.call(UserRequest())).thenAnswer((_) async=> result,);
     },
     build: () {
@@ -82,7 +82,7 @@ void main() {
     'changePasswordUseCase and change state to success ',
     setUp: () {
       var result = Success(User());
-      provideDummy<ApiResult<User>>(result);
+      provideDummy<DataResult<User>>(result);
       when(changePasswordCase.call(changePasswordRequest)).thenAnswer((_) async=> result,);
     },
     build: () {

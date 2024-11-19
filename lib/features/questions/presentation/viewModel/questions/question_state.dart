@@ -1,5 +1,6 @@
 // question_states.dart
 import 'package:equatable/equatable.dart';
+import 'package:online_exam/core/networking/error/ErrorModel.dart';
 
 abstract class QuestionState extends Equatable {
   @override
@@ -53,7 +54,7 @@ class CheckExamsLoadingState extends QuestionState {}
 class CheckExamsSuccessState extends QuestionState {}
 
 class CheckExamsErrorState extends QuestionState {
-  final Exception exception;
-  CheckExamsErrorState(this.exception);
+  final ErrorModel errorModel;
+  CheckExamsErrorState(this.errorModel);
 }
 

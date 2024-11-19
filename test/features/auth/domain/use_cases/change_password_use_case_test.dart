@@ -34,7 +34,7 @@ void main() {
       'new_password',
       'new_password',
     );
-    provideDummy<ApiResult<User>>(mockedResult);
+    provideDummy<DataResult<User>>(mockedResult);
     when(authRepository.changePassword(body))
         .thenAnswer((args) async => mockedResult);
 

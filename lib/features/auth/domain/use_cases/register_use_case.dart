@@ -10,7 +10,7 @@ class RegisterUseCase {
 
   RegisterUseCase(this.authRepository);
 
-  Future<ApiResult<User>> call(RegisterRequest body) async {
+  Future<DataResult<User>> call(RegisterRequest body) async {
     return await authRepository.signeUp(body);
   }
 }

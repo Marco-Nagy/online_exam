@@ -74,20 +74,20 @@ class MockGetProfileDataUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.User>> call() => (super.noSuchMethod(
+  _i4.Future<_i5.DataResult<_i6.User>> call() => (super.noSuchMethod(
         Invocation.method(
           #call,
           [],
         ),
-        returnValue: _i4.Future<_i5.ApiResult<_i6.User>>.value(
-            _i7.dummyValue<_i5.ApiResult<_i6.User>>(
+        returnValue: _i4.Future<_i5.DataResult<_i6.User>>.value(
+            _i7.dummyValue<_i5.DataResult<_i6.User>>(
           this,
           Invocation.method(
             #call,
             [],
           ),
         )),
-      ) as _i4.Future<_i5.ApiResult<_i6.User>>);
+      ) as _i4.Future<_i5.DataResult<_i6.User>>);
 }
 
 /// A class which mocks [EditProfileUseCase].
@@ -118,21 +118,21 @@ class MockEditProfileUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.User>> call(_i9.UserRequest? user) =>
+  _i4.Future<_i5.DataResult<_i6.User>> call(_i9.UserRequest? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [user],
         ),
-        returnValue: _i4.Future<_i5.ApiResult<_i6.User>>.value(
-            _i7.dummyValue<_i5.ApiResult<_i6.User>>(
+        returnValue: _i4.Future<_i5.DataResult<_i6.User>>.value(
+            _i7.dummyValue<_i5.DataResult<_i6.User>>(
           this,
           Invocation.method(
             #call,
             [user],
           ),
         )),
-      ) as _i4.Future<_i5.ApiResult<_i6.User>>);
+      ) as _i4.Future<_i5.DataResult<_i6.User>>);
 }
 
 /// A class which mocks [ChangePasswordUseCase].
@@ -163,19 +163,19 @@ class MockChangePasswordUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.User>> call(_i11.ChangePasswordRequest? body) =>
+  _i4.Future<_i5.DataResult<_i6.User>> call(_i11.ChangePasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [body],
         ),
-        returnValue: _i4.Future<_i5.ApiResult<_i6.User>>.value(
-            _i7.dummyValue<_i5.ApiResult<_i6.User>>(
+        returnValue: _i4.Future<_i5.DataResult<_i6.User>>.value(
+            _i7.dummyValue<_i5.DataResult<_i6.User>>(
           this,
           Invocation.method(
             #call,
             [body],
           ),
         )),
-      ) as _i4.Future<_i5.ApiResult<_i6.User>>);
+      ) as _i4.Future<_i5.DataResult<_i6.User>>);
 }

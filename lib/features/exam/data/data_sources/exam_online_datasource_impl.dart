@@ -13,7 +13,7 @@ final ApiManager apiManager;
 ExamOnlineDatasourceImpl(this.apiManager);
 
   @override
-  Future<ApiResult<List<Exam>>> getExamsBySubjectId(String subjectId) {
+  Future<DataResult<List<Exam>>> getExamsBySubjectId(String subjectId) {
     return executeApi(() async {
       var response= await apiManager.getExamsBySubjectId(subjectId);
       return   ExamMapper.toExamEntity(response );

@@ -13,7 +13,7 @@ void main() {
    var authRepo = MockAuthRepository();
    var verifyResetUseCase = VerifyResetCodeUseCase(authRepo);
    var mockedResult = Success<VerifyResetCodeResponse>(VerifyResetCodeResponse());
-   provideDummy<ApiResult<VerifyResetCodeResponse>>(mockedResult);
+   provideDummy<DataResult<VerifyResetCodeResponse>>(mockedResult);
    var body = VerifyResetCodeRequest();
    when(authRepo.verifyResetCode(body)).thenAnswer((_) async => mockedResult ,);
    var result = await verifyResetUseCase.call(body);

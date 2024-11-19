@@ -10,7 +10,7 @@ class ResetPasswordUseCase {
 
   ResetPasswordUseCase(this.authRepository);
 
-  Future<ApiResult<AuthResponse>> call(ResetPasswordRequest body) {
+  Future<DataResult<AuthResponse>> call(ResetPasswordRequest body) {
     return authRepository.resetPassword(body);
   }
 }

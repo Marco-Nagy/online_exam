@@ -81,7 +81,7 @@ class MockForgotPasswordUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i6.ForgotPasswordResponse>> call(
+  _i4.Future<_i5.DataResult<_i6.ForgotPasswordResponse>> call(
           _i7.ForgetPasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -89,15 +89,15 @@ class MockForgotPasswordUseCase extends _i1.Mock
           [body],
         ),
         returnValue:
-            _i4.Future<_i5.ApiResult<_i6.ForgotPasswordResponse>>.value(
-                _i8.dummyValue<_i5.ApiResult<_i6.ForgotPasswordResponse>>(
+            _i4.Future<_i5.DataResult<_i6.ForgotPasswordResponse>>.value(
+                _i8.dummyValue<_i5.DataResult<_i6.ForgotPasswordResponse>>(
           this,
           Invocation.method(
             #call,
             [body],
           ),
         )),
-      ) as _i4.Future<_i5.ApiResult<_i6.ForgotPasswordResponse>>);
+      ) as _i4.Future<_i5.DataResult<_i6.ForgotPasswordResponse>>);
 }
 
 /// A class which mocks [VerifyResetCodeUseCase].
@@ -128,7 +128,7 @@ class MockVerifyResetCodeUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i10.VerifyResetCodeResponse>> call(
+  _i4.Future<_i5.DataResult<_i10.VerifyResetCodeResponse>> call(
           _i11.VerifyResetCodeRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -136,15 +136,15 @@ class MockVerifyResetCodeUseCase extends _i1.Mock
           [body],
         ),
         returnValue:
-            _i4.Future<_i5.ApiResult<_i10.VerifyResetCodeResponse>>.value(
-                _i8.dummyValue<_i5.ApiResult<_i10.VerifyResetCodeResponse>>(
+            _i4.Future<_i5.DataResult<_i10.VerifyResetCodeResponse>>.value(
+                _i8.dummyValue<_i5.DataResult<_i10.VerifyResetCodeResponse>>(
           this,
           Invocation.method(
             #call,
             [body],
           ),
         )),
-      ) as _i4.Future<_i5.ApiResult<_i10.VerifyResetCodeResponse>>);
+      ) as _i4.Future<_i5.DataResult<_i10.VerifyResetCodeResponse>>);
 }
 
 /// A class which mocks [ResetPasswordUseCase].
@@ -175,20 +175,20 @@ class MockResetPasswordUseCase extends _i1.Mock
       );
 
   @override
-  _i4.Future<_i5.ApiResult<_i13.AuthResponse>> call(
+  _i4.Future<_i5.DataResult<_i13.AuthResponse>> call(
           _i14.ResetPasswordRequest? body) =>
       (super.noSuchMethod(
         Invocation.method(
           #call,
           [body],
         ),
-        returnValue: _i4.Future<_i5.ApiResult<_i13.AuthResponse>>.value(
-            _i8.dummyValue<_i5.ApiResult<_i13.AuthResponse>>(
+        returnValue: _i4.Future<_i5.DataResult<_i13.AuthResponse>>.value(
+            _i8.dummyValue<_i5.DataResult<_i13.AuthResponse>>(
           this,
           Invocation.method(
             #call,
             [body],
           ),
         )),
-      ) as _i4.Future<_i5.ApiResult<_i13.AuthResponse>>);
+      ) as _i4.Future<_i5.DataResult<_i13.AuthResponse>>);
 }

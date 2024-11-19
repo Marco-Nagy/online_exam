@@ -9,7 +9,7 @@ class VerifyResetCodeUseCase {
   AuthRepository authRepository;
   VerifyResetCodeUseCase(this.authRepository);
 
-  Future<ApiResult<VerifyResetCodeResponse>> call(
+  Future<DataResult<VerifyResetCodeResponse>> call(
       VerifyResetCodeRequest body) {
     return authRepository.verifyResetCode(body);
   }

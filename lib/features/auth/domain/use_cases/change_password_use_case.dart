@@ -11,7 +11,7 @@ class ChangePasswordUseCase {
 
   ChangePasswordUseCase(this.authRepository);
 
-  Future<ApiResult<User>> call(ChangePasswordRequest body) {
+  Future<DataResult<User>> call(ChangePasswordRequest body) {
     return  authRepository.changePassword(body);
   }
 }

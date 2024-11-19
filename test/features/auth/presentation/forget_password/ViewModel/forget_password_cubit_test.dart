@@ -52,7 +52,7 @@ void main() {
       build: () {
         var mockedResult =
         Success<ForgotPasswordResponse>(ForgotPasswordResponse());
-        provideDummy<ApiResult<ForgotPasswordResponse>>(mockedResult);
+        provideDummy<DataResult<ForgotPasswordResponse>>(mockedResult);
         when(forgetPasswordUseCase.call(bodyForgetPassword)).thenAnswer(
               (_) async => mockedResult,
         );
@@ -76,7 +76,7 @@ void main() {
       build: () {
         var mockedResult =
         Fail<ForgotPasswordResponse>(Exception());
-        provideDummy<ApiResult<ForgotPasswordResponse>>(mockedResult);
+        provideDummy<DataResult<ForgotPasswordResponse>>(mockedResult);
         when(forgetPasswordUseCase.call(bodyForgetPassword)).thenAnswer(
               (_) async => mockedResult,
         );
@@ -102,7 +102,7 @@ void main() {
       build: () {
         var mockedResult =
         Success<VerifyResetCodeResponse>(VerifyResetCodeResponse());
-        provideDummy<ApiResult<VerifyResetCodeResponse>>(mockedResult);
+        provideDummy<DataResult<VerifyResetCodeResponse>>(mockedResult);
         when(verifyResetCodeUseCase.call(bodyVerifyResetCode)).thenAnswer(
               (_) async => mockedResult,
         );
@@ -125,7 +125,7 @@ void main() {
       build: () {
         var mockedResult =
         Fail<VerifyResetCodeResponse>(Exception());
-        provideDummy<ApiResult<VerifyResetCodeResponse>>(mockedResult);
+        provideDummy<DataResult<VerifyResetCodeResponse>>(mockedResult);
         when(verifyResetCodeUseCase.call(bodyVerifyResetCode)).thenAnswer(
               (_) async => mockedResult,
         );
@@ -151,7 +151,7 @@ void main() {
       build: () {
         var mockedResult =
         Success<AuthResponse>(AuthResponse(message,token,user));
-        provideDummy<ApiResult<AuthResponse>>(mockedResult);
+        provideDummy<DataResult<AuthResponse>>(mockedResult);
         when(resetPasswordUseCase.call(bodyResetPassword)).thenAnswer(
               (_) async => mockedResult,
         );
@@ -174,7 +174,7 @@ void main() {
       build: () {
         var mockedResult =
         Fail<AuthResponse>(Exception());
-        provideDummy<ApiResult<AuthResponse>>(mockedResult);
+        provideDummy<DataResult<AuthResponse>>(mockedResult);
         when(resetPasswordUseCase.call(bodyResetPassword)).thenAnswer(
               (_) async => mockedResult,
         );

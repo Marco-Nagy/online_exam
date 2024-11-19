@@ -16,7 +16,7 @@ class SurveyApiRemoteDataSource implements SurveyRemoteDataSource {
   SurveyApiRemoteDataSource(this.apiManager);
 
   @override
-  Future<ApiResult<List<Subject>>> getSubjects() {
+  Future<DataResult<List<Subject>>> getSubjects() {
     return executeApi(() async {
         var response = await apiManager.getSubjectList();
         return SubjectMapper.toSubjectEntity(response);

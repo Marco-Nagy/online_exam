@@ -57,7 +57,7 @@ void main() {
         var authOnlineDatasource = AuthRepoImpl(onlineDatasource);
         var body = RegisterRequest();
         var mockedResult = Success<User>(User());
-        provideDummy<ApiResult<User>>(mockedResult);
+        provideDummy<DataResult<User>>(mockedResult);
         when(onlineDatasource.signeUp(body)).thenAnswer((_) async => mockedResult ,);
         var result = await authOnlineDatasource.signeUp(body);
         expect(result, mockedResult);
@@ -68,7 +68,7 @@ void main() {
         var authOnlineDatasource = AuthRepoImpl(onlineDatasource);
         var body = SignInRequest();
         var mockedResult = Success<User>(User());
-        provideDummy<ApiResult<User>>(mockedResult);
+        provideDummy<DataResult<User>>(mockedResult);
         when(onlineDatasource.login(body)).thenAnswer((_) async => mockedResult ,);
         var result = await authOnlineDatasource.login(body);
         expect(result, mockedResult);
@@ -79,7 +79,7 @@ void main() {
         var authOnlineDatasource = AuthRepoImpl(onlineDatasource);
         var body = ForgetPasswordRequest();
         var mockedResult = Success<ForgotPasswordResponse>(ForgotPasswordResponse());
-        provideDummy<ApiResult<ForgotPasswordResponse>>(mockedResult);
+        provideDummy<DataResult<ForgotPasswordResponse>>(mockedResult);
         when(onlineDatasource.forgotPassword(body)).thenAnswer((_) async => mockedResult ,);
         var result = await authOnlineDatasource.forgotPassword(body);
         expect(result, mockedResult);
@@ -90,7 +90,7 @@ void main() {
       var authRepoImpl = AuthRepoImpl(onlineDatasource);
       var body = ResetPasswordRequest();
       var mockedResult = Success<AuthResponse>(authResponse);
-      provideDummy<ApiResult<AuthResponse>>(mockedResult);
+      provideDummy<DataResult<AuthResponse>>(mockedResult);
       when(onlineDatasource.resetPassword(body)).thenAnswer((_) async => mockedResult ,);
       var result = await authRepoImpl.resetPassword(body);
       expect(result, mockedResult);
@@ -101,7 +101,7 @@ void main() {
       var authRepoImpl = AuthRepoImpl(onlineDatasource);
       var body = VerifyResetCodeRequest();
       var mockedResult = Success<VerifyResetCodeResponse>(VerifyResetCodeResponse());
-      provideDummy<ApiResult<VerifyResetCodeResponse>>(mockedResult);
+      provideDummy<DataResult<VerifyResetCodeResponse>>(mockedResult);
       when(onlineDatasource.verifyResetCode(body)).thenAnswer((_) async => mockedResult ,);
       var result = await authRepoImpl.verifyResetCode(body);
       expect(result, mockedResult);
@@ -111,7 +111,7 @@ void main() {
       var onlineDatasource = MockAuthOnlineDatasource();
       var authRepoImpl = AuthRepoImpl(onlineDatasource);
       var mockedResult = Success<User>(user);
-      provideDummy<ApiResult<User>>(mockedResult);
+      provideDummy<DataResult<User>>(mockedResult);
       when(onlineDatasource.getProfileData()).thenAnswer((_) async => mockedResult ,);
       var result = await authRepoImpl.getProfileData();
       expect(result, mockedResult);
@@ -121,7 +121,7 @@ void main() {
       var onlineDatasource = MockAuthOnlineDatasource();
       var authRepoImpl = AuthRepoImpl(onlineDatasource);
       var mockedResult = Success<User>(user);
-      provideDummy<ApiResult<User>>(mockedResult);
+      provideDummy<DataResult<User>>(mockedResult);
       when(onlineDatasource.editProfile(updatedUser)).thenAnswer((_) async => mockedResult ,);
       var result = await authRepoImpl.editProfile(updatedUser);
       expect(result, mockedResult);
@@ -137,7 +137,7 @@ void main() {
         'testUser',
       );
 
-      provideDummy<ApiResult<User>>(mockedResult);
+      provideDummy<DataResult<User>>(mockedResult);
       when(onlineDatasource.changePassword(body)).thenAnswer((_) async => mockedResult ,);
       var result = await authRepoImpl.changePassword(body);
       expect(result, mockedResult);

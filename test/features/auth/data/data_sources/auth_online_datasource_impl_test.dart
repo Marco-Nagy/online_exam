@@ -62,7 +62,7 @@ void main() {
         User expectedUser = AuthMappers.toUserEntity(authResponse);
         var authOnlineDataSourceImpl = AuthOnlineDatasourceImpl(mockApiManager);
         var mockedResult = Success<User>(expectedUser);
-        provideDummy<ApiResult<User>>(mockedResult);
+        provideDummy<DataResult<User>>(mockedResult);
         when(mockApiManager.signUp(registerBody)).thenAnswer(
           (_) async => authResponse,
         );
@@ -93,7 +93,7 @@ void main() {
         User expectedUser = AuthMappers.toUserEntity(authResponse);
         var authOnlineDataSourceImpl = AuthOnlineDatasourceImpl(mockApiManager);
         var mockedResult = Success<User>(expectedUser);
-        provideDummy<ApiResult<User>>(mockedResult);
+        provideDummy<DataResult<User>>(mockedResult);
         when(mockApiManager.signIn(loginBody)).thenAnswer(
           (_) async => authResponse,
         );
@@ -108,7 +108,7 @@ void main() {
         var authOnlineDataSourceImpl = AuthOnlineDatasourceImpl(mockApiManager);
         var mockedResult =
             Success<ForgotPasswordResponse>(ForgotPasswordResponse());
-        provideDummy<ApiResult<ForgotPasswordResponse>>(mockedResult);
+        provideDummy<DataResult<ForgotPasswordResponse>>(mockedResult);
         when(mockApiManager.forgotPassword(bodyForgetPassword)).thenAnswer(
           (_) async => mockedResult.data,
         );
@@ -124,7 +124,7 @@ void main() {
         var authOnlineDataSourceImpl = AuthOnlineDatasourceImpl(mockApiManager);
         var mockedResult =
             Success<VerifyResetCodeResponse>(VerifyResetCodeResponse());
-        provideDummy<ApiResult<VerifyResetCodeResponse>>(mockedResult);
+        provideDummy<DataResult<VerifyResetCodeResponse>>(mockedResult);
         when(mockApiManager.verifyResetCode(bodyVerifyResetCode)).thenAnswer(
           (_) async => mockedResult.data,
         );
@@ -140,7 +140,7 @@ void main() {
         var authOnlineDataSourceImpl = AuthOnlineDatasourceImpl(mockApiManager);
         var mockedResult =
             Success<AuthResponse>(AuthResponse(message, token, user));
-        provideDummy<ApiResult<AuthResponse>>(mockedResult);
+        provideDummy<DataResult<AuthResponse>>(mockedResult);
         when(mockApiManager.resetPassword(bodyResetPassword)).thenAnswer(
           (_) async => mockedResult.data,
         );
@@ -172,12 +172,12 @@ void main() {
 
         User expectedUser = AuthMappers.toUserEntity(authResponse);
         Success<User> mockResult = Success<User>(expectedUser);
-        provideDummy<ApiResult<User>>(mockResult);
+        provideDummy<DataResult<User>>(mockResult);
         when(mockApiManager.getProfileData())
             .thenAnswer((_) async => authResponse);
 
         // Act
-        ApiResult<User> result = await authOnlineDatasource.getProfileData();
+        DataResult<User> result = await authOnlineDatasource.getProfileData();
 
         // Assert
         expect(result, isA<Success<User>>());
@@ -225,12 +225,12 @@ void main() {
 
         User expectedUser = AuthMappers.toUserEntity(authResponse);
         Success<User> mockResult = Success<User>(expectedUser);
-        provideDummy<ApiResult<User>>(mockResult);
+        provideDummy<DataResult<User>>(mockResult);
         when(mockApiManager.editProfile(updatedUser))
             .thenAnswer((_) async => authResponse);
 
         // Act
-        ApiResult<User> result = await authOnlineDatasource.editProfile(updatedUser);
+        DataResult<User> result = await authOnlineDatasource.editProfile(updatedUser);
         // Assert
         expect(result, isA<Success<User>>());
         // expect(result is Success<User>, true);
@@ -265,12 +265,12 @@ void main() {
 
         User expectedUser = AuthMappers.toUserEntity(authResponse);
         Success<User> mockResult = Success<User>(expectedUser);
-        provideDummy<ApiResult<User>>(mockResult);
+        provideDummy<DataResult<User>>(mockResult);
         when(mockApiManager.changePassword(body))
             .thenAnswer((_) async => authResponse);
 
         // Act
-        ApiResult<User> result =
+        DataResult<User> result =
             await authOnlineDatasource.changePassword(body);
         // Assert
         expect(result, isA<Success<User>>());

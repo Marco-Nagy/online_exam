@@ -3,5 +3,5 @@ import 'package:online_exam/features/survey/data/models/subject_response_model.d
 import 'package:online_exam/features/survey/domain/entities/subject.dart';
 
 abstract class SurveyRemoteDataSource{
-  Future<ApiResult<List<Subject>>> getSubjects();
+  Future<DataResult<List<Subject>>> getSubjects();
 }

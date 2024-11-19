@@ -30,7 +30,7 @@ void main() {
     var getProfileData = GetProfileDataUseCase(mockAuthRepository);
 
     var mockedResult = Success<User>(user);
-    provideDummy<ApiResult<User>>(mockedResult);
+    provideDummy<DataResult<User>>(mockedResult);
     when(mockAuthRepository.getProfileData())
         .thenAnswer((_) async => mockedResult);
     var result = await getProfileData.call();

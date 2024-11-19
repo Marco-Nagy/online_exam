@@ -24,7 +24,7 @@ void main() {
     build: () {
       var mockedResult =
       Success<User>(User());
-      provideDummy<ApiResult<User>>(mockedResult);
+      provideDummy<DataResult<User>>(mockedResult);
       when(registerUseCase.call(registerBody)).thenAnswer(
             (_) async => mockedResult,
       );
@@ -47,7 +47,7 @@ void main() {
    build: () {
      var mockedResult =
      Fail<User>(Exception());
-     provideDummy<ApiResult<User>>(mockedResult);
+     provideDummy<DataResult<User>>(mockedResult);
      when(registerUseCase.call(registerBody)).thenAnswer(
            (_) async => mockedResult,
      );
