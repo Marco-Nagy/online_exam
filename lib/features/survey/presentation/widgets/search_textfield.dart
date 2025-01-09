@@ -15,7 +15,7 @@ class SearchTextField extends StatelessWidget {
         hintStyle: TextStyle(
           fontWeight: FontWeight.w300,
           fontSize: 14.sp,
-          color: Color(0xff535353),
+          color: const Color(0xff535353),
         ),
         prefixIcon: Icon(
           Icons.search,
@@ -24,17 +24,17 @@ class SearchTextField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.r),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(0xff535353),
             )),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.r),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(0xff535353),
             )),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25.r),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(0xff535353),
             )),
       ),

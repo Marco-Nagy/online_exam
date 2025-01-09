@@ -13,7 +13,6 @@ import 'package:online_exam/features/auth/domain/use_cases/change_password_use_c
 import 'package:online_exam/features/auth/domain/use_cases/edit_profile_use_case.dart';
 import 'package:online_exam/features/auth/domain/use_cases/get_profile_data_use_case.dart';
 import 'package:online_exam/features/auth/presentation/edit_profile/viewModel/edit_profile_screen_actions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'edit_profile_state.dart';
 

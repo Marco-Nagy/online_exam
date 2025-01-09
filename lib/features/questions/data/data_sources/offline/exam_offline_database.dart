@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:online_exam/features/questions/data/models/offline/checked_exam_table_model.dart';
-import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 
 @singleton
 class ExamOfflineDatabase {

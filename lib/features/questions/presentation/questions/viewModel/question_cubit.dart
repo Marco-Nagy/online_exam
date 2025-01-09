@@ -9,8 +9,8 @@ import 'package:online_exam/features/questions/domain/entities/checked_exam.dart
 import 'package:online_exam/features/questions/domain/entities/question.dart';
 import 'package:online_exam/features/questions/domain/use_cases/get_questions_for_exam_use_case.dart';
 import 'package:online_exam/features/questions/domain/use_cases/submit_exam_use_case.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_state.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_base-actions.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_state.dart';
 
 @injectable
 class QuestionCubit extends Cubit<QuestionState> {

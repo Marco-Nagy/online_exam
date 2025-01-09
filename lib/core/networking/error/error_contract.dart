@@ -1,5 +1,4 @@
 
-import 'package:dio/dio.dart';
 
 import 'ErrorModel.dart';
 

@@ -1,5 +1,4 @@
 import 'package:isar/isar.dart';
-import 'package:online_exam/features/questions/data/models/online/question_response_model.dart';
 import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
 import 'package:online_exam/features/questions/domain/entities/question.dart';
 
@@ -15,6 +14,7 @@ class CheckedExamTableModel {
   int? duration;
   String? subject;
   int? numberOfQuestions;
+  int ? correctAnswer;
   bool? active;
 
   List<CheckedQuestionTable>? checkedQuestions;
@@ -31,6 +31,7 @@ class CheckedExamTableModel {
     this.active,
     this.checkedQuestions,
     this.checkAnswers,
+    this.correctAnswer, // Assuming this is the correct answers count
   });
 
   // Converts from domain model (CheckedExam) to Isar model
@@ -67,7 +68,7 @@ class CheckedExamTableModel {
       checkAnswers: checkAnswers
           ?.map((answer) => answer.toModel())
           .toList() ??
-          [],
+          [], correctAnswers: correctAnswer??0,
     );
   }
 }

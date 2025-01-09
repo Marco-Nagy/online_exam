@@ -5,8 +5,6 @@ import 'package:online_exam/core/networking/common/api_result.dart';
 import 'package:online_exam/features/auth/domain/entities/user.dart';
 import 'package:online_exam/features/auth/domain/repositories/auth_repository.dart';
 import 'package:online_exam/features/auth/domain/use_cases/get_profile_data_use_case.dart';
-import 'package:online_exam/features/auth/presentation/edit_profile/viewModel/edit_profile_cubit.dart';
-import 'package:online_exam/features/survey/domain/use_cases/get_subjects.dart';
 
 import 'forgot_password_use_case_test.mocks.dart';
 

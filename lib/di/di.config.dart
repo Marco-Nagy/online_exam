@@ -16,11 +16,11 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:isar/isar.dart' as _i7;
 
-import '../core/locale_database/isar_module.dart' as _i48;
+import '../core/locale_database/isar_module.dart' as _i50;
 import '../core/networking/api/api_manager.dart' as _i8;
 import '../core/networking/api_execute.dart' as _i3;
-import '../core/networking/common/regestet_context_module.dart' as _i49;
-import '../core/networking/network_factory.dart' as _i47;
+import '../core/networking/common/regestet_context_module.dart' as _i51;
+import '../core/networking/network_factory.dart' as _i49;
 import '../features/auth/data/data_sources/auth_online_datasource.dart' as _i9;
 import '../features/auth/data/data_sources/auth_online_datasource_impl.dart'
     as _i10;
@@ -45,7 +45,7 @@ import '../features/auth/presentation/forget_password/ViewModel/forget_password_
 import '../features/auth/presentation/login/ViewModel/login_view_model.dart'
     as _i24;
 import '../features/auth/presentation/register/ViewModel/register_cubit.dart'
-    as _i45;
+    as _i46;
 import '../features/exam/data/data_sources/exam_online_datasource.dart' as _i16;
 import '../features/exam/data/data_sources/exam_online_datasource_impl.dart'
     as _i17;
@@ -66,12 +66,16 @@ import '../features/questions/data/data_sources/online/questions_oline_data_sour
 import '../features/questions/data/repositories/questions_repo_impl.dart'
     as _i30;
 import '../features/questions/domain/repositories/questions_repo.dart' as _i29;
-import '../features/questions/domain/use_cases/get_questions_for_exam_use_case.dart'
+import '../features/questions/domain/use_cases/get_exam_answers_use_case.dart'
     as _i42;
+import '../features/questions/domain/use_cases/get_questions_for_exam_use_case.dart'
+    as _i43;
 import '../features/questions/domain/use_cases/submit_exam_use_case.dart'
     as _i33;
-import '../features/questions/presentation/viewModel/questions/question_cubit.dart'
-    as _i44;
+import '../features/questions/presentation/questions/viewModel/question_cubit.dart'
+    as _i45;
+import '../features/questions/presentation/results/viewModel/result_cubit.dart'
+    as _i47;
 import '../features/survey/data/data_sources/remote_data_source/survey_api_remote_data_source.dart'
     as _i35;
 import '../features/survey/data/data_sources/remote_data_source/survey_remote_data_source.dart'
@@ -80,8 +84,8 @@ import '../features/survey/data/repositories/survey_repository_impl.dart'
     as _i37;
 import '../features/survey/domain/repositories/survey_repositories.dart'
     as _i36;
-import '../features/survey/domain/use_cases/get_subjects.dart' as _i43;
-import '../features/survey/presentation/cubit/survey_cubit.dart' as _i46;
+import '../features/survey/domain/use_cases/get_subjects.dart' as _i44;
+import '../features/survey/presentation/cubit/survey_cubit.dart' as _i48;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -167,24 +171,28 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i38.VerifyResetCodeUseCase>(),
           gh<_i32.ResetPasswordUseCase>(),
         ));
-    gh.factory<_i42.GetQuestionsForExamUseCase>(
-        () => _i42.GetQuestionsForExamUseCase(gh<_i29.QuestionsRepo>()));
-    gh.factory<_i43.GetSubjectsUseCase>(
-        () => _i43.GetSubjectsUseCase(gh<_i36.SurveyRepository>()));
-    gh.factory<_i44.QuestionCubit>(() => _i44.QuestionCubit(
-          gh<_i42.GetQuestionsForExamUseCase>(),
+    gh.factory<_i42.GetExamAnswersUseCase>(
+        () => _i42.GetExamAnswersUseCase(gh<_i29.QuestionsRepo>()));
+    gh.factory<_i43.GetQuestionsForExamUseCase>(
+        () => _i43.GetQuestionsForExamUseCase(gh<_i29.QuestionsRepo>()));
+    gh.factory<_i44.GetSubjectsUseCase>(
+        () => _i44.GetSubjectsUseCase(gh<_i36.SurveyRepository>()));
+    gh.factory<_i45.QuestionCubit>(() => _i45.QuestionCubit(
+          gh<_i43.GetQuestionsForExamUseCase>(),
           gh<_i33.SubmitExamUseCase>(),
         ));
-    gh.factory<_i45.RegisterCubit>(
-        () => _i45.RegisterCubit(gh<_i31.RegisterUseCase>()));
-    gh.factory<_i46.SubjectCubit>(
-        () => _i46.SubjectCubit(gh<_i43.GetSubjectsUseCase>()));
+    gh.factory<_i46.RegisterCubit>(
+        () => _i46.RegisterCubit(gh<_i31.RegisterUseCase>()));
+    gh.factory<_i47.ResultCubit>(
+        () => _i47.ResultCubit(gh<_i42.GetExamAnswersUseCase>()));
+    gh.factory<_i48.SubjectCubit>(
+        () => _i48.SubjectCubit(gh<_i44.GetSubjectsUseCase>()));
     return this;
   }
 }
 
-class _$NetworkFactory extends _i47.NetworkFactory {}
+class _$NetworkFactory extends _i49.NetworkFactory {}
 
-class _$IsarModule extends _i48.IsarModule {}
+class _$IsarModule extends _i50.IsarModule {}
 
-class _$RegisterModule extends _i49.RegisterModule {}
+class _$RegisterModule extends _i51.RegisterModule {}

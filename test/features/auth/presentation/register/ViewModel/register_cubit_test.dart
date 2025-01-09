@@ -11,7 +11,7 @@ import 'register_cubit_test.mocks.dart';
 @GenerateMocks([RegisterUseCase])
 void main() {
  late RegisterUseCase registerUseCase;
- late var registerBody;
+ late RegisterRequest registerBody;
  late RegisterCubit registerCubit;
  setUp(()
  {

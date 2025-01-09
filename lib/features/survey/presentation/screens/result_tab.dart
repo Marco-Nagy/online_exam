@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/features/questions/presentation/results/screens/result_view.dart';
 
 class ResultTab extends StatelessWidget {
   const ResultTab({super.key});
@@ -7,14 +8,7 @@ class ResultTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Center(
-          child: Text(
-            "Result Tab",
-            style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor),
-          )),
+      child:const ResultView(),
     );
   }
 }

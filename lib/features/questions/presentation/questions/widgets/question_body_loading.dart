@@ -4,7 +4,7 @@ import 'package:online_exam/core/styles/colors/my_colors.dart';
 import 'package:online_exam/core/utils/widgets/loading_shimmer.dart';
 
 class QuestionBodyLoading extends StatefulWidget {
-  const QuestionBodyLoading({Key? key}) : super(key: key);
+  const QuestionBodyLoading({super.key});
 
   @override
   _QuestionBodyLoadingState createState() => _QuestionBodyLoadingState();

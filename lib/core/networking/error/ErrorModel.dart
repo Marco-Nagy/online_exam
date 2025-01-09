@@ -1,6 +1,7 @@
 /// message : "incorrect email or password"
 /// code : 401
 /// stack : "Error: incorrect email or password\n    at file:///home/exam/htdocs/exam.elevateegy.com/src/modules/auth/controller/auth.controller.js:34:8\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+library;
 
 class ErrorModel {
   ErrorModel({

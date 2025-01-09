@@ -24,7 +24,7 @@ class QuestionsRepoImpl implements QuestionsRepo {
   }
 
   @override
-  Future<DataResult<List<CheckedExam>>> getExamById() {
+  Future<DataResult<List<CheckedExam>>> getSubmittedExams() {
     return questionsOfflineDataSource.getExam();
   }
 }

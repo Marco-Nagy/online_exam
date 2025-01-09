@@ -34,6 +34,6 @@ class QuestionMapper {
         subject: exam.subject,
         numberOfQuestions: exam.numberOfQuestions,
         active: exam.active,
-        checkedQuestions: [], checkAnswers: []);
+        checkedQuestions: [], checkAnswers: [], correctAnswers: 0,);
   }
 }
