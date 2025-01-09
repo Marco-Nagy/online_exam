@@ -22,9 +22,9 @@ void main() {
   late ForgetPasswordCubit forgetPasswordCubit;
   late VerifyResetCodeUseCase verifyResetCodeUseCase;
   late ResetPasswordUseCase resetPasswordUseCase;
-  late var bodyForgetPassword;
-  late var bodyResetPassword;
-  late var bodyVerifyResetCode;
+  late ForgetPasswordRequest bodyForgetPassword;
+  late ResetPasswordRequest bodyResetPassword;
+  late VerifyResetCodeRequest bodyVerifyResetCode;
   var message = '';
   var token  = '';
   var user = UserModel('1', 'Somaya', 'mahmoud', "last", 'somaya@gmail.com', "01060256698", 'user', true, '6/11/2024');

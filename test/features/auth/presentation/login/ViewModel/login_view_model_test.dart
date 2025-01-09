@@ -13,7 +13,7 @@ import 'login_view_model_test.mocks.dart';
 @GenerateMocks([LoginUseCase])
 void main() {
   late LoginUseCase loginUseCase;
-  late var loginBody;
+  late SignInRequest loginBody;
   late LoginViewModel loginViewModel;
   setUp(() {
     loginUseCase = MockLoginUseCase();

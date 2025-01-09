@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam/core/routes/app_routes.dart';
 import 'package:online_exam/core/styles/colors/my_colors.dart';
 import 'package:online_exam/core/styles/fonts/my_fonts.dart';
+import 'package:online_exam/core/utils/extension/navigations.dart';
 import 'package:online_exam/core/utils/widgets/buttons/carved_button.dart';
 import 'package:online_exam/core/utils/widgets/buttons/curved_border_button.dart';
 import 'package:online_exam/core/utils/widgets/spacing.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_cubit.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_base-actions.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_cubit.dart';
 import 'package:radial_progress/radial_progress.dart';
 
 class ScoreScreen extends StatelessWidget {
@@ -40,7 +42,7 @@ class ScoreScreen extends StatelessWidget {
                     startAngle: StartAngle.top,
                     percent: cubit.gradePercent,
                     centerChild:  Text(
-                      (cubit.gradePercent*100).toString(),
+                      ((cubit.gradePercent*100).toInt()).toString(),
                       style: MyFonts.styleBold700_24,
                     ),
                     progressLineColors: const [MyColors.blue],
@@ -98,7 +100,10 @@ class ScoreScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             CurvedButton(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(AppRoutes.answers, arguments: cubit.exam);
+
+              },
               title: 'Show results',
               color: MyColors.blue,
             ),

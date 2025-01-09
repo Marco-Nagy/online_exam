@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:online_exam/core/networking/error/error_contract.dart';
 
 import 'ErrorModel.dart';
 

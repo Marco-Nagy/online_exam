@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam/di/di.dart';
+import 'package:online_exam/features/questions/presentation/results/screens/result_view.dart';
+import 'package:online_exam/features/survey/presentation/cubit/survey_cubit.dart';
 import 'package:online_exam/features/survey/presentation/screens/profile_tab.dart';
 import 'package:online_exam/features/survey/presentation/widgets/nav_bar_icon.dart';
-
-import 'result_tab.dart';
 import 'survey_explore_tab_.dart';
 
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   static const String routeName = '/home';
 
@@ -20,53 +22,57 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadiusDirectional.only(
-            topStart: Radius.circular(15),
-            topEnd: Radius.circular(15),
-          ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Color(0xffEDEFF3),
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            unselectedItemColor: Color(0xff878787),
-            selectedItemColor: Color(0xff02369C),
-            items: [
-              BottomNavigationBarItem(
-                icon: NavBarIcon(
-                  imagePath: "assets/images/survey_icon.png",
-                  isSelected: currentTabIndex == 0,
+    SubjectCubit cubit =   getIt.get<SubjectCubit>();
+    return BlocProvider(
+      create: (context) => cubit..getSubject(),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        bottomNavigationBar: ClipRRect(
+            borderRadius: const BorderRadiusDirectional.only(
+              topStart: Radius.circular(15),
+              topEnd: Radius.circular(15),
+            ),
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: const Color(0xffEDEFF3),
+              showSelectedLabels: true,
+              showUnselectedLabels: true,
+              unselectedItemColor: const Color(0xff878787),
+              selectedItemColor: const Color(0xff02369C),
+              items: [
+                BottomNavigationBarItem(
+                  icon: NavBarIcon(
+                    imagePath: "assets/images/survey_icon.png",
+                    isSelected: currentTabIndex == 0,
+                  ),
+                  label: 'Explor',
                 ),
-                label: 'Explor',
-              ),
-              BottomNavigationBarItem(
-                icon: NavBarIcon(
-                  imagePath: "assets/images/result_icon.png",
-                  isSelected: currentTabIndex == 1,
+                BottomNavigationBarItem(
+                  icon: NavBarIcon(
+                    imagePath: "assets/images/result_icon.png",
+                    isSelected: currentTabIndex == 1,
+                  ),
+                  label: 'Result',
                 ),
-                label: 'Result',
-              ),
-              BottomNavigationBarItem(
-                icon: NavBarIcon(
-                  imagePath: "assets/images/profile_icon.png",
-                  isSelected: currentTabIndex == 2,
+                BottomNavigationBarItem(
+                  icon: NavBarIcon(
+                    imagePath: "assets/images/profile_icon.png",
+                    isSelected: currentTabIndex == 2,
+                  ),
+                  label: 'Profile',
                 ),
-                label: 'Profile',
-              ),
-            ],
-            currentIndex: currentTabIndex,
-            onTap: (index) => setState(() => currentTabIndex = index),
-          )),
-      body: tabs[currentTabIndex],
+              ],
+              currentIndex: currentTabIndex,
+              onTap: (index) => setState(() => currentTabIndex = index),
+            )),
+        body: tabs[currentTabIndex],
+      ),
     );
   }
 
   List<Widget> tabs = [
-    SurveyTab(),
-    ResultTab(),
-   ProfileTab()
+    const SurveyTab(),
+    const ResultView(),
+   const ProfileTab()
   ];
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam/features/exam/domain/entities/exam.dart';
-import 'package:online_exam/features/questions/presentation/screens/score_screen.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_cubit.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_state.dart';
-import 'package:online_exam/features/questions/presentation/widgets/question_body.dart';
-import 'package:online_exam/features/questions/presentation/widgets/question_body_loading.dart';
-import 'package:online_exam/features/questions/presentation/widgets/timer_widget.dart';
+import 'package:online_exam/features/questions/presentation/questions/screens/score_screen.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_cubit.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_state.dart';
+import 'package:online_exam/features/questions/presentation/questions/widgets/question_body.dart';
+import 'package:online_exam/features/questions/presentation/questions/widgets/question_body_loading.dart';
+import 'package:online_exam/features/questions/presentation/questions/widgets/timer_widget.dart';
 
 class QuestionScreen extends StatefulWidget {
   final Exam exam;

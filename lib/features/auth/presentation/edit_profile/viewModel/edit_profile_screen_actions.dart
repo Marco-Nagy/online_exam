@@ -1,6 +1,5 @@
 import 'package:online_exam/features/auth/data/models/request/change_password_request.dart';
 import 'package:online_exam/features/auth/data/models/request/user_request.dart';
-import 'package:online_exam/features/auth/domain/entities/user.dart';
 
 sealed class EditProfileScreenActions {
 }

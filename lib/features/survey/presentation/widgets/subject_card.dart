@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:online_exam/core/routes/app_routes.dart';
 import 'package:online_exam/core/utils/extension/navigations.dart';
-import 'package:online_exam/features/auth/presentation/forget_password/screens/forget_password.dart';
 import 'package:online_exam/features/survey/domain/entities/subject.dart';
 
 class SubjectCard extends StatelessWidget {
-  const SubjectCard(this.subject);
+  const SubjectCard(this.subject, {super.key});
 
   final Subject subject;
 
@@ -28,7 +27,7 @@ class SubjectCard extends StatelessWidget {
               BoxShadow(
                 blurRadius: 10,
                 blurStyle: BlurStyle.normal,
-                color: Colors.grey.withOpacity(0.5),
+                color: Colors.grey.withValues(alpha: 0.5),
                 offset: Offset.zero,
                 spreadRadius: 2,
               ),
@@ -39,7 +38,7 @@ class SubjectCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Container(
+              SizedBox(
                   width: 60.w,
                   height: 60.w,
                   child: Image.network(subject.icon)),
@@ -48,7 +47,7 @@ class SubjectCard extends StatelessWidget {
               ),
               Text(
                 subject.name,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
               ),
             ],
           ),

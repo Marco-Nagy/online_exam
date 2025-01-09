@@ -35,28 +35,33 @@ const CheckedExamTableModelSchema = CollectionSchema(
       type: IsarType.objectList,
       target: r'CheckedQuestionTable',
     ),
-    r'duration': PropertySchema(
+    r'correctAnswer': PropertySchema(
       id: 3,
+      name: r'correctAnswer',
+      type: IsarType.long,
+    ),
+    r'duration': PropertySchema(
+      id: 4,
       name: r'duration',
       type: IsarType.long,
     ),
     r'examId': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'examId',
       type: IsarType.string,
     ),
     r'numberOfQuestions': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'numberOfQuestions',
       type: IsarType.long,
     ),
     r'subject': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'subject',
       type: IsarType.string,
     ),
     r'title': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'title',
       type: IsarType.string,
     )
@@ -153,11 +158,12 @@ void _checkedExamTableModelSerialize(
     CheckedQuestionTableSchema.serialize,
     object.checkedQuestions,
   );
-  writer.writeLong(offsets[3], object.duration);
-  writer.writeString(offsets[4], object.examId);
-  writer.writeLong(offsets[5], object.numberOfQuestions);
-  writer.writeString(offsets[6], object.subject);
-  writer.writeString(offsets[7], object.title);
+  writer.writeLong(offsets[3], object.correctAnswer);
+  writer.writeLong(offsets[4], object.duration);
+  writer.writeString(offsets[5], object.examId);
+  writer.writeLong(offsets[6], object.numberOfQuestions);
+  writer.writeString(offsets[7], object.subject);
+  writer.writeString(offsets[8], object.title);
 }
 
 CheckedExamTableModel _checkedExamTableModelDeserialize(
@@ -180,12 +186,13 @@ CheckedExamTableModel _checkedExamTableModelDeserialize(
       allOffsets,
       CheckedQuestionTable(),
     ),
-    duration: reader.readLongOrNull(offsets[3]),
-    examId: reader.readStringOrNull(offsets[4]),
+    correctAnswer: reader.readLongOrNull(offsets[3]),
+    duration: reader.readLongOrNull(offsets[4]),
+    examId: reader.readStringOrNull(offsets[5]),
     id: id,
-    numberOfQuestions: reader.readLongOrNull(offsets[5]),
-    subject: reader.readStringOrNull(offsets[6]),
-    title: reader.readStringOrNull(offsets[7]),
+    numberOfQuestions: reader.readLongOrNull(offsets[6]),
+    subject: reader.readStringOrNull(offsets[7]),
+    title: reader.readStringOrNull(offsets[8]),
   );
   return object;
 }
@@ -216,12 +223,14 @@ P _checkedExamTableModelDeserializeProp<P>(
     case 3:
       return (reader.readLongOrNull(offset)) as P;
     case 4:
-      return (reader.readStringOrNull(offset)) as P;
-    case 5:
       return (reader.readLongOrNull(offset)) as P;
-    case 6:
+    case 5:
       return (reader.readStringOrNull(offset)) as P;
+    case 6:
+      return (reader.readLongOrNull(offset)) as P;
     case 7:
+      return (reader.readStringOrNull(offset)) as P;
+    case 8:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -564,6 +573,80 @@ extension CheckedExamTableModelQueryFilter on QueryBuilder<
         upper,
         includeUpper,
       );
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel,
+      QAfterFilterCondition> correctAnswerIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'correctAnswer',
+      ));
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel,
+      QAfterFilterCondition> correctAnswerIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'correctAnswer',
+      ));
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel,
+      QAfterFilterCondition> correctAnswerEqualTo(int? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'correctAnswer',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel,
+      QAfterFilterCondition> correctAnswerGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'correctAnswer',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel,
+      QAfterFilterCondition> correctAnswerLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'correctAnswer',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel,
+      QAfterFilterCondition> correctAnswerBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'correctAnswer',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
     });
   }
 
@@ -1297,6 +1380,20 @@ extension CheckedExamTableModelQuerySortBy
   }
 
   QueryBuilder<CheckedExamTableModel, CheckedExamTableModel, QAfterSortBy>
+      sortByCorrectAnswer() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'correctAnswer', Sort.asc);
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel, QAfterSortBy>
+      sortByCorrectAnswerDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'correctAnswer', Sort.desc);
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel, QAfterSortBy>
       sortByDuration() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'duration', Sort.asc);
@@ -1380,6 +1477,20 @@ extension CheckedExamTableModelQuerySortThenBy
       thenByActiveDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'active', Sort.desc);
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel, QAfterSortBy>
+      thenByCorrectAnswer() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'correctAnswer', Sort.asc);
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel, QAfterSortBy>
+      thenByCorrectAnswerDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'correctAnswer', Sort.desc);
     });
   }
 
@@ -1478,6 +1589,13 @@ extension CheckedExamTableModelQueryWhereDistinct
   }
 
   QueryBuilder<CheckedExamTableModel, CheckedExamTableModel, QDistinct>
+      distinctByCorrectAnswer() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'correctAnswer');
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, CheckedExamTableModel, QDistinct>
       distinctByDuration() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'duration');
@@ -1539,6 +1657,13 @@ extension CheckedExamTableModelQueryProperty on QueryBuilder<
       QQueryOperations> checkedQuestionsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'checkedQuestions');
+    });
+  }
+
+  QueryBuilder<CheckedExamTableModel, int?, QQueryOperations>
+      correctAnswerProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'correctAnswer');
     });
   }
 

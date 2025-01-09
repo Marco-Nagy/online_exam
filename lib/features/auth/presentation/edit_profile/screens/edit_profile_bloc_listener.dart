@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam/core/routes/app_routes.dart';
 import 'package:online_exam/core/utils/extension/navigations.dart';
 import 'package:online_exam/core/utils/widgets/animated_status_dialog.dart';
 import 'package:online_exam/features/auth/presentation/edit_profile/viewModel/edit_profile_cubit.dart';
-import 'package:online_exam/features/auth/presentation/forget_password/ViewModel/forget_password_cubit.dart';
 
 class EditProfileBlocListener extends StatelessWidget {
   const EditProfileBlocListener({super.key});

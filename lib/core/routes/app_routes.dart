@@ -18,9 +18,11 @@ import 'package:online_exam/features/exam/presentation/screens/exam_screen.dart'
 import 'package:online_exam/features/exam/presentation/screens/start_exam_screen.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_base_actions.dart';
 import 'package:online_exam/features/exam/presentation/viewModel/exam_cubit.dart';
-import 'package:online_exam/features/questions/presentation/screens/question_screen.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_base-actions.dart';
-import 'package:online_exam/features/questions/presentation/viewModel/questions/question_cubit.dart';
+import 'package:online_exam/features/questions/domain/entities/checked_exam.dart';
+import 'package:online_exam/features/questions/presentation/questions/screens/question_screen.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_base-actions.dart';
+import 'package:online_exam/features/questions/presentation/questions/viewModel/question_cubit.dart';
+import 'package:online_exam/features/questions/presentation/results/screens/answers_view.dart';
 import 'package:online_exam/features/survey/presentation/screens/home_screen.dart';
 
 class AppRoutes {
@@ -34,6 +36,7 @@ class AppRoutes {
   static const String startExam = 'startExam';
   static const String home = 'home';
   static const String questions = 'questions';
+  static const String answers = 'answers';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -85,9 +88,13 @@ class AppRoutes {
         return BaseRoute(
             page: StartExamScreen(
           item: args as Exam ,));
+        case AppRoutes.answers:
+        return BaseRoute(
+            page: AnswersView(
+          args as CheckedExam ,));
       case AppRoutes.home:
         return BaseRoute(
-          page: HomeScreen(),
+          page: const HomeScreen(),
         );
       case AppRoutes.questions:
         return BaseRoute(

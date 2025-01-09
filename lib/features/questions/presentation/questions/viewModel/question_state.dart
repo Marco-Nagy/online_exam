@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:online_exam/core/networking/error/ErrorModel.dart';
 
-abstract class QuestionState extends Equatable {
+sealed class QuestionState extends Equatable {
   @override
   List<Object?> get props => [
         RefreshState,

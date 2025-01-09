@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:online_exam/core/styles/colors/my_colors.dart'; // Your custom colors
+// Your custom colors
 import 'package:online_exam/core/utils/widgets/app_text_form_field.dart'; // Your custom text form field
 
 class VerificationCode extends HookWidget {
