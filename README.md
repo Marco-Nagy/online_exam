@@ -18,7 +18,7 @@ Welcome to the Ele Quiz! This app is designed to help users improve their knowle
 
 Below are the app's screenshots that highlight its functionality:
 
-![image](https://github.com/user-attachments/assets/9ac42b60-df93-4228-b6c5-5ae2cd6c39a8)
+![image](https://github.com/user-attachments/assets/dcfc6c2c-fbdc-4fe1-9e3f-062c913accdb)
 
 
 <img src="https://github.com/user-attachments/assets/97b2d6ac-ea0d-4acb-bb55-42b7d6dc64c3" alt="Choose Quiz Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/a1c4e290-465e-4723-90f8-f13751e45677" alt="Quiz Overview Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/c9618fde-b962-414f-a812-52908c6c81b2" alt="Question Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/edd536a5-96f0-4a5c-b531-0add625774f6" alt="Results Screenshot" width="160"> <img src="https://github.com/user-attachments/assets/077dfe03-05ae-498a-8692-9e4588d11a7f" alt="Feedback Screenshot" width="160">
