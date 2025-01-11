@@ -30,7 +30,6 @@ To make the app visually appealing on the Google Play Store, the following featu
 - **Graphic 2:** Showcasing quiz timing and question UI.
 - **Graphic 3:** Focusing on result analysis and learning feedback.
 
-
 ---
 
 ## How to Run the App
@@ -58,9 +57,26 @@ To make the app visually appealing on the Google Play Store, the following featu
 
 We would like to acknowledge the contributors who made this project possible:
 
-- [Marco Nagy](https://github.com/Marco-Nagy)
-- [Somaya Mahmoud](https://github.com/somaya-mahmoud)
-- [Shadw Ahmed](https://github.com/shadwahmed)
+- <kbd> <img   src="https://github.com/Marco-Nagy.png"  alt="Marco Nagy" width="100" style="border-radius:50%;" style="box-shadow: 3px 3px 3px white;" /> </kbd>
+**Marco Nagy** ([GitHub Profile](https://github.com/Marco-Nagy))
+  - **Features:** Search functionality, Timed Quizzes
+  - **Total Commits:** 120
+  - **Total PRs:** 15
+
+
+- <kbd> <img class="rounded-circle" src="https://github.com/somaya-mahmoud.png" alt="Somaya Mahmoud" width="100" style="border-radius:50%;"> </kbd>
+ **Somaya Mahmoud** ([GitHub Profile](https://github.com/somaya-mahmoud))
+
+  - **Features:** Result Analysis, Feedback System
+  - **Total Commits:** 85
+  - **Total PRs:** 10
+
+
+- <kbd><img src="https://github.com/shadwahmed.png" alt="Shadw Ahmed" width="100" style="border-radius:50%;"> </kbd>
+**Shadw Ahmed** ([GitHub Profile](https://github.com/shadwahmed))
+  - **Features:** Browse by Subject, UI Enhancements
+  - **Total Commits:** 95
+  - **Total PRs:** 12
 
 ---
 
