@@ -61,6 +61,9 @@ dev_dependencies:
   isar_generator: ^3.1.0+1
   dartz: ^0.10.1
   test: ^1.25.7
+  flutter_native_splash: ^2.4.3
+  icons_launcher: ^3.0.0
+  rename: ^3.0.2
 
  # flutter pub run build_runner build
  #dart run build_runner build --delete-conflicting-outputs
