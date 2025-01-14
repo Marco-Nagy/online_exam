@@ -1,0 +1,31 @@
+icons_launcher:
+  image_path: 'assets/images/splash.png'
+  platforms:
+    android:
+      enable: true
+      image_path: 'assets/images/splash.png'
+      notification_image: "assets/images/splash.png"
+      # adaptive_background_color: '#ffffff'
+      adaptive_background_image: 'assets/images/splash.png'
+      adaptive_foreground_image: 'assets/images/splash.png'
+      adaptive_round_image: 'assets/images/splash.png'
+      adaptive_monochrome_image: 'assets/images/splash.png'
+    ios:
+      enable: true
+      image_path: 'assets/images/splash.png'
+      # For iOS 18+ (support dark and tinted)
+#      dark_path: "assets/ic_logo_rectangle_dark.png"
+#      tinted_path: "assets/ic_logo_rectangle_tinted.png"
+    web:
+      enable: true
+      image_path: 'assets/images/splash.png'
+      favicon_path: 'assets/images/splash.png'
+    macos:
+      enable: false
+      image_path: 'assets/images/splash.png'
+    windows:
+      enable: false
+      image_path: 'assets/images/splash.png'
+    linux:
+      enable: false
+      image_path: 'assets/images/splash.png'
