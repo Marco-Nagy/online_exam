@@ -1,6 +1,6 @@
 # Ele Quiz - README
 
-Welcome to the Ele Quiz! This app is designed to help users improve their knowledge by taking quizzes in various subjects such as HTML, CSS, and JavaScript. Below is an overview of the app's features, screenshots, and details for submission on Google Play.
+Welcome to the Ele Quiz! This app is designed to help users improve their knowledge by taking quizzes in various subjects such as HTML, CSS,Flutter and JavaScript.
 
 ---
 
